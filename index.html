@@ -7,6 +7,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
 <style>
   :root{
     --bg: #0D1310;
@@ -23,604 +24,2610 @@
     --amber-dim: rgba(232,168,104,0.14);
   }
 
-  *{ box-sizing: border-box; margin:0; padding:0; }
-  html{ scroll-behavior: smooth; }
+  *{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+  }
+
+  html{
+    scroll-behavior:smooth;
+  }
 
   body{
-    background: var(--bg);
-    color: var(--text);
-    font-family: 'Inter', sans-serif;
-    line-height: 1.5;
-    -webkit-font-smoothing: antialiased;
+    background:var(--bg);
+    color:var(--text);
+    font-family:'Inter',sans-serif;
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  body.modal-open{
+    overflow:hidden;
   }
 
   h1,h2,h3{
-    font-family: 'Fraunces', serif;
-    font-weight: 500;
-    letter-spacing: -0.01em;
+    font-family:'Fraunces',serif;
+    font-weight:500;
+    letter-spacing:-0.01em;
   }
 
-  a{ color: inherit; text-decoration: none; }
-  button{ font-family: inherit; cursor: pointer; }
+  a{
+    color:inherit;
+    text-decoration:none;
+  }
 
-  .wrap{ max-width: 1180px; margin: 0 auto; padding: 0 32px; }
-  @media (max-width: 640px){ .wrap{ padding: 0 20px; } }
+  button{
+    font-family:inherit;
+    cursor:pointer;
+  }
+
+  .wrap{
+    max-width:1180px;
+    margin:0 auto;
+    padding:0 32px;
+  }
+
+  @media(max-width:640px){
+    .wrap{
+      padding:0 20px;
+    }
+  }
 
   /* ---------- Nav ---------- */
+
   nav{
-    position: sticky; top:0; z-index: 50;
-    background: rgba(13,19,16,0.86);
-    backdrop-filter: blur(10px);
-    border-bottom: 1px solid var(--line);
+    position:sticky;
+    top:0;
+    z-index:50;
+    background:rgba(13,19,16,0.86);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
   }
-  nav .wrap{ display:flex; align-items:center; justify-content:space-between; height: 68px; }
-  .logo{ font-family:'Fraunces', serif; font-size: 1.25rem; font-weight: 600; display:flex; align-items:center; gap:8px; }
-  .logo .dot{ width:8px; height:8px; border-radius:50%; background: var(--mint); box-shadow: 0 0 10px 2px var(--mint-dim); }
-  .nav-links{ display:flex; gap:36px; font-size:0.92rem; color: var(--text-muted); }
-  .nav-links a:hover{ color: var(--text); }
-  .nav-right{ display:flex; align-items:center; gap:18px; }
+
+  nav .wrap{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    height:68px;
+  }
+
+  .logo{
+    font-family:'Fraunces',serif;
+    font-size:1.25rem;
+    font-weight:600;
+    display:flex;
+    align-items:center;
+    gap:8px;
+  }
+
+  .logo .dot{
+    width:8px;
+    height:8px;
+    border-radius:50%;
+    background:var(--mint);
+    box-shadow:0 0 10px 2px var(--mint-dim);
+  }
+
+  .nav-links{
+    display:flex;
+    gap:36px;
+    font-size:.92rem;
+    color:var(--text-muted);
+  }
+
+  .nav-links a:hover{
+    color:var(--text);
+  }
+
+  .nav-right{
+    display:flex;
+    align-items:center;
+    gap:18px;
+  }
+
   .cart-btn{
-    position:relative; display:flex; align-items:center; gap:8px;
-    font-size:0.88rem; padding: 9px 16px 9px 14px;
-    border: 1px solid var(--line); border-radius: 100px; color: var(--text);
+    position:relative;
+    display:flex;
+    align-items:center;
+    gap:8px;
+    font-size:.88rem;
+    padding:9px 16px 9px 14px;
+    border:1px solid var(--line);
+    border-radius:100px;
+    color:var(--text);
     background:none;
   }
-  .cart-btn:hover{ border-color: var(--mint); }
-  .cart-count{
-    background: var(--mint); color:#0D1310; font-weight:600;
-    font-size:0.72rem; min-width:18px; height:18px; border-radius:50%;
-    display:flex; align-items:center; justify-content:center; padding:0 4px;
+
+  .cart-btn:hover{
+    border-color:var(--mint);
   }
-  @media (max-width: 780px){ .nav-links{ display:none; } }
+
+  .cart-count{
+    background:var(--mint);
+    color:#0D1310;
+    font-weight:600;
+    font-size:.72rem;
+    min-width:18px;
+    height:18px;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:0 4px;
+  }
+
+  @media(max-width:780px){
+    .nav-links{
+      display:none;
+    }
+  }
 
   /* ---------- Hero ---------- */
-  .hero{ padding: 96px 0 80px; position: relative; overflow: hidden; border-bottom: 1px solid var(--line); }
+
+  .hero{
+    padding:96px 0 80px;
+    position:relative;
+    overflow:hidden;
+    border-bottom:1px solid var(--line);
+  }
+
   .hero::before{
-    content:""; position:absolute; inset:-20% -10% auto -10%; height: 480px;
-    background: radial-gradient(ellipse at 30% 20%, rgba(116,232,198,0.10), transparent 60%),
-                radial-gradient(ellipse at 75% 40%, rgba(232,168,104,0.08), transparent 55%);
+    content:"";
+    position:absolute;
+    inset:-20% -10% auto -10%;
+    height:480px;
+    background:
+      radial-gradient(ellipse at 30% 20%,rgba(116,232,198,.10),transparent 60%),
+      radial-gradient(ellipse at 75% 40%,rgba(232,168,104,.08),transparent 55%);
     pointer-events:none;
   }
-  .hero-inner{ position:relative; display:grid; grid-template-columns: 1.15fr 0.85fr; gap:64px; align-items:center; }
-  @media (max-width: 900px){ .hero-inner{ grid-template-columns: 1fr; gap:48px; } }
 
-  .eyebrow-line{ display:flex; align-items:center; gap:10px; font-size: 0.85rem; color: var(--text-muted); margin-bottom: 22px; }
-  .eyebrow-line span.rule{ width:28px; height:1px; background: var(--line); display:inline-block; }
+  .hero-inner{
+    position:relative;
+    display:grid;
+    grid-template-columns:1.15fr .85fr;
+    gap:64px;
+    align-items:center;
+  }
 
-  .hero h1{ font-size: clamp(2.3rem, 4.4vw, 3.6rem); line-height: 1.08; max-width: 620px; }
-  .hero h1 em{ font-style: italic; color: var(--mint); }
-  .hero p.lede{ margin-top: 22px; color: var(--text-muted); font-size: 1.05rem; max-width: 460px; }
-  .hero-actions{ margin-top: 34px; display:flex; gap:14px; flex-wrap:wrap; }
-  .btn-primary{ background: var(--mint); color: #0D1310; padding: 13px 24px; border-radius: 100px; font-weight: 600; font-size: 0.95rem; border:none; }
-  .btn-primary:hover{ background: #8FF0D3; }
-  .btn-ghost{ padding: 13px 24px; border-radius: 100px; border: 1px solid var(--line); font-size: 0.95rem; color: var(--text); background:none; }
-  .btn-ghost:hover{ border-color: var(--text-muted); }
+  @media(max-width:900px){
+    .hero-inner{
+      grid-template-columns:1fr;
+      gap:48px;
+    }
+  }
 
-  .readouts{ display:flex; flex-direction:column; gap:16px; }
-  .readout{ background: var(--bg-raised); border: 1px solid var(--line); border-radius: 16px; padding: 22px 24px; display:flex; align-items:center; justify-content:space-between; }
-  .readout .label{ font-size:0.82rem; color: var(--text-muted); }
-  .readout .value{ font-family:'Fraunces', serif; font-size:2rem; margin-top:4px; }
-  .readout.air .value{ color: var(--mint); }
-  .readout.sleep .value{ color: var(--amber); }
-  .pulse{ width:10px; height:10px; border-radius:50%; background: var(--mint); animation: pulse 2.4s ease-in-out infinite; }
-  .readout.sleep .pulse{ background: var(--amber); }
-  @keyframes pulse{ 0%,100%{ box-shadow: 0 0 0 0 rgba(116,232,198,0.5); } 50%{ box-shadow: 0 0 0 8px rgba(116,232,198,0); } }
-  @media (prefers-reduced-motion: reduce){ .pulse{ animation:none; } }
+  .eyebrow-line{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    font-size:.85rem;
+    color:var(--text-muted);
+    margin-bottom:22px;
+  }
+
+  .eyebrow-line span.rule{
+    width:28px;
+    height:1px;
+    background:var(--line);
+    display:inline-block;
+  }
+
+  .hero h1{
+    font-size:clamp(2.3rem,4.4vw,3.6rem);
+    line-height:1.08;
+    max-width:620px;
+  }
+
+  .hero h1 em{
+    font-style:italic;
+    color:var(--mint);
+  }
+
+  .hero p.lede{
+    margin-top:22px;
+    color:var(--text-muted);
+    font-size:1.05rem;
+    max-width:460px;
+  }
+
+  .hero-actions{
+    margin-top:34px;
+    display:flex;
+    gap:14px;
+    flex-wrap:wrap;
+  }
+
+  .btn-primary{
+    background:var(--mint);
+    color:#0D1310;
+    padding:13px 24px;
+    border-radius:100px;
+    font-weight:600;
+    font-size:.95rem;
+    border:none;
+  }
+
+  .btn-primary:hover{
+    background:#8FF0D3;
+  }
+
+  .btn-ghost{
+    padding:13px 24px;
+    border-radius:100px;
+    border:1px solid var(--line);
+    font-size:.95rem;
+    color:var(--text);
+    background:none;
+  }
+
+  .btn-ghost:hover{
+    border-color:var(--text-muted);
+  }
+
+  .readouts{
+    display:flex;
+    flex-direction:column;
+    gap:16px;
+  }
+
+  .readout{
+    background:var(--bg-raised);
+    border:1px solid var(--line);
+    border-radius:16px;
+    padding:22px 24px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+  }
+
+  .readout .label{
+    font-size:.82rem;
+    color:var(--text-muted);
+  }
+
+  .readout .value{
+    font-family:'Fraunces',serif;
+    font-size:2rem;
+    margin-top:4px;
+  }
+
+  .readout.air .value{
+    color:var(--mint);
+  }
+
+  .readout.sleep .value{
+    color:var(--amber);
+  }
+
+  .pulse{
+    width:10px;
+    height:10px;
+    border-radius:50%;
+    background:var(--mint);
+    animation:pulse 2.4s ease-in-out infinite;
+  }
+
+  .readout.sleep .pulse{
+    background:var(--amber);
+  }
+
+  @keyframes pulse{
+    0%,100%{
+      box-shadow:0 0 0 0 rgba(116,232,198,.5);
+    }
+    50%{
+      box-shadow:0 0 0 8px rgba(116,232,198,0);
+    }
+  }
+
+  @media(prefers-reduced-motion:reduce){
+    .pulse{
+      animation:none;
+    }
+  }
 
   /* ---------- Sections ---------- */
-  .section{ padding: 84px 0; border-bottom: 1px solid var(--line); }
-  .section-head{ display:flex; justify-content:space-between; align-items:flex-end; margin-bottom: 44px; gap: 24px; flex-wrap:wrap; }
-  .section-head h2{ font-size: clamp(1.7rem, 3vw, 2.3rem); }
-  .section-head p{ color: var(--text-muted); max-width: 380px; font-size:0.98rem; }
 
-  .grid{ display:grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
-  @media (max-width: 900px){ .grid{ grid-template-columns: repeat(2,1fr); } }
-  @media (max-width: 620px){ .grid{ grid-template-columns: 1fr; } }
+  .section{
+    padding:84px 0;
+    border-bottom:1px solid var(--line);
+  }
 
-  .card{ background: var(--bg-card); border: 1px solid var(--line); border-radius: 18px; padding: 26px; display:flex; flex-direction:column; transition: border-color 0.2s ease, transform 0.2s ease; position:relative; }
-  .card:hover{ border-color: var(--mint); transform: translateY(-3px); }
-  .product-image{ width:100%; height:220px; object-fit:contain; display:block; margin:0 0 22px; border-radius:14px; background:var(--bg-raised); cursor:pointer; transition:transform .2s ease, opacity .2s ease; }
-  .product-image:hover{ transform:scale(1.02); opacity:.92; }
-  .card.night:hover{ border-color: var(--amber); }
+  .section-head{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-end;
+    margin-bottom:44px;
+    gap:24px;
+    flex-wrap:wrap;
+  }
 
-  .card-top{ display:flex; justify-content:space-between; align-items:flex-start; margin-bottom: 18px; }
-  .card .tag{ font-size: 0.72rem; padding: 4px 10px; border-radius: 100px; background: var(--mint-dim); color: var(--mint); }
-  .card.night .tag{ background: var(--amber-dim); color: var(--amber); }
-  .card .sale-flag{ font-size: 0.72rem; padding: 4px 10px; border-radius: 100px; background: rgba(232,138,116,0.16); color: var(--coral); font-weight:600; }
+  .section-head h2{
+    font-size:clamp(1.7rem,3vw,2.3rem);
+  }
 
-  .card h3{ font-size: 1.2rem; font-weight:500; margin-bottom:6px; }
-  .card .spec{ color: var(--text-muted); font-size:0.9rem; margin-bottom:18px; flex-grow:1; }
+  .section-head p{
+    color:var(--text-muted);
+    max-width:380px;
+    font-size:.98rem;
+  }
 
-  .card .row{ display:flex; align-items:center; justify-content:space-between; padding-top: 16px; border-top: 1px solid var(--line); gap:12px; }
-  .price-block{ display:flex; flex-direction:column; }
-  .price-block .was{ font-size:0.8rem; color: var(--text-faint); text-decoration: line-through; }
-  .price-block .now{ font-family:'Fraunces', serif; font-size:1.3rem; }
-  .price-block .now small{ font-family:'Inter',sans-serif; font-size:0.75rem; color:var(--text-faint); font-weight:400; }
-  .card .add{ font-size: 0.85rem; padding: 8px 16px; border-radius: 100px; border: 1px solid var(--line); background:none; color: var(--text); white-space:nowrap; }
-  .card .add:hover{ background: var(--text); color: var(--bg); border-color: var(--text); }
-  .card .add.added{ background: var(--mint); color:#0D1310; border-color: var(--mint); }
+  .grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:22px;
+  }
+
+  @media(max-width:900px){
+    .grid{
+      grid-template-columns:repeat(2,1fr);
+    }
+  }
+
+  @media(max-width:620px){
+    .grid{
+      grid-template-columns:1fr;
+    }
+  }
+
+  .card{
+    background:var(--bg-card);
+    border:1px solid var(--line);
+    border-radius:18px;
+    padding:26px;
+    display:flex;
+    flex-direction:column;
+    transition:border-color .2s ease,transform .2s ease;
+    position:relative;
+  }
+
+  .card:hover{
+    border-color:var(--mint);
+    transform:translateY(-3px);
+  }
+
+  .product-image{
+    width:100%;
+    height:220px;
+    object-fit:contain;
+    display:block;
+    margin:0 0 22px;
+    border-radius:14px;
+    background:var(--bg-raised);
+    cursor:pointer;
+    transition:transform .2s ease,opacity .2s ease;
+  }
+
+  .product-image:hover{
+    transform:scale(1.02);
+    opacity:.92;
+  }
+
+  .card.night:hover{
+    border-color:var(--amber);
+  }
+
+  .card-top{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    margin-bottom:18px;
+  }
+
+  .card .tag{
+    font-size:.72rem;
+    padding:4px 10px;
+    border-radius:100px;
+    background:var(--mint-dim);
+    color:var(--mint);
+  }
+
+  .card.night .tag{
+    background:var(--amber-dim);
+    color:var(--amber);
+  }
+
+  .card .sale-flag{
+    font-size:.72rem;
+    padding:4px 10px;
+    border-radius:100px;
+    background:rgba(232,138,116,.16);
+    color:var(--coral);
+    font-weight:600;
+  }
+
+  .card h3{
+    font-size:1.2rem;
+    font-weight:500;
+    margin-bottom:6px;
+  }
+
+  .card .spec{
+    color:var(--text-muted);
+    font-size:.9rem;
+    margin-bottom:18px;
+    flex-grow:1;
+  }
+
+  .card .row{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding-top:16px;
+    border-top:1px solid var(--line);
+    gap:12px;
+  }
+
+  .price-block{
+    display:flex;
+    flex-direction:column;
+  }
+
+  .price-block .was{
+    font-size:.8rem;
+    color:var(--text-faint);
+    text-decoration:line-through;
+  }
+
+  .price-block .now{
+    font-family:'Fraunces',serif;
+    font-size:1.3rem;
+  }
+
+  .price-block .now small{
+    font-family:'Inter',sans-serif;
+    font-size:.75rem;
+    color:var(--text-faint);
+    font-weight:400;
+  }
+
+  .card .add{
+    font-size:.85rem;
+    padding:8px 16px;
+    border-radius:100px;
+    border:1px solid var(--line);
+    background:none;
+    color:var(--text);
+    white-space:nowrap;
+  }
+
+  .card .add:hover{
+    background:var(--text);
+    color:var(--bg);
+    border-color:var(--text);
+  }
+
+  .card .add.added{
+    background:var(--mint);
+    color:#0D1310;
+    border-color:var(--mint);
+  }
 
   /* ---------- How it works ---------- */
-  .how{ display:grid; grid-template-columns: repeat(3,1fr); gap: 32px; }
-  @media (max-width: 780px){ .how{ grid-template-columns:1fr; } }
-  .how-item .num{ font-family:'Fraunces', serif; font-size: 0.95rem; color: var(--text-faint); margin-bottom: 14px; }
-  .how-item h3{ font-size: 1.15rem; margin-bottom: 10px; font-weight: 500; }
-  .how-item p{ color: var(--text-muted); font-size: 0.95rem; max-width: 320px; }
+
+  .how{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:32px;
+  }
+
+  @media(max-width:780px){
+    .how{
+      grid-template-columns:1fr;
+    }
+  }
+
+  .how-item .num{
+    font-family:'Fraunces',serif;
+    font-size:.95rem;
+    color:var(--text-faint);
+    margin-bottom:14px;
+  }
+
+  .how-item h3{
+    font-size:1.15rem;
+    margin-bottom:10px;
+    font-weight:500;
+  }
+
+  .how-item p{
+    color:var(--text-muted);
+    font-size:.95rem;
+    max-width:320px;
+  }
 
   /* ---------- Footer ---------- */
-  footer{ padding: 56px 0; }
-  .footer-inner{ display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:20px; }
-  .footer-inner .logo{ font-size:1.05rem; }
-  footer .fine{ color: var(--text-faint); font-size:0.82rem; max-width:520px; }
-  .foot-links{ display:flex; gap:26px; font-size:0.88rem; color: var(--text-muted); }
-  .foot-links a:hover{ color: var(--text); }
+
+  footer{
+    padding:56px 0;
+  }
+
+  .footer-inner{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:20px;
+  }
+
+  .footer-inner .logo{
+    font-size:1.05rem;
+  }
+
+  footer .fine{
+    color:var(--text-faint);
+    font-size:.82rem;
+    max-width:520px;
+  }
+
+  .foot-links{
+    display:flex;
+    gap:26px;
+    font-size:.88rem;
+    color:var(--text-muted);
+  }
+
+  .foot-links a:hover{
+    color:var(--text);
+  }
 
   /* ---------- Cart drawer ---------- */
+
   .overlay{
-    position:fixed; inset:0; background: rgba(6,9,7,0.6);
-    opacity:0; pointer-events:none; transition: opacity 0.25s ease; z-index: 90;
+    position:fixed;
+    inset:0;
+    background:rgba(6,9,7,.6);
+    opacity:0;
+    pointer-events:none;
+    transition:opacity .25s ease;
+    z-index:90;
   }
-  .overlay.open{ opacity:1; pointer-events:auto; }
+
+  .overlay.open{
+    opacity:1;
+    pointer-events:auto;
+  }
 
   .drawer{
-    position:fixed; top:0; right:0; height:100%; width: 400px; max-width: 92vw;
-    background: var(--bg-raised); border-left:1px solid var(--line);
-    transform: translateX(100%); transition: transform 0.3s ease;
-    z-index: 95; display:flex; flex-direction:column;
+    position:fixed;
+    top:0;
+    right:0;
+    height:100%;
+    width:400px;
+    max-width:92vw;
+    background:var(--bg-raised);
+    border-left:1px solid var(--line);
+    transform:translateX(100%);
+    transition:transform .3s ease;
+    z-index:95;
+    display:flex;
+    flex-direction:column;
   }
-  .drawer.open{ transform: translateX(0); }
-  .drawer-head{ padding: 22px 24px; border-bottom:1px solid var(--line); display:flex; justify-content:space-between; align-items:center; }
-  .drawer-head h3{ font-size:1.1rem; font-weight:500; }
-  .drawer-close{ background:none; border:none; color: var(--text-muted); font-size:1.3rem; line-height:1; }
-  .drawer-close:hover{ color: var(--text); }
-  .drawer-items{ flex:1; overflow-y:auto; padding: 12px 24px; }
-  .drawer-item{ display:flex; justify-content:space-between; gap:12px; padding: 16px 0; border-bottom:1px solid var(--line); }
-  .drawer-item .di-name{ font-size:0.95rem; margin-bottom:4px; }
-  .drawer-item .di-meta{ font-size:0.8rem; color: var(--text-muted); }
-  .drawer-item .di-remove{ background:none; border:none; color: var(--text-faint); font-size:0.8rem; }
-  .drawer-item .di-remove:hover{ color: var(--coral); }
-  .drawer-item .di-price{ font-family:'Fraunces', serif; font-size:1rem; white-space:nowrap; }
-  .drawer-empty{ color: var(--text-muted); font-size:0.92rem; padding: 40px 0; text-align:center; }
-  .drawer-foot{ padding: 20px 24px 26px; border-top:1px solid var(--line); }
-  .drawer-subtotal{ display:flex; justify-content:space-between; margin-bottom:16px; font-size:1rem; }
-  .drawer-subtotal .amt{ font-family:'Fraunces', serif; font-size:1.2rem; }
-  .btn-checkout{ width:100%; background: var(--mint); color:#0D1310; border:none; padding:14px; border-radius:100px; font-weight:600; font-size:0.95rem; }
-  .btn-checkout:hover{ background:#8FF0D3; }
-  .btn-checkout:disabled{ background: var(--line); color: var(--text-faint); cursor:not-allowed; }
 
-  /* ---------- Product detail view ---------- */
-  .product-modal-card{
-    width: 980px; max-width:100%; padding:0; overflow:hidden;
+  .drawer.open{
+    transform:translateX(0);
   }
-  .product-detail-grid{ display:grid; grid-template-columns: 1fr 1fr; min-height:520px; }
-  .product-detail-media{ background:var(--bg-raised); min-height:520px; display:flex; align-items:center; justify-content:center; padding:44px; border-right:1px solid var(--line); }
-  .product-detail-media img{ width:100%; max-width:470px; max-height:470px; object-fit:contain; border-radius:16px; }
-  .product-detail-content{ padding:40px; overflow-y:auto; }
-  .detail-close{ float:right; background:none; border:1px solid var(--line); color:var(--text-muted); width:36px; height:36px; border-radius:50%; font-size:1.25rem; }
-  .detail-close:hover{ color:var(--text); border-color:var(--text-muted); }
-  .detail-tag{ display:inline-block; font-size:.74rem; padding:5px 11px; border-radius:100px; background:var(--mint-dim); color:var(--mint); margin-bottom:18px; }
-  .product-detail-card.night .detail-tag{ background:var(--amber-dim); color:var(--amber); }
-  .detail-title{ font-size:2rem; line-height:1.12; margin-bottom:10px; padding-right:44px; }
-  .detail-intro{ color:var(--text-muted); font-size:.95rem; margin-bottom:22px; }
-  .detail-price{ display:flex; align-items:baseline; gap:10px; margin-bottom:24px; }
-  .detail-price .was{ color:var(--text-faint); text-decoration:line-through; font-size:.9rem; }
-  .detail-price .now{ font-family:'Fraunces',serif; font-size:1.7rem; }
-  .detail-price small{ font-family:'Inter',sans-serif; color:var(--text-faint); font-size:.78rem; }
-  .detail-section{ border-top:1px solid var(--line); padding-top:20px; margin-top:20px; }
-  .detail-section h4{ font-size:.82rem; text-transform:uppercase; letter-spacing:.08em; color:var(--text-muted); margin-bottom:12px; }
-  .detail-list{ list-style:none; display:grid; gap:10px; }
-  .detail-list li{ position:relative; padding-left:18px; color:var(--text-muted); font-size:.9rem; }
-  .detail-list li::before{ content:'✓'; position:absolute; left:0; color:var(--mint); font-weight:600; }
-  .detail-benefit{ color:var(--text-muted); font-size:.9rem; }
-  .detail-actions{ display:flex; gap:10px; margin-top:28px; flex-wrap:wrap; }
-  .detail-actions .btn-primary{ border:none; flex:1; min-width:180px; }
-  .detail-actions .btn-ghost{ min-width:130px; }
-  @media(max-width:780px){
-    .product-detail-grid{ grid-template-columns:1fr; }
-    .product-detail-media{ min-height:320px; border-right:none; border-bottom:1px solid var(--line); padding:28px; }
-    .product-detail-media img{ max-height:300px; }
-    .product-detail-content{ padding:28px 22px; }
-    .detail-title{ font-size:1.65rem; }
+
+  .drawer-head{
+    padding:22px 24px;
+    border-bottom:1px solid var(--line);
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+  }
+
+  .drawer-head h3{
+    font-size:1.1rem;
+    font-weight:500;
+  }
+
+  .drawer-close{
+    background:none;
+    border:none;
+    color:var(--text-muted);
+    font-size:1.3rem;
+    line-height:1;
+  }
+
+  .drawer-close:hover{
+    color:var(--text);
+  }
+
+  .drawer-items{
+    flex:1;
+    overflow-y:auto;
+    padding:12px 24px;
+  }
+
+  .drawer-item{
+    display:flex;
+    justify-content:space-between;
+    gap:12px;
+    padding:16px 0;
+    border-bottom:1px solid var(--line);
+  }
+
+  .drawer-item .di-name{
+    font-size:.95rem;
+    margin-bottom:4px;
+  }
+
+  .drawer-item .di-meta{
+    font-size:.8rem;
+    color:var(--text-muted);
+  }
+
+  .drawer-item .di-remove{
+    background:none;
+    border:none;
+    color:var(--text-faint);
+    font-size:.8rem;
+  }
+
+  .drawer-item .di-remove:hover{
+    color:var(--coral);
+  }
+
+  .drawer-item .di-price{
+    font-family:'Fraunces',serif;
+    font-size:1rem;
+    white-space:nowrap;
+  }
+
+  .drawer-empty{
+    color:var(--text-muted);
+    font-size:.92rem;
+    padding:40px 0;
+    text-align:center;
+  }
+
+  .drawer-foot{
+    padding:20px 24px 26px;
+    border-top:1px solid var(--line);
+  }
+
+  .drawer-subtotal{
+    display:flex;
+    justify-content:space-between;
+    margin-bottom:16px;
+    font-size:1rem;
+  }
+
+  .drawer-subtotal .amt{
+    font-family:'Fraunces',serif;
+    font-size:1.2rem;
+  }
+
+  .btn-checkout{
+    width:100%;
+    background:var(--mint);
+    color:#0D1310;
+    border:none;
+    padding:14px;
+    border-radius:100px;
+    font-weight:600;
+    font-size:.95rem;
+  }
+
+  .btn-checkout:hover{
+    background:#8FF0D3;
+  }
+
+  .btn-checkout:disabled{
+    background:var(--line);
+    color:var(--text-faint);
+    cursor:not-allowed;
+  }
+
+  /* =========================================================
+     FULL SCREEN PRODUCT EXPERIENCE
+     ========================================================= */
+
+  .product-modal{
+    position:fixed;
+    inset:0;
+    z-index:200;
+    background:#090D0B;
+    opacity:0;
+    visibility:hidden;
+    pointer-events:none;
+    transition:opacity .25s ease,visibility .25s ease;
+  }
+
+  .product-modal.open{
+    opacity:1;
+    visibility:visible;
+    pointer-events:auto;
+  }
+
+  .product-modal-card{
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+    max-width:none;
+    max-height:none;
+    padding:0;
+    margin:0;
+    border:0;
+    border-radius:0;
+    overflow:hidden;
+    background:var(--bg);
+  }
+
+  .product-detail-grid{
+    width:100%;
+    height:100%;
+    min-height:100%;
+    display:grid;
+    grid-template-columns:minmax(0,1.2fr) minmax(440px,.8fr);
+  }
+
+  /* Large product image area */
+
+  .product-detail-media{
+    position:relative;
+    min-width:0;
+    min-height:100%;
+    height:100%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    overflow:hidden;
+    border-right:1px solid var(--line);
+    background:
+      radial-gradient(circle at 50% 42%,rgba(116,232,198,.12),transparent 30%),
+      radial-gradient(circle at 20% 80%,rgba(116,232,198,.055),transparent 30%),
+      linear-gradient(145deg,#151D19 0%,#0E1511 60%,#0A0F0C 100%);
+  }
+
+  .product-detail-media::before{
+    content:"";
+    position:absolute;
+    width:min(70vw,900px);
+    height:min(70vw,900px);
+    border:1px solid rgba(116,232,198,.08);
+    border-radius:50%;
+    pointer-events:none;
+  }
+
+  .product-detail-media::after{
+    content:"";
+    position:absolute;
+    width:min(48vw,620px);
+    height:min(48vw,620px);
+    border:1px solid rgba(116,232,198,.055);
+    border-radius:50%;
+    pointer-events:none;
+  }
+
+  .media-label{
+    position:absolute;
+    top:34px;
+    left:42px;
+    z-index:3;
+    display:flex;
+    align-items:center;
+    gap:9px;
+    color:var(--text-muted);
+    font-size:.75rem;
+    letter-spacing:.08em;
+    text-transform:uppercase;
+  }
+
+  .media-label .media-dot{
+    width:7px;
+    height:7px;
+    border-radius:50%;
+    background:var(--mint);
+    box-shadow:0 0 12px rgba(116,232,198,.5);
+  }
+
+  .product-detail-card.night .media-label .media-dot{
+    background:var(--amber);
+    box-shadow:0 0 12px rgba(232,168,104,.45);
+  }
+
+  .detail-image-wrap{
+    position:relative;
+    z-index:2;
+    width:min(82%,850px);
+    height:min(82%,760px);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+
+  .product-detail-media img{
+    display:block;
+    width:100%;
+    height:100%;
+    max-width:850px;
+    max-height:760px;
+    object-fit:contain;
+    object-position:center;
+    filter:drop-shadow(0 35px 50px rgba(0,0,0,.38));
+    transition:transform .35s ease;
+  }
+
+  .product-detail-media:hover img{
+    transform:scale(1.025);
+  }
+
+  .media-caption{
+    position:absolute;
+    bottom:34px;
+    left:42px;
+    right:42px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    color:var(--text-faint);
+    font-size:.72rem;
+    z-index:3;
+  }
+
+  .media-caption span:last-child{
+    color:var(--text-muted);
+  }
+
+  /* Product information */
+
+  .product-detail-content{
+    height:100%;
+    min-width:0;
+    overflow-y:auto;
+    padding:58px 62px 54px;
+    background:linear-gradient(180deg,#141B18 0%,#111814 100%);
+    scrollbar-width:thin;
+    scrollbar-color:var(--line) transparent;
+  }
+
+  .product-detail-content::-webkit-scrollbar{
+    width:6px;
+  }
+
+  .product-detail-content::-webkit-scrollbar-track{
+    background:transparent;
+  }
+
+  .product-detail-content::-webkit-scrollbar-thumb{
+    background:var(--line);
+    border-radius:20px;
+  }
+
+  .detail-close{
+    position:absolute;
+    top:25px;
+    right:28px;
+    z-index:10;
+    width:44px;
+    height:44px;
+    border-radius:50%;
+    border:1px solid rgba(233,237,233,.13);
+    background:rgba(13,19,16,.72);
+    backdrop-filter:blur(10px);
+    color:var(--text-muted);
+    font-size:1.5rem;
+    line-height:1;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    transition:.2s ease;
+  }
+
+  .detail-close:hover{
+    color:var(--text);
+    border-color:var(--text-muted);
+    background:rgba(13,19,16,.95);
+  }
+
+  .detail-breadcrumb{
+    color:var(--text-faint);
+    font-size:.75rem;
+    letter-spacing:.08em;
+    text-transform:uppercase;
+    margin-bottom:24px;
+  }
+
+  .detail-breadcrumb span{
+    color:var(--text-muted);
+  }
+
+  .detail-tag{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    font-size:.73rem;
+    padding:6px 12px;
+    border-radius:100px;
+    background:var(--mint-dim);
+    color:var(--mint);
+    margin-bottom:20px;
+    font-weight:500;
+  }
+
+  .product-detail-card.night .detail-tag{
+    background:var(--amber-dim);
+    color:var(--amber);
+  }
+
+  .detail-title{
+    font-size:clamp(2.4rem,4vw,4rem);
+    line-height:1.02;
+    letter-spacing:-.035em;
+    margin-bottom:16px;
+    padding-right:40px;
+  }
+
+  .detail-intro{
+    color:var(--text-muted);
+    font-size:1rem;
+    line-height:1.7;
+    max-width:590px;
+    margin-bottom:30px;
+  }
+
+  .detail-price{
+    display:flex;
+    align-items:baseline;
+    gap:12px;
+    padding-bottom:30px;
+    border-bottom:1px solid var(--line);
+  }
+
+  .detail-price .was{
+    color:var(--text-faint);
+    text-decoration:line-through;
+    font-size:.95rem;
+  }
+
+  .detail-price .now{
+    font-family:'Fraunces',serif;
+    font-size:2.35rem;
+    line-height:1;
+  }
+
+  .detail-price small{
+    font-family:'Inter',sans-serif;
+    color:var(--text-faint);
+    font-size:.78rem;
+  }
+
+  .detail-section{
+    border-bottom:1px solid var(--line);
+    padding:26px 0;
+  }
+
+  .detail-section h4{
+    font-size:.72rem;
+    text-transform:uppercase;
+    letter-spacing:.12em;
+    color:var(--text-muted);
+    margin-bottom:16px;
+  }
+
+  /* Premium spec tiles */
+
+  .detail-spec-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:10px;
+  }
+
+  .detail-spec{
+    min-height:92px;
+    padding:15px;
+    border:1px solid var(--line);
+    border-radius:13px;
+    background:rgba(13,19,16,.34);
+    display:flex;
+    align-items:flex-start;
+    gap:9px;
+  }
+
+  .detail-spec-mark{
+    width:6px;
+    height:6px;
+    border-radius:50%;
+    background:var(--mint);
+    margin-top:6px;
+    flex:0 0 auto;
+  }
+
+  .product-detail-card.night .detail-spec-mark{
+    background:var(--amber);
+  }
+
+  .detail-spec span{
+    color:var(--text-muted);
+    font-size:.78rem;
+    line-height:1.4;
+  }
+
+  .detail-benefit{
+    color:var(--text-muted);
+    font-size:.92rem;
+    line-height:1.7;
+  }
+
+  .detail-feature-list{
+    list-style:none;
+    display:grid;
+    gap:10px;
+  }
+
+  .detail-feature-list li{
+    display:flex;
+    align-items:flex-start;
+    gap:10px;
+    color:var(--text-muted);
+    font-size:.88rem;
+  }
+
+  .detail-feature-list li::before{
+    content:'✓';
+    color:var(--mint);
+    font-weight:600;
+  }
+
+  .product-detail-card.night .detail-feature-list li::before{
+    color:var(--amber);
+  }
+
+  /* CTA area */
+
+  .detail-actions{
+    padding-top:30px;
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+  }
+
+  .detail-add-btn{
+    width:100%;
+    min-height:56px;
+    border:none;
+    border-radius:100px;
+    background:var(--mint);
+    color:#0D1310;
+    font-weight:600;
+    font-size:.95rem;
+    transition:.2s ease;
+  }
+
+  .detail-add-btn:hover{
+    background:#8FF0D3;
+    transform:translateY(-1px);
+  }
+
+  .product-detail-card.night .detail-add-btn{
+    background:var(--amber);
+  }
+
+  .product-detail-card.night .detail-add-btn:hover{
+    background:#F0B77D;
+  }
+
+  .detail-back-btn{
+    width:100%;
+    min-height:48px;
+    border-radius:100px;
+    border:1px solid var(--line);
+    background:transparent;
+    color:var(--text-muted);
+    font-size:.88rem;
+  }
+
+  .detail-back-btn:hover{
+    border-color:var(--text-muted);
+    color:var(--text);
+  }
+
+  .detail-secure{
+    text-align:center;
+    color:var(--text-faint);
+    font-size:.72rem;
+    margin-top:4px;
+  }
+
+  /* ---------- Product mobile ---------- */
+
+  @media(max-width:1000px){
+
+    .product-detail-grid{
+      grid-template-columns:1fr;
+      grid-template-rows:48vh auto;
+      height:auto;
+      min-height:100%;
+    }
+
+    .product-detail-media{
+      min-height:48vh;
+      height:48vh;
+      border-right:none;
+      border-bottom:1px solid var(--line);
+    }
+
+    .detail-image-wrap{
+      width:78%;
+      height:78%;
+    }
+
+    .product-detail-content{
+      height:auto;
+      min-height:52vh;
+      overflow:visible;
+      padding:42px 42px 50px;
+    }
+
+    .detail-title{
+      font-size:2.5rem;
+    }
+  }
+
+  @media(max-width:620px){
+
+    .product-modal-card{
+      overflow-y:auto;
+    }
+
+    .product-detail-grid{
+      display:block;
+      height:auto;
+    }
+
+    .product-detail-media{
+      height:43vh;
+      min-height:330px;
+    }
+
+    .media-label{
+      top:20px;
+      left:22px;
+    }
+
+    .media-caption{
+      left:22px;
+      right:22px;
+      bottom:20px;
+    }
+
+    .detail-image-wrap{
+      width:84%;
+      height:78%;
+    }
+
+    .product-detail-content{
+      padding:34px 22px 44px;
+    }
+
+    .detail-close{
+      top:14px;
+      right:14px;
+      width:40px;
+      height:40px;
+    }
+
+    .detail-breadcrumb{
+      margin-bottom:18px;
+    }
+
+    .detail-title{
+      font-size:2.15rem;
+      padding-right:10px;
+    }
+
+    .detail-intro{
+      font-size:.92rem;
+    }
+
+    .detail-price .now{
+      font-size:2rem;
+    }
+
+    .detail-spec-grid{
+      grid-template-columns:1fr;
+    }
+
+    .detail-spec{
+      min-height:auto;
+    }
   }
 
   /* ---------- Checkout modal ---------- */
+
   .modal{
-    position:fixed; inset:0; display:flex; align-items:center; justify-content:center;
-    z-index:100; opacity:0; pointer-events:none; transition: opacity 0.25s ease;
-    padding: 20px;
+    position:fixed;
+    inset:0;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    z-index:100;
+    opacity:0;
+    pointer-events:none;
+    transition:opacity .25s ease;
+    padding:20px;
   }
-  .modal.open{ opacity:1; pointer-events:auto; }
+
+  .modal.open{
+    opacity:1;
+    pointer-events:auto;
+  }
+
   .modal-card{
-    background: var(--bg-card); border:1px solid var(--line); border-radius:20px;
-    width: 440px; max-width:100%; padding: 32px; max-height: 88vh; overflow-y:auto;
+    background:var(--bg-card);
+    border:1px solid var(--line);
+    border-radius:20px;
+    width:440px;
+    max-width:100%;
+    padding:32px;
+    max-height:88vh;
+    overflow-y:auto;
   }
-  .modal-card h3{ font-size:1.3rem; margin-bottom: 6px; }
-  .modal-card .modal-sub{ color: var(--text-muted); font-size:0.9rem; margin-bottom: 24px; }
-  .field{ margin-bottom: 16px; }
-  .field label{ display:block; font-size:0.82rem; color: var(--text-muted); margin-bottom:6px; }
+
+  .modal-card h3{
+    font-size:1.3rem;
+    margin-bottom:6px;
+  }
+
+  .modal-card .modal-sub{
+    color:var(--text-muted);
+    font-size:.9rem;
+    margin-bottom:24px;
+  }
+
+  .field{
+    margin-bottom:16px;
+  }
+
+  .field label{
+    display:block;
+    font-size:.82rem;
+    color:var(--text-muted);
+    margin-bottom:6px;
+  }
+
   .field input{
-    width:100%; background: var(--bg-raised); border:1px solid var(--line); border-radius:10px;
-    padding: 11px 14px; color: var(--text); font-size:0.92rem; font-family:inherit;
+    width:100%;
+    background:var(--bg-raised);
+    border:1px solid var(--line);
+    border-radius:10px;
+    padding:11px 14px;
+    color:var(--text);
+    font-size:.92rem;
+    font-family:inherit;
   }
-  .field input:focus{ outline:none; border-color: var(--mint); }
-  .field-row{ display:flex; gap:12px; }
-  .field-row .field{ flex:1; }
-  .modal-total{ display:flex; justify-content:space-between; margin: 20px 0; padding-top:16px; border-top:1px solid var(--line); font-size:1rem; }
-  .modal-total .amt{ font-family:'Fraunces', serif; font-size:1.2rem; }
-  .modal-note{ font-size:0.78rem; color: var(--text-faint); margin-top:14px; }
-  .modal-success{ text-align:center; padding: 10px 0 4px; }
+
+  .field input:focus{
+    outline:none;
+    border-color:var(--mint);
+  }
+
+  .field-row{
+    display:flex;
+    gap:12px;
+  }
+
+  .field-row .field{
+    flex:1;
+  }
+
+  .modal-total{
+    display:flex;
+    justify-content:space-between;
+    margin:20px 0;
+    padding-top:16px;
+    border-top:1px solid var(--line);
+    font-size:1rem;
+  }
+
+  .modal-total .amt{
+    font-family:'Fraunces',serif;
+    font-size:1.2rem;
+  }
+
+  .modal-note{
+    font-size:.78rem;
+    color:var(--text-faint);
+    margin-top:14px;
+  }
+
+  .modal-success{
+    text-align:center;
+    padding:10px 0 4px;
+  }
+
   .modal-success .check{
-    width:56px; height:56px; border-radius:50%; background: var(--mint-dim); color: var(--mint);
-    display:flex; align-items:center; justify-content:center; font-size:1.6rem; margin: 0 auto 18px;
+    width:56px;
+    height:56px;
+    border-radius:50%;
+    background:var(--mint-dim);
+    color:var(--mint);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:1.6rem;
+    margin:0 auto 18px;
   }
-  .modal-success h3{ margin-bottom:8px; }
-  .modal-success p{ color: var(--text-muted); font-size:0.92rem; margin-bottom:22px; }
 
-  .coin-pills{ display:flex; gap:10px; flex-wrap:wrap; }
+  .modal-success h3{
+    margin-bottom:8px;
+  }
+
+  .modal-success p{
+    color:var(--text-muted);
+    font-size:.92rem;
+    margin-bottom:22px;
+  }
+
+  .coin-pills{
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+  }
+
   .coin-pill{
-    background: var(--bg-raised); border:1px solid var(--line); color: var(--text);
-    padding: 10px 16px; border-radius: 100px; font-size:0.88rem; display:flex; align-items:center; gap:6px;
+    background:var(--bg-raised);
+    border:1px solid var(--line);
+    color:var(--text);
+    padding:10px 16px;
+    border-radius:100px;
+    font-size:.88rem;
+    display:flex;
+    align-items:center;
+    gap:6px;
   }
-  .coin-pill span{ color: var(--text-faint); font-size:0.78rem; }
-  .coin-pill:hover{ border-color: var(--text-muted); }
-  .coin-pill.active{ border-color: var(--mint); background: var(--mint-dim); color: var(--mint); }
-  .coin-pill.active span{ color: var(--mint); }
 
-  .qr-img{ display:block; margin: 4px auto 20px; border-radius: 12px; }
+  .coin-pill span{
+    color:var(--text-faint);
+    font-size:.78rem;
+  }
+
+  .coin-pill:hover{
+    border-color:var(--text-muted);
+  }
+
+  .coin-pill.active{
+    border-color:var(--mint);
+    background:var(--mint-dim);
+    color:var(--mint);
+  }
+
+  .coin-pill.active span{
+    color:var(--mint);
+  }
+
+  .qr-img{
+    display:block;
+    margin:4px auto 20px;
+    border-radius:12px;
+  }
 
   .addr-box{
-    display:flex; align-items:center; justify-content:space-between; gap:10px;
-    background: var(--bg-raised); border:1px solid var(--line); border-radius:10px;
-    padding: 11px 14px; font-size:0.85rem; word-break: break-all;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:10px;
+    background:var(--bg-raised);
+    border:1px solid var(--line);
+    border-radius:10px;
+    padding:11px 14px;
+    font-size:.85rem;
+    word-break:break-all;
   }
+
   .copy-btn{
-    background:none; border:1px solid var(--line); color: var(--text);
-    padding: 5px 12px; border-radius: 100px; font-size:0.78rem; white-space:nowrap; flex-shrink:0;
+    background:none;
+    border:1px solid var(--line);
+    color:var(--text);
+    padding:5px 12px;
+    border-radius:100px;
+    font-size:.78rem;
+    white-space:nowrap;
+    flex-shrink:0;
   }
-  .copy-btn:hover{ border-color: var(--mint); color: var(--mint); }
+
+  .copy-btn:hover{
+    border-color:var(--mint);
+    color:var(--mint);
+  }
 </style>
 </head>
+
 <body>
 
 <nav>
   <div class="wrap">
-    <div class="logo"><span class="dot"></span>Cirrus</div>
+    <div class="logo">
+      <span class="dot"></span>Cirrus
+    </div>
+
     <div class="nav-links">
       <a href="#air">Air</a>
       <a href="#sleep">Sleep</a>
       <a href="#how">How it works</a>
     </div>
+
     <div class="nav-right">
-      <button class="cart-btn" onclick="openCart()">Cart <span class="cart-count" id="cartCount">0</span></button>
+      <button class="cart-btn" onclick="openCart()">
+        Cart
+        <span class="cart-count" id="cartCount">0</span>
+      </button>
     </div>
   </div>
 </nav>
 
 <header class="hero">
   <div class="wrap hero-inner">
+
     <div>
-      <div class="eyebrow-line"><span class="rule"></span>Adaptive wellness devices</div>
-      <h1>Your room learns to breathe.<br>Your body learns to rest.<br><em>Both get better every night.</em></h1>
-      <p class="lede">Cirrus curates air purifiers and sleep trackers that use on-device AI to adjust to the person in the room — not the other way around.</p>
+      <div class="eyebrow-line">
+        <span class="rule"></span>
+        Adaptive wellness devices
+      </div>
+
+      <h1>
+        Your room learns to breathe.<br>
+        Your body learns to rest.<br>
+        <em>Both get better every night.</em>
+      </h1>
+
+      <p class="lede">
+        Cirrus curates air purifiers and sleep trackers that use on-device AI to adjust to the person in the room — not the other way around.
+      </p>
+
       <div class="hero-actions">
         <a href="#air" class="btn-primary">Browse air purifiers</a>
         <a href="#sleep" class="btn-ghost">Browse sleep trackers</a>
       </div>
     </div>
+
     <div class="readouts">
       <div class="readout air">
-        <div><div class="label">Living room · air quality</div><div class="value">12 AQI</div></div>
+        <div>
+          <div class="label">Living room · air quality</div>
+          <div class="value">12 AQI</div>
+        </div>
         <div class="pulse"></div>
       </div>
+
       <div class="readout sleep">
-        <div><div class="label">Last night · sleep score</div><div class="value">86</div></div>
+        <div>
+          <div class="label">Last night · sleep score</div>
+          <div class="value">86</div>
+        </div>
         <div class="pulse"></div>
       </div>
     </div>
+
   </div>
 </header>
 
 <section class="section" id="air">
   <div class="wrap">
+
     <div class="section-head">
       <h2>Air purifiers</h2>
-      <p>Sensor-driven units that read the room in real time and adjust fan speed before you'd notice the air change. Everything below is on sale.</p>
+      <p>
+        Sensor-driven units that read the room in real time and adjust fan speed before you'd notice the air change. Everything below is on sale.
+      </p>
     </div>
+
     <div class="grid" id="airGrid"></div>
+
   </div>
 </section>
 
 <section class="section" id="sleep">
   <div class="wrap">
+
     <div class="section-head">
       <h2>Sleep trackers</h2>
-      <p>Wearables and bedside devices that turn HRV, temperature, and sleep stages into a plan for tomorrow. Everything below is on sale.</p>
+      <p>
+        Wearables and bedside devices that turn HRV, temperature, and sleep stages into a plan for tomorrow. Everything below is on sale.
+      </p>
     </div>
+
     <div class="grid" id="sleepGrid"></div>
+
   </div>
 </section>
 
 <section class="section" id="how">
   <div class="wrap">
+
     <div class="section-head">
       <h2>How the AI layer works</h2>
-      <p>Every device on Cirrus does the same three things, just for different rooms of your life.</p>
+      <p>
+        Every device on Cirrus does the same three things, just for different rooms of your life.
+      </p>
     </div>
+
     <div class="how">
+
       <div class="how-item">
         <div class="num">01</div>
         <h3>Read continuously</h3>
-        <p>Particle counters, HRV sensors, and thermistors sample the environment or body every few seconds, not once a day.</p>
+        <p>
+          Particle counters, HRV sensors, and thermistors sample the environment or body every few seconds, not once a day.
+        </p>
       </div>
+
       <div class="how-item">
         <div class="num">02</div>
         <h3>Model the pattern</h3>
-        <p>On-device models learn your baseline — a normal Tuesday air quality, a normal REM cycle — so they can flag what's actually different.</p>
+        <p>
+          On-device models learn your baseline — a normal Tuesday air quality, a normal REM cycle — so they can flag what's actually different.
+        </p>
       </div>
+
       <div class="how-item">
         <div class="num">03</div>
         <h3>Adjust before you ask</h3>
-        <p>Fan speed ramps up before you smell smoke. A mattress cools before your temperature spikes. The app tells you why, after the fact.</p>
+        <p>
+          Fan speed ramps up before you smell smoke. A mattress cools before your temperature spikes. The app tells you why, after the fact.
+        </p>
       </div>
+
     </div>
   </div>
 </section>
 
 <footer>
   <div class="wrap footer-inner">
-    <div class="logo"><span class="dot"></span>Cirrus</div>
-    <p class="fine">Prices shown are indicative retail estimates as of September 2026 and may vary by region and retailer. Sale pricing for demonstration.</p>
+
+    <div class="logo">
+      <span class="dot"></span>Cirrus
+    </div>
+
+    <p class="fine">
+      Prices shown are indicative retail estimates as of September 2026 and may vary by region and retailer. Sale pricing for demonstration.
+    </p>
+
     <div class="foot-links">
       <a href="#air">Air</a>
       <a href="#sleep">Sleep</a>
       <a href="#how">How it works</a>
     </div>
+
   </div>
 </footer>
 
-<!-- Cart drawer -->
+
+<!-- =========================================================
+     CART
+     ========================================================= -->
+
 <div class="overlay" id="overlay" onclick="closeAll()"></div>
+
 <aside class="drawer" id="drawer">
+
   <div class="drawer-head">
     <h3>Your cart</h3>
     <button class="drawer-close" onclick="closeAll()">&times;</button>
   </div>
+
   <div class="drawer-items" id="drawerItems"></div>
+
   <div class="drawer-foot">
-    <div class="drawer-subtotal"><span>Subtotal</span><span class="amt" id="subtotal">$0</span></div>
-    <button class="btn-checkout" id="checkoutBtn" onclick="openCheckout()" disabled>Checkout</button>
+
+    <div class="drawer-subtotal">
+      <span>Subtotal</span>
+      <span class="amt" id="subtotal">$0</span>
+    </div>
+
+    <button
+      class="btn-checkout"
+      id="checkoutBtn"
+      onclick="openCheckout()"
+      disabled>
+      Checkout
+    </button>
+
   </div>
+
 </aside>
 
-<!-- Product detail modal -->
-<div class="modal" id="productModal" onclick="if(event.target===this) closeProduct()">
-  <div class="modal-card product-modal-card" id="productModalCard"></div>
+
+<!-- =========================================================
+     FULL SCREEN PRODUCT DETAIL
+     ========================================================= -->
+
+<div
+  class="product-modal"
+  id="productModal"
+  onclick="if(event.target===this) closeProduct()"
+  role="dialog"
+  aria-modal="true"
+  aria-label="Product details">
+
+  <div
+    class="product-modal-card"
+    id="productModalCard">
+  </div>
+
 </div>
 
-<!-- Checkout modal -->
+
+<!-- =========================================================
+     CHECKOUT
+     ========================================================= -->
+
 <div class="modal" id="checkoutModal">
+
   <div class="modal-card" id="modalCard"></div>
+
 </div>
+
 
 <script>
+
+  /* =========================================================
+     PRODUCTS
+     ========================================================= */
+
   const products = [
-    { id:'a1', cat:'air', tag:'Best overall', name:'Rabbit Air A3', image:'images/rabbit-air-a3.webp', spec:"Five-layer filtration with a customizable pollutant filter. Panel-tested top pick for 2026.", was:599, now:479, highlights:['Five-layer filtration','Customizable pollutant filter','Designed for continuous room air cleaning'], benefits:'A multi-stage air-cleaning option for people who want filtration features plus a customizable filter choice.' },
-    { id:'a2', cat:'air', tag:'Runner-up', name:'AirDoctor 4000', image:'images/airdoctor-4000.webp', spec:"UltraHEPA + activated carbon, 1,400 sq ft coverage, Energy Star certified.", was:499, now:399, highlights:['UltraHEPA + activated carbon','1,400 sq ft coverage','Energy Star certified'], benefits:'Combines particle filtration and activated carbon in a larger-room purifier designed for broad coverage.' },
-    { id:'a3', cat:'air', tag:'Whole-home', name:'Coway Airmega 400S', image:'images/coway-airmega-400s.jpg', spec:"App-controlled smart purifier with auto-sensing mode.", was:649, now:519, highlights:['App-controlled operation','Auto-sensing mode','Smart air-quality management'], benefits:'A connected purifier for users who want automatic operation and app-based control.' },
-    { id:'a4', cat:'air', tag:'Compact', name:'Blueair Blue Pure 511i Max', image:'images/blueair-511i-max.webp', spec:"Smart control in a small footprint — built for bedrooms and studios.", was:329, now:269, highlights:['Smart control','Compact footprint','Suited to bedrooms and studios'], benefits:'A smaller smart-purifier format for spaces where you want connected control without a large unit.' },
-    { id:'a5', cat:'air', tag:'Large rooms', name:'Levoit Core 600S-P', image:'images/levoit-core-600s-p.webp', spec:"Extensive coverage with full smart-app control for open-plan spaces.", was:289, now:229, highlights:['Extensive room coverage','Full smart-app control','Designed for open-plan spaces'], benefits:'Combines broad coverage with app control for larger or open-plan living areas.' },
-    { id:'a6', cat:'air', tag:'Budget', name:'GoveeLife Smart Mini', image:'images/goveelife-smart-mini.webp', spec:"Core smart-purifier features at an entry price point.", was:99, now:79, highlights:['Smart purifier features','Compact format','Entry price point'], benefits:'A lower-cost way to add smart air-purifier features to a smaller space.' },
-    { id:'s1', cat:'sleep', tag:'Best overall', name:'Oura Ring 4', image:'images/oura-ring-4-midnight.avif', spec:"Smart ring tracking 50+ health metrics, up to 8 nights of battery life.", was:349, now:279, suffix:' + $6/mo', highlights:['50+ health metrics','Up to 8 nights of battery life','Ring-based sleep and wellness tracking'], benefits:'A discreet wearable designed to turn sleep and other body signals into ongoing wellness insights.' },
-    { id:'s2', cat:'sleep', tag:'For athletes', name:'Whoop 5.0', image:'images/whoop-5-0.png', spec:"Strain coaching alongside sleep and recovery scores.", was:239, now:199, suffix:'/yr', highlights:['Strain coaching','Sleep scores','Recovery scores'], benefits:'Built around training and recovery feedback for users who want sleep data connected to daily performance.' },
-    { id:'s3', cat:'sleep', tag:'Temperature control', name:'Eight Sleep Pod 5', image:'images/eight-sleep-pod.webp', spec:"Active heating and cooling mattress cover that reacts to your sleep stage overnight.", was:2099, now:1799, suffix:' + $199/yr', highlights:['Active heating and cooling','Mattress-cover format','Responds to sleep stage overnight'], benefits:'A bed-based approach to sleep comfort that focuses on temperature rather than a wearable.' },
-    { id:'s4', cat:'sleep', tag:'No wearable', name:'Withings Sleep', image:'images/withings-sleep.jpg', spec:"Under-mattress sensor pad — sleep and snore tracking with nothing to wear to bed.", was:99, now:79, highlights:['Under-mattress sensor pad','Sleep tracking','Snore tracking'], benefits:'Tracks sleep from underneath the mattress, so there is nothing to wear while you sleep.' },
-    { id:'s5', cat:'sleep', tag:'Budget', name:'Fitbit Charge 6', image:'images/fitbit-charge-6.jpg', spec:"Lightweight wrist tracker with sleep-stage visualizations and daily readiness.", was:159, now:129, highlights:['Lightweight wrist tracker','Sleep-stage visualizations','Daily readiness'], benefits:'A familiar wrist-based format that combines sleep information with everyday readiness feedback.' },
+    {
+      id:'a1',
+      cat:'air',
+      tag:'Best overall',
+      name:'Rabbit Air A3',
+      image:'images/rabbit-air-a3.webp',
+      spec:"Five-layer filtration with a customizable pollutant filter. Panel-tested top pick for 2026.",
+      was:599,
+      now:479,
+      highlights:[
+        'Five-layer filtration',
+        'Customizable pollutant filter',
+        'Designed for continuous room air cleaning'
+      ],
+      benefits:'A multi-stage air-cleaning option for people who want filtration features plus a customizable filter choice.'
+    },
+
+    {
+      id:'a2',
+      cat:'air',
+      tag:'Runner-up',
+      name:'AirDoctor 4000',
+      image:'images/airdoctor-4000.webp',
+      spec:"UltraHEPA + activated carbon, 1,400 sq ft coverage, Energy Star certified.",
+      was:499,
+      now:399,
+      highlights:[
+        'UltraHEPA + activated carbon',
+        '1,400 sq ft coverage',
+        'Energy Star certified'
+      ],
+      benefits:'Combines particle filtration and activated carbon in a larger-room purifier designed for broad coverage.'
+    },
+
+    {
+      id:'a3',
+      cat:'air',
+      tag:'Whole-home',
+      name:'Coway Airmega 400S',
+      image:'images/coway-airmega-400s.jpg',
+      spec:"App-controlled smart purifier with auto-sensing mode.",
+      was:649,
+      now:519,
+      highlights:[
+        'App-controlled operation',
+        'Auto-sensing mode',
+        'Smart air-quality management'
+      ],
+      benefits:'A connected purifier for users who want automatic operation and app-based control.'
+    },
+
+    {
+      id:'a4',
+      cat:'air',
+      tag:'Compact',
+      name:'Blueair Blue Pure 511i Max',
+      image:'images/blueair-511i-max.webp',
+      spec:"Smart control in a small footprint — built for bedrooms and studios.",
+      was:329,
+      now:269,
+      highlights:[
+        'Smart control',
+        'Compact footprint',
+        'Suited to bedrooms and studios'
+      ],
+      benefits:'A smaller smart-purifier format for spaces where you want connected control without a large unit.'
+    },
+
+    {
+      id:'a5',
+      cat:'air',
+      tag:'Large rooms',
+      name:'Levoit Core 600S-P',
+      image:'images/levoit-core-600s-p.webp',
+      spec:"Extensive coverage with full smart-app control for open-plan spaces.",
+      was:289,
+      now:229,
+      highlights:[
+        'Extensive room coverage',
+        'Full smart-app control',
+        'Designed for open-plan spaces'
+      ],
+      benefits:'Combines broad coverage with app control for larger or open-plan living areas.'
+    },
+
+    {
+      id:'a6',
+      cat:'air',
+      tag:'Budget',
+      name:'GoveeLife Smart Mini',
+      image:'images/goveelife-smart-mini.webp',
+      spec:"Core smart-purifier features at an entry price point.",
+      was:99,
+      now:79,
+      highlights:[
+        'Smart purifier features',
+        'Compact format',
+        'Entry price point'
+      ],
+      benefits:'A lower-cost way to add smart air-purifier features to a smaller space.'
+    },
+
+    {
+      id:'s1',
+      cat:'sleep',
+      tag:'Best overall',
+      name:'Oura Ring 4',
+      image:'images/oura-ring-4-midnight.avif',
+      spec:"Smart ring tracking 50+ health metrics, up to 8 nights of battery life.",
+      was:349,
+      now:279,
+      suffix:' + $6/mo',
+      highlights:[
+        '50+ health metrics',
+        'Up to 8 nights of battery life',
+        'Ring-based sleep and wellness tracking'
+      ],
+      benefits:'A discreet wearable designed to turn sleep and other body signals into ongoing wellness insights.'
+    },
+
+    {
+      id:'s2',
+      cat:'sleep',
+      tag:'For athletes',
+      name:'Whoop 5.0',
+      image:'images/whoop-5-0.png',
+      spec:"Strain coaching alongside sleep and recovery scores.",
+      was:239,
+      now:199,
+      suffix:'/yr',
+      highlights:[
+        'Strain coaching',
+        'Sleep scores',
+        'Recovery scores'
+      ],
+      benefits:'Built around training and recovery feedback for users who want sleep data connected to daily performance.'
+    },
+
+    {
+      id:'s3',
+      cat:'sleep',
+      tag:'Temperature control',
+      name:'Eight Sleep Pod 5',
+      image:'images/eight-sleep-pod.webp',
+      spec:"Active heating and cooling mattress cover that reacts to your sleep stage overnight.",
+      was:2099,
+      now:1799,
+      suffix:' + $199/yr',
+      highlights:[
+        'Active heating and cooling',
+        'Mattress-cover format',
+        'Responds to sleep stage overnight'
+      ],
+      benefits:'A bed-based approach to sleep comfort that focuses on temperature rather than a wearable.'
+    },
+
+    {
+      id:'s4',
+      cat:'sleep',
+      tag:'No wearable',
+      name:'Withings Sleep',
+      image:'images/withings-sleep.jpg',
+      spec:"Under-mattress sensor pad — sleep and snore tracking with nothing to wear to bed.",
+      was:99,
+      now:79,
+      highlights:[
+        'Under-mattress sensor pad',
+        'Sleep tracking',
+        'Snore tracking'
+      ],
+      benefits:'Tracks sleep from underneath the mattress, so there is nothing to wear while you sleep.'
+    },
+
+    {
+      id:'s5',
+      cat:'sleep',
+      tag:'Budget',
+      name:'Fitbit Charge 6',
+      image:'images/fitbit-charge-6.jpg',
+      spec:"Lightweight wrist tracker with sleep-stage visualizations and daily readiness.",
+      was:159,
+      now:129,
+      highlights:[
+        'Lightweight wrist tracker',
+        'Sleep-stage visualizations',
+        'Daily readiness'
+      ],
+      benefits:'A familiar wrist-based format that combines sleep information with everyday readiness feedback.'
+    }
   ];
-  let cart = {}; // id -> qty
+
+
+  let cart = {};
+
+
+  /* =========================================================
+     PRODUCT GRID
+     ========================================================= */
 
   function renderProducts(){
+
     const airGrid = document.getElementById('airGrid');
     const sleepGrid = document.getElementById('sleepGrid');
-    products.forEach(p=>{
-      const pct = Math.round((1 - p.now/p.was)*100);
+
+    products.forEach(p => {
+
+      const pct = Math.round((1 - p.now / p.was) * 100);
+
       const card = document.createElement('div');
-      card.className = 'card' + (p.cat==='sleep' ? ' night' : '');
+
+      card.className =
+        'card' + (p.cat === 'sleep' ? ' night' : '');
+
       card.innerHTML = `
+
         <div class="card-top">
-          <span class="tag">${p.tag}</span>
-          <span class="sale-flag">-${pct}%</span>
+
+          <span class="tag">
+            ${p.tag}
+          </span>
+
+          <span class="sale-flag">
+            -${pct}%
+          </span>
+
         </div>
-        <img class="product-image" src="${p.image}" alt="${p.name}" loading="lazy" onclick="openProduct('${p.id}')" title="View ${p.name} details">
+
+        <img
+          class="product-image"
+          src="/${p.image}"
+          alt="${p.name}"
+          loading="lazy"
+          onclick="openProduct('${p.id}')"
+          title="View ${p.name} details"
+          onerror="this.style.visibility='hidden';"
+        >
+
         <h3>${p.name}</h3>
-        <p class="spec">${p.spec}</p>
+
+        <p class="spec">
+          ${p.spec}
+        </p>
+
         <div class="row">
+
           <div class="price-block">
-            <span class="was">$${p.was.toLocaleString()}</span>
-            <span class="now">$${p.now.toLocaleString()}<small>${p.suffix ? p.suffix : ' USD'}</small></span>
+
+            <span class="was">
+              $${p.was.toLocaleString()}
+            </span>
+
+            <span class="now">
+              $${p.now.toLocaleString()}
+              <small>${p.suffix ? p.suffix : ' USD'}</small>
+            </span>
+
           </div>
-          <button class="add" id="btn-${p.id}" onclick="addToCart('${p.id}', this)">Add</button>
+
+          <button
+            class="add"
+            id="btn-${p.id}"
+            onclick="addToCart('${p.id}', this)">
+            Add
+          </button>
+
         </div>
       `;
-      (p.cat==='air' ? airGrid : sleepGrid).appendChild(card);
-    });
-  }
 
-  function addToCart(id, btn){
-    cart[id] = (cart[id]||0) + 1;
-    updateCartUI();
-    if(btn){
-      btn.textContent = 'Added';
-      btn.classList.add('added');
-      setTimeout(()=>{ btn.textContent='Add'; btn.classList.remove('added'); }, 900);
-    }
-  }
-
-  function removeFromCart(id){
-    delete cart[id];
-    updateCartUI();
-  }
-
-  function cartCountTotal(){
-    return Object.values(cart).reduce((a,b)=>a+b,0);
-  }
-
-  function cartSubtotal(){
-    return Object.entries(cart).reduce((sum,[id,qty])=>{
-      const p = products.find(x=>x.id===id);
-      return sum + (p ? p.now*qty : 0);
-    },0);
-  }
-
-  function updateCartUI(){
-    document.getElementById('cartCount').textContent = cartCountTotal();
-    const itemsEl = document.getElementById('drawerItems');
-    const entries = Object.entries(cart);
-    if(entries.length === 0){
-      itemsEl.innerHTML = '<div class="drawer-empty">Your cart is empty.</div>';
-    } else {
-      itemsEl.innerHTML = entries.map(([id,qty])=>{
-        const p = products.find(x=>x.id===id);
-        return `
-          <div class="drawer-item">
-            <div>
-              <div class="di-name">${p.name}</div>
-              <div class="di-meta">Qty ${qty} · $${p.now.toLocaleString()} each</div>
-              <button class="di-remove" onclick="removeFromCart('${id}')">Remove</button>
-            </div>
-            <div class="di-price">$${(p.now*qty).toLocaleString()}</div>
-          </div>
-        `;
-      }).join('');
-    }
-    document.getElementById('subtotal').textContent = '$' + cartSubtotal().toLocaleString();
-    document.getElementById('checkoutBtn').disabled = entries.length === 0;
-  }
-
-  function openProduct(id){
-    const p = products.find(x=>x.id===id);
-    if(!p) return;
-    const pct = Math.round((1 - p.now/p.was)*100);
-    const suffix = p.suffix ? p.suffix : ' USD';
-    const card = document.getElementById('productModalCard');
-    card.className = 'modal-card product-modal-card' + (p.cat==='sleep' ? ' night' : '');
-    card.innerHTML = `
-      <div class="product-detail-grid">
-        <div class="product-detail-media">
-          <img src="${p.image}" alt="${p.name}">
-        </div>
-        <div class="product-detail-content">
-          <button class="detail-close" onclick="closeProduct()" aria-label="Close">&times;</button>
-          <span class="detail-tag">${p.tag} · Save ${pct}%</span>
-          <h2 class="detail-title">${p.name}</h2>
-          <p class="detail-intro">${p.spec}</p>
-          <div class="detail-price">
-            <span class="was">$${p.was.toLocaleString()}</span>
-            <span class="now">$${p.now.toLocaleString()}</span>
-            <small>${suffix}</small>
-          </div>
-          <div class="detail-section">
-            <h4>Key specifications</h4>
-            <ul class="detail-list">${p.highlights.map(x=>`<li>${x}</li>`).join('')}</ul>
-          </div>
-          <div class="detail-section">
-            <h4>Product benefits</h4>
-            <p class="detail-benefit">${p.benefits}</p>
-          </div>
-          <div class="detail-actions">
-            <button class="btn-primary" onclick="addToCart('${p.id}'); closeProduct(); openCart();">Add to cart</button>
-            <button class="btn-ghost" onclick="closeProduct()">Back to products</button>
-          </div>
-        </div>
-      </div>
-    `;
-    document.getElementById('productModal').classList.add('open');
-  }
-
-  function closeProduct(){
-    document.getElementById('productModal').classList.remove('open');
-  }
-
-  function openCart(){
-    document.getElementById('overlay').classList.add('open');
-    document.getElementById('drawer').classList.add('open');
-  }
-  function closeAll(){
-    document.getElementById('overlay').classList.remove('open');
-    document.getElementById('drawer').classList.remove('open');
-    document.getElementById('checkoutModal').classList.remove('open');
-    document.getElementById('productModal').classList.remove('open');
-  }
-
-  function openCheckout(){
-    document.getElementById('drawer').classList.remove('open');
-    renderCheckoutForm();
-    document.getElementById('checkoutModal').classList.add('open');
-  }
-
-  // Real checkout: creates a NOWPayments hosted invoice through the Cloudflare Worker.
-  // The customer is then sent to NOWPayments to choose an available cryptocurrency and pay.
-  let checkoutInfo = { name:'', email:'' };
-
-  function renderCheckoutForm(){
-    const total = cartSubtotal();
-    document.getElementById('modalCard').innerHTML = `
-      <h3>Checkout</h3>
-      <p class="modal-sub">Orders are paid in crypto via NOWPayments. Enter your details to continue.</p>
-      <div class="field">
-        <label>Full name</label>
-        <input type="text" id="cf-name" placeholder="Jordan Achieng" value="${checkoutInfo.name}" />
-      </div>
-      <div class="field">
-        <label>Email (for your receipt)</label>
-        <input type="email" id="cf-email" placeholder="you@email.com" value="${checkoutInfo.email}" />
-      </div>
-      <div class="modal-total"><span>Total due</span><span class="amt">$${total.toLocaleString()}</span></div>
-      <button class="btn-checkout" id="payBtn" onclick="startCryptoPayment()">Continue to payment</button>
-      <p class="modal-note">You'll be redirected to NOWPayments' secure hosted checkout to choose a coin and pay.</p>
-    `;
-  }
-
-  async function startCryptoPayment(){
-    const name = document.getElementById('cf-name').value.trim();
-    const email = document.getElementById('cf-email').value.trim();
-    if(!name || !email){
-      alert('Please add your name and email to continue.');
-      return;
-    }
-    checkoutInfo = { name, email };
-
-    const payBtn = document.getElementById('payBtn');
-    payBtn.disabled = true;
-    payBtn.textContent = 'Preparing payment…';
-
-    const items = Object.entries(cart).map(([id, qty]) => {
-      const p = products.find(x => x.id === id);
-      return { name: p.name, qty, price: p.now };
-    });
-
-    try {
-      const res = await fetch('/api/create-charge', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ items, total: cartSubtotal(), name, email }),
-      });
-      const data = await res.json();
-
-      if(!res.ok || !data.hosted_url){
-        throw new Error(data.error || 'Could not start payment');
+      if(p.cat === 'air'){
+        airGrid.appendChild(card);
+      }else{
+        sleepGrid.appendChild(card);
       }
 
-      // Send the customer to NOWPayments' hosted checkout page.
-      window.location.href = data.hosted_url;
-    } catch (err) {
-      payBtn.disabled = false;
-      payBtn.textContent = 'Continue to payment';
-      alert('Payment could not be started: ' + err.message + '\n\nPlease try again. If the problem continues, contact support.');
-    }
+    });
+
   }
 
+
+  /* =========================================================
+     CART
+     ========================================================= */
+
+  function addToCart(id, btn){
+
+    cart[id] = (cart[id] || 0) + 1;
+
+    updateCartUI();
+
+    if(btn){
+
+      btn.textContent = 'Added';
+
+      btn.classList.add('added');
+
+      setTimeout(() => {
+
+        btn.textContent = 'Add';
+
+        btn.classList.remove('added');
+
+      },900);
+
+    }
+
+  }
+
+
+  function removeFromCart(id){
+
+    delete cart[id];
+
+    updateCartUI();
+
+  }
+
+
+  function cartCountTotal(){
+
+    return Object.values(cart)
+      .reduce((a,b) => a + b, 0);
+
+  }
+
+
+  function cartSubtotal(){
+
+    return Object.entries(cart)
+      .reduce((sum,[id,qty]) => {
+
+        const p = products.find(x => x.id === id);
+
+        return sum + (p ? p.now * qty : 0);
+
+      },0);
+
+  }
+
+
+  function updateCartUI(){
+
+    document.getElementById('cartCount').textContent =
+      cartCountTotal();
+
+    const itemsEl =
+      document.getElementById('drawerItems');
+
+    const entries =
+      Object.entries(cart);
+
+    if(entries.length === 0){
+
+      itemsEl.innerHTML =
+        '<div class="drawer-empty">Your cart is empty.</div>';
+
+    }else{
+
+      itemsEl.innerHTML =
+        entries.map(([id,qty]) => {
+
+          const p =
+            products.find(x => x.id === id);
+
+          return `
+
+            <div class="drawer-item">
+
+              <div>
+
+                <div class="di-name">
+                  ${p.name}
+                </div>
+
+                <div class="di-meta">
+                  Qty ${qty} · $${p.now.toLocaleString()} each
+                </div>
+
+                <button
+                  class="di-remove"
+                  onclick="removeFromCart('${id}')">
+                  Remove
+                </button>
+
+              </div>
+
+              <div class="di-price">
+                $${(p.now * qty).toLocaleString()}
+              </div>
+
+            </div>
+          `;
+
+        }).join('');
+
+    }
+
+    document.getElementById('subtotal').textContent =
+      '$' + cartSubtotal().toLocaleString();
+
+    document.getElementById('checkoutBtn').disabled =
+      entries.length === 0;
+
+  }
+
+
+  /* =========================================================
+     FULL SCREEN PRODUCT PAGE
+     ========================================================= */
+
+  function openProduct(id){
+
+    const p =
+      products.find(x => x.id === id);
+
+    if(!p) return;
+
+    const pct =
+      Math.round((1 - p.now / p.was) * 100);
+
+    const suffix =
+      p.suffix ? p.suffix : ' USD';
+
+    const category =
+      p.cat === 'air'
+        ? 'Air purifiers'
+        : 'Sleep trackers';
+
+    const card =
+      document.getElementById('productModalCard');
+
+
+    card.className =
+      'product-modal-card' +
+      (p.cat === 'sleep' ? ' product-detail-card night' : ' product-detail-card');
+
+
+    /*
+      IMPORTANT:
+      The leading "/" makes the image path absolute.
+      Example:
+      images/rabbit-air-a3.webp
+      becomes
+      /images/rabbit-air-a3.webp
+    */
+
+    const imagePath =
+      '/' + p.image.replace(/^\/+/, '');
+
+
+    card.innerHTML = `
+
+      <div class="product-detail-grid">
+
+        <!-- IMAGE SIDE -->
+
+        <div class="product-detail-media">
+
+          <div class="media-label">
+            <span class="media-dot"></span>
+            Cirrus / ${category}
+          </div>
+
+          <div class="detail-image-wrap">
+
+            <img
+              src="${imagePath}"
+              alt="${p.name}"
+              onerror="this.onerror=null; this.src='${p.image}';"
+            >
+
+          </div>
+
+          <div class="media-caption">
+
+            <span>
+              ${p.name}
+            </span>
+
+            <span>
+              Product detail
+            </span>
+
+          </div>
+
+        </div>
+
+
+        <!-- INFORMATION SIDE -->
+
+        <div class="product-detail-content">
+
+          <button
+            class="detail-close"
+            onclick="closeProduct()"
+            aria-label="Close product details">
+            &times;
+          </button>
+
+
+          <div class="detail-breadcrumb">
+            Cirrus
+            <span> / ${category}</span>
+          </div>
+
+
+          <span class="detail-tag">
+            ${p.tag} · Save ${pct}%
+          </span>
+
+
+          <h2 class="detail-title">
+            ${p.name}
+          </h2>
+
+
+          <p class="detail-intro">
+            ${p.spec}
+          </p>
+
+
+          <div class="detail-price">
+
+            <span class="was">
+              $${p.was.toLocaleString()}
+            </span>
+
+            <span class="now">
+              $${p.now.toLocaleString()}
+            </span>
+
+            <small>
+              ${suffix}
+            </small>
+
+          </div>
+
+
+          <div class="detail-section">
+
+            <h4>
+              Key specifications
+            </h4>
+
+            <div class="detail-spec-grid">
+
+              ${p.highlights.map(x => `
+
+                <div class="detail-spec">
+
+                  <span class="detail-spec-mark"></span>
+
+                  <span>
+                    ${x}
+                  </span>
+
+                </div>
+
+              `).join('')}
+
+            </div>
+
+          </div>
+
+
+          <div class="detail-section">
+
+            <h4>
+              Why it stands out
+            </h4>
+
+            <p class="detail-benefit">
+              ${p.benefits}
+            </p>
+
+          </div>
+
+
+          <div class="detail-section">
+
+            <h4>
+              At a glance
+            </h4>
+
+            <ul class="detail-feature-list">
+
+              ${p.highlights.map(x => `
+                <li>${x}</li>
+              `).join('')}
+
+            </ul>
+
+          </div>
+
+
+          <div class="detail-actions">
+
+            <button
+              class="detail-add-btn"
+              onclick="addToCart('${p.id}'); closeProduct(); openCart();">
+              Add ${p.name} to cart · $${p.now.toLocaleString()}
+            </button>
+
+            <button
+              class="detail-back-btn"
+              onclick="closeProduct()">
+              Back to products
+            </button>
+
+            <div class="detail-secure">
+              Secure crypto checkout via NOWPayments
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    `;
+
+
+    const productModal =
+      document.getElementById('productModal');
+
+    productModal.classList.add('open');
+
+    document.body.classList.add('modal-open');
+
+    /*
+      Always start the product information
+      at the top when opening a new product.
+    */
+
+    const content =
+      card.querySelector('.product-detail-content');
+
+    if(content){
+      content.scrollTop = 0;
+    }
+
+  }
+
+
+  function closeProduct(){
+
+    document
+      .getElementById('productModal')
+      .classList.remove('open');
+
+    document.body.classList.remove('modal-open');
+
+  }
+
+
+  /* =========================================================
+     CART OPEN / CLOSE
+     ========================================================= */
+
+  function openCart(){
+
+    document
+      .getElementById('overlay')
+      .classList.add('open');
+
+    document
+      .getElementById('drawer')
+      .classList.add('open');
+
+  }
+
+
+  function closeAll(){
+
+    document
+      .getElementById('overlay')
+      .classList.remove('open');
+
+    document
+      .getElementById('drawer')
+      .classList.remove('open');
+
+    document
+      .getElementById('checkoutModal')
+      .classList.remove('open');
+
+    closeProduct();
+
+  }
+
+
+  /* =========================================================
+     CHECKOUT
+     ========================================================= */
+
+  function openCheckout(){
+
+    document
+      .getElementById('drawer')
+      .classList.remove('open');
+
+    renderCheckoutForm();
+
+    document
+      .getElementById('checkoutModal')
+      .classList.add('open');
+
+  }
+
+
+  let checkoutInfo = {
+    name:'',
+    email:''
+  };
+
+
+  function renderCheckoutForm(){
+
+    const total =
+      cartSubtotal();
+
+    document.getElementById('modalCard').innerHTML = `
+
+      <h3>
+        Checkout
+      </h3>
+
+      <p class="modal-sub">
+        Orders are paid in crypto via NOWPayments.
+        Enter your details to continue.
+      </p>
+
+      <div class="field">
+
+        <label>
+          Full name
+        </label>
+
+        <input
+          type="text"
+          id="cf-name"
+          placeholder="Jordan Achieng"
+          value="${checkoutInfo.name}"
+        />
+
+      </div>
+
+
+      <div class="field">
+
+        <label>
+          Email (for your receipt)
+        </label>
+
+        <input
+          type="email"
+          id="cf-email"
+          placeholder="you@email.com"
+          value="${checkoutInfo.email}"
+        />
+
+      </div>
+
+
+      <div class="modal-total">
+
+        <span>
+          Total due
+        </span>
+
+        <span class="amt">
+          $${total.toLocaleString()}
+        </span>
+
+      </div>
+
+
+      <button
+        class="btn-checkout"
+        id="payBtn"
+        onclick="startCryptoPayment()">
+        Continue to payment
+      </button>
+
+
+      <p class="modal-note">
+        You'll be redirected to NOWPayments' secure hosted checkout to choose a coin and pay.
+      </p>
+
+    `;
+
+  }
+
+
+  /* =========================================================
+     NOWPAYMENTS
+     ========================================================= */
+
+  async function startCryptoPayment(){
+
+    const name =
+      document
+        .getElementById('cf-name')
+        .value
+        .trim();
+
+    const email =
+      document
+        .getElementById('cf-email')
+        .value
+        .trim();
+
+
+    if(!name || !email){
+
+      alert(
+        'Please add your name and email to continue.'
+      );
+
+      return;
+
+    }
+
+
+    checkoutInfo = {
+      name,
+      email
+    };
+
+
+    const payBtn =
+      document.getElementById('payBtn');
+
+    payBtn.disabled = true;
+
+    payBtn.textContent =
+      'Preparing payment…';
+
+
+    const items =
+      Object.entries(cart).map(([id,qty]) => {
+
+        const p =
+          products.find(x => x.id === id);
+
+        return {
+          name:p.name,
+          qty,
+          price:p.now
+        };
+
+      });
+
+
+    try{
+
+      const res =
+        await fetch('/api/create-charge',{
+          method:'POST',
+          headers:{
+            'Content-Type':'application/json'
+          },
+          body:JSON.stringify({
+            items,
+            total:cartSubtotal(),
+            name,
+            email
+          })
+        });
+
+
+      const data =
+        await res.json();
+
+
+      if(!res.ok || !data.hosted_url){
+
+        throw new Error(
+          data.error ||
+          'Could not start payment'
+        );
+
+      }
+
+
+      window.location.href =
+        data.hosted_url;
+
+
+    }catch(err){
+
+      payBtn.disabled = false;
+
+      payBtn.textContent =
+        'Continue to payment';
+
+      alert(
+        'Payment could not be started: ' +
+        err.message +
+        '\n\nPlease try again. If the problem continues, contact support.'
+      );
+
+    }
+
+  }
+
+
+  /* =========================================================
+     ESCAPE KEY
+     ========================================================= */
+
+  document.addEventListener('keydown',function(event){
+
+    if(event.key !== 'Escape'){
+      return;
+    }
+
+    const productModal =
+      document.getElementById('productModal');
+
+    if(productModal.classList.contains('open')){
+
+      closeProduct();
+
+      return;
+
+    }
+
+    const checkoutModal =
+      document.getElementById('checkoutModal');
+
+    if(checkoutModal.classList.contains('open')){
+
+      checkoutModal.classList.remove('open');
+
+      return;
+
+    }
+
+    const drawer =
+      document.getElementById('drawer');
+
+    if(drawer.classList.contains('open')){
+
+      closeAll();
+
+    }
+
+  });
+
+
+  /* =========================================================
+     INITIALIZE
+     ========================================================= */
+
   renderProducts();
+
   updateCartUI();
+
 </script>
 
 </body>
