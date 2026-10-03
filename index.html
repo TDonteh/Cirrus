@@ -119,12 +119,10 @@
 
   .card{ background: var(--bg-card); border: 1px solid var(--line); border-radius: 18px; padding: 26px; display:flex; flex-direction:column; transition: border-color 0.2s ease, transform 0.2s ease; position:relative; }
   .card:hover{ border-color: var(--mint); transform: translateY(-3px); }
+  .product-image{ width:100%; height:220px; object-fit:contain; display:block; margin:0 0 22px; border-radius:14px; background:var(--bg-raised); cursor:pointer; transition:transform .2s ease, opacity .2s ease; }
+  .product-image:hover{ transform:scale(1.02); opacity:.92; }
   .card.night:hover{ border-color: var(--amber); }
 
-  .product-image{
-    width:100%; height:190px; object-fit:contain; display:block;
-    margin: 0 0 20px; border-radius:12px; background:#fff;
-  }
   .card-top{ display:flex; justify-content:space-between; align-items:flex-start; margin-bottom: 18px; }
   .card .tag{ font-size: 0.72rem; padding: 4px 10px; border-radius: 100px; background: var(--mint-dim); color: var(--mint); }
   .card.night .tag{ background: var(--amber-dim); color: var(--amber); }
@@ -189,6 +187,41 @@
   .btn-checkout{ width:100%; background: var(--mint); color:#0D1310; border:none; padding:14px; border-radius:100px; font-weight:600; font-size:0.95rem; }
   .btn-checkout:hover{ background:#8FF0D3; }
   .btn-checkout:disabled{ background: var(--line); color: var(--text-faint); cursor:not-allowed; }
+
+  /* ---------- Product detail view ---------- */
+  .product-modal-card{
+    width: 980px; max-width:100%; padding:0; overflow:hidden;
+  }
+  .product-detail-grid{ display:grid; grid-template-columns: 1fr 1fr; min-height:520px; }
+  .product-detail-media{ background:var(--bg-raised); min-height:520px; display:flex; align-items:center; justify-content:center; padding:44px; border-right:1px solid var(--line); }
+  .product-detail-media img{ width:100%; max-width:470px; max-height:470px; object-fit:contain; border-radius:16px; }
+  .product-detail-content{ padding:40px; overflow-y:auto; }
+  .detail-close{ float:right; background:none; border:1px solid var(--line); color:var(--text-muted); width:36px; height:36px; border-radius:50%; font-size:1.25rem; }
+  .detail-close:hover{ color:var(--text); border-color:var(--text-muted); }
+  .detail-tag{ display:inline-block; font-size:.74rem; padding:5px 11px; border-radius:100px; background:var(--mint-dim); color:var(--mint); margin-bottom:18px; }
+  .product-detail-card.night .detail-tag{ background:var(--amber-dim); color:var(--amber); }
+  .detail-title{ font-size:2rem; line-height:1.12; margin-bottom:10px; padding-right:44px; }
+  .detail-intro{ color:var(--text-muted); font-size:.95rem; margin-bottom:22px; }
+  .detail-price{ display:flex; align-items:baseline; gap:10px; margin-bottom:24px; }
+  .detail-price .was{ color:var(--text-faint); text-decoration:line-through; font-size:.9rem; }
+  .detail-price .now{ font-family:'Fraunces',serif; font-size:1.7rem; }
+  .detail-price small{ font-family:'Inter',sans-serif; color:var(--text-faint); font-size:.78rem; }
+  .detail-section{ border-top:1px solid var(--line); padding-top:20px; margin-top:20px; }
+  .detail-section h4{ font-size:.82rem; text-transform:uppercase; letter-spacing:.08em; color:var(--text-muted); margin-bottom:12px; }
+  .detail-list{ list-style:none; display:grid; gap:10px; }
+  .detail-list li{ position:relative; padding-left:18px; color:var(--text-muted); font-size:.9rem; }
+  .detail-list li::before{ content:'✓'; position:absolute; left:0; color:var(--mint); font-weight:600; }
+  .detail-benefit{ color:var(--text-muted); font-size:.9rem; }
+  .detail-actions{ display:flex; gap:10px; margin-top:28px; flex-wrap:wrap; }
+  .detail-actions .btn-primary{ border:none; flex:1; min-width:180px; }
+  .detail-actions .btn-ghost{ min-width:130px; }
+  @media(max-width:780px){
+    .product-detail-grid{ grid-template-columns:1fr; }
+    .product-detail-media{ min-height:320px; border-right:none; border-bottom:1px solid var(--line); padding:28px; }
+    .product-detail-media img{ max-height:300px; }
+    .product-detail-content{ padding:28px 22px; }
+    .detail-title{ font-size:1.65rem; }
+  }
 
   /* ---------- Checkout modal ---------- */
   .modal{
@@ -359,6 +392,11 @@
   </div>
 </aside>
 
+<!-- Product detail modal -->
+<div class="modal" id="productModal" onclick="if(event.target===this) closeProduct()">
+  <div class="modal-card product-modal-card" id="productModalCard"></div>
+</div>
+
 <!-- Checkout modal -->
 <div class="modal" id="checkoutModal">
   <div class="modal-card" id="modalCard"></div>
@@ -366,19 +404,18 @@
 
 <script>
   const products = [
-    { id:'a1', cat:'air', tag:'Best overall', name:'Rabbit Air A3', image:'images/rabbit-air-a3.webp', spec:"Five-layer filtration with a customizable pollutant filter. Panel-tested top pick for 2026.", was:599, now:479 },
-    { id:'a2', cat:'air', tag:'Runner-up', name:'AirDoctor 4000', image:'images/airdoctor-4000.webp', spec:"UltraHEPA + activated carbon, 1,400 sq ft coverage, Energy Star certified.", was:499, now:399 },
-    { id:'a3', cat:'air', tag:'Whole-home', name:'Coway Airmega 400S', image:'images/coway-airmega-400s.jpg', spec:"App-controlled smart purifier with auto-sensing mode.", was:649, now:519 },
-    { id:'a4', cat:'air', tag:'Compact', name:'Blueair Blue Pure 511i Max', image:'images/blueair-511i-max.webp', spec:"Smart control in a small footprint — built for bedrooms and studios.", was:329, now:269 },
-    { id:'a5', cat:'air', tag:'Large rooms', name:'Levoit Core 600S-P', image:'images/levoit-core-600s-p.webp', spec:"Extensive coverage with full smart-app control for open-plan spaces.", was:289, now:229 },
-    { id:'a6', cat:'air', tag:'Budget', name:'GoveeLife Smart Mini', image:'images/goveelife-smart-mini.webp', spec:"Core smart-purifier features at an entry price point.", was:99, now:79 },
-    { id:'s1', cat:'sleep', tag:'Best overall', name:'Oura Ring 4', image:'images/oura-ring-4-midnight.avif', spec:"Smart ring tracking 50+ health metrics, up to 8 nights of battery life.", was:349, now:279, suffix:' + $6/mo' },
-    { id:'s2', cat:'sleep', tag:'For athletes', name:'Whoop 5.0', image:'images/whoop-5-0.png', spec:"Strain coaching alongside sleep and recovery scores.", was:239, now:199, suffix:'/yr' },
-    { id:'s3', cat:'sleep', tag:'Temperature control', name:'Eight Sleep Pod 5', image:'images/eight-sleep-pod.webp', spec:"Active heating and cooling mattress cover that reacts to your sleep stage overnight.", was:2099, now:1799, suffix:' + $199/yr' },
-    { id:'s4', cat:'sleep', tag:'No wearable', name:'Withings Sleep', image:'images/withings-sleep.jpg', spec:"Under-mattress sensor pad — sleep and snore tracking with nothing to wear to bed.", was:99, now:79 },
-    { id:'s5', cat:'sleep', tag:'Budget', name:'Fitbit Charge 6', image:'images/fitbit-charge-6.jpg', spec:"Lightweight wrist tracker with sleep-stage visualizations and daily readiness.", was:159, now:129 },
+    { id:'a1', cat:'air', tag:'Best overall', name:'Rabbit Air A3', image:'images/rabbit-air-a3.webp', spec:"Five-layer filtration with a customizable pollutant filter. Panel-tested top pick for 2026.", was:599, now:479, highlights:['Five-layer filtration','Customizable pollutant filter','Designed for continuous room air cleaning'], benefits:'A multi-stage air-cleaning option for people who want filtration features plus a customizable filter choice.' },
+    { id:'a2', cat:'air', tag:'Runner-up', name:'AirDoctor 4000', image:'images/airdoctor-4000.webp', spec:"UltraHEPA + activated carbon, 1,400 sq ft coverage, Energy Star certified.", was:499, now:399, highlights:['UltraHEPA + activated carbon','1,400 sq ft coverage','Energy Star certified'], benefits:'Combines particle filtration and activated carbon in a larger-room purifier designed for broad coverage.' },
+    { id:'a3', cat:'air', tag:'Whole-home', name:'Coway Airmega 400S', image:'images/coway-airmega-400s.jpg', spec:"App-controlled smart purifier with auto-sensing mode.", was:649, now:519, highlights:['App-controlled operation','Auto-sensing mode','Smart air-quality management'], benefits:'A connected purifier for users who want automatic operation and app-based control.' },
+    { id:'a4', cat:'air', tag:'Compact', name:'Blueair Blue Pure 511i Max', image:'images/blueair-511i-max.webp', spec:"Smart control in a small footprint — built for bedrooms and studios.", was:329, now:269, highlights:['Smart control','Compact footprint','Suited to bedrooms and studios'], benefits:'A smaller smart-purifier format for spaces where you want connected control without a large unit.' },
+    { id:'a5', cat:'air', tag:'Large rooms', name:'Levoit Core 600S-P', image:'images/levoit-core-600s-p.webp', spec:"Extensive coverage with full smart-app control for open-plan spaces.", was:289, now:229, highlights:['Extensive room coverage','Full smart-app control','Designed for open-plan spaces'], benefits:'Combines broad coverage with app control for larger or open-plan living areas.' },
+    { id:'a6', cat:'air', tag:'Budget', name:'GoveeLife Smart Mini', image:'images/goveelife-smart-mini.webp', spec:"Core smart-purifier features at an entry price point.", was:99, now:79, highlights:['Smart purifier features','Compact format','Entry price point'], benefits:'A lower-cost way to add smart air-purifier features to a smaller space.' },
+    { id:'s1', cat:'sleep', tag:'Best overall', name:'Oura Ring 4', image:'images/oura-ring-4-midnight.avif', spec:"Smart ring tracking 50+ health metrics, up to 8 nights of battery life.", was:349, now:279, suffix:' + $6/mo', highlights:['50+ health metrics','Up to 8 nights of battery life','Ring-based sleep and wellness tracking'], benefits:'A discreet wearable designed to turn sleep and other body signals into ongoing wellness insights.' },
+    { id:'s2', cat:'sleep', tag:'For athletes', name:'Whoop 5.0', image:'images/whoop-5-0.png', spec:"Strain coaching alongside sleep and recovery scores.", was:239, now:199, suffix:'/yr', highlights:['Strain coaching','Sleep scores','Recovery scores'], benefits:'Built around training and recovery feedback for users who want sleep data connected to daily performance.' },
+    { id:'s3', cat:'sleep', tag:'Temperature control', name:'Eight Sleep Pod 5', image:'images/eight-sleep-pod.webp', spec:"Active heating and cooling mattress cover that reacts to your sleep stage overnight.", was:2099, now:1799, suffix:' + $199/yr', highlights:['Active heating and cooling','Mattress-cover format','Responds to sleep stage overnight'], benefits:'A bed-based approach to sleep comfort that focuses on temperature rather than a wearable.' },
+    { id:'s4', cat:'sleep', tag:'No wearable', name:'Withings Sleep', image:'images/withings-sleep.jpg', spec:"Under-mattress sensor pad — sleep and snore tracking with nothing to wear to bed.", was:99, now:79, highlights:['Under-mattress sensor pad','Sleep tracking','Snore tracking'], benefits:'Tracks sleep from underneath the mattress, so there is nothing to wear while you sleep.' },
+    { id:'s5', cat:'sleep', tag:'Budget', name:'Fitbit Charge 6', image:'images/fitbit-charge-6.jpg', spec:"Lightweight wrist tracker with sleep-stage visualizations and daily readiness.", was:159, now:129, highlights:['Lightweight wrist tracker','Sleep-stage visualizations','Daily readiness'], benefits:'A familiar wrist-based format that combines sleep information with everyday readiness feedback.' },
   ];
-
   let cart = {}; // id -> qty
 
   function renderProducts(){
@@ -393,7 +430,7 @@
           <span class="tag">${p.tag}</span>
           <span class="sale-flag">-${pct}%</span>
         </div>
-        <img class="product-image" src="${p.image}" alt="${p.name}" loading="lazy">
+        <img class="product-image" src="${p.image}" alt="${p.name}" loading="lazy" onclick="openProduct('${p.id}')" title="View ${p.name} details">
         <h3>${p.name}</h3>
         <p class="spec">${p.spec}</p>
         <div class="row">
@@ -459,6 +496,50 @@
     document.getElementById('checkoutBtn').disabled = entries.length === 0;
   }
 
+  function openProduct(id){
+    const p = products.find(x=>x.id===id);
+    if(!p) return;
+    const pct = Math.round((1 - p.now/p.was)*100);
+    const suffix = p.suffix ? p.suffix : ' USD';
+    const card = document.getElementById('productModalCard');
+    card.className = 'modal-card product-modal-card' + (p.cat==='sleep' ? ' night' : '');
+    card.innerHTML = `
+      <div class="product-detail-grid">
+        <div class="product-detail-media">
+          <img src="${p.image}" alt="${p.name}">
+        </div>
+        <div class="product-detail-content">
+          <button class="detail-close" onclick="closeProduct()" aria-label="Close">&times;</button>
+          <span class="detail-tag">${p.tag} · Save ${pct}%</span>
+          <h2 class="detail-title">${p.name}</h2>
+          <p class="detail-intro">${p.spec}</p>
+          <div class="detail-price">
+            <span class="was">$${p.was.toLocaleString()}</span>
+            <span class="now">$${p.now.toLocaleString()}</span>
+            <small>${suffix}</small>
+          </div>
+          <div class="detail-section">
+            <h4>Key specifications</h4>
+            <ul class="detail-list">${p.highlights.map(x=>`<li>${x}</li>`).join('')}</ul>
+          </div>
+          <div class="detail-section">
+            <h4>Product benefits</h4>
+            <p class="detail-benefit">${p.benefits}</p>
+          </div>
+          <div class="detail-actions">
+            <button class="btn-primary" onclick="addToCart('${p.id}'); closeProduct(); openCart();">Add to cart</button>
+            <button class="btn-ghost" onclick="closeProduct()">Back to products</button>
+          </div>
+        </div>
+      </div>
+    `;
+    document.getElementById('productModal').classList.add('open');
+  }
+
+  function closeProduct(){
+    document.getElementById('productModal').classList.remove('open');
+  }
+
   function openCart(){
     document.getElementById('overlay').classList.add('open');
     document.getElementById('drawer').classList.add('open');
@@ -467,6 +548,7 @@
     document.getElementById('overlay').classList.remove('open');
     document.getElementById('drawer').classList.remove('open');
     document.getElementById('checkoutModal').classList.remove('open');
+    document.getElementById('productModal').classList.remove('open');
   }
 
   function openCheckout(){
@@ -475,16 +557,15 @@
     document.getElementById('checkoutModal').classList.add('open');
   }
 
-  // Real checkout: creates a Coinbase Commerce charge via our own backend
-  // (netlify/functions/create-charge.js) and sends the customer to Coinbase's
-  // hosted payment page, where they pick BTC/ETH/USDC/etc. and pay.
+  // Real checkout: creates a NOWPayments hosted invoice through the Cloudflare Worker.
+  // The customer is then sent to NOWPayments to choose an available cryptocurrency and pay.
   let checkoutInfo = { name:'', email:'' };
 
   function renderCheckoutForm(){
     const total = cartSubtotal();
     document.getElementById('modalCard').innerHTML = `
       <h3>Checkout</h3>
-      <p class="modal-sub">Orders are paid in crypto via Coinbase Commerce. Enter your details to continue.</p>
+      <p class="modal-sub">Orders are paid in crypto via NOWPayments. Enter your details to continue.</p>
       <div class="field">
         <label>Full name</label>
         <input type="text" id="cf-name" placeholder="Jordan Achieng" value="${checkoutInfo.name}" />
@@ -495,7 +576,7 @@
       </div>
       <div class="modal-total"><span>Total due</span><span class="amt">$${total.toLocaleString()}</span></div>
       <button class="btn-checkout" id="payBtn" onclick="startCryptoPayment()">Continue to payment</button>
-      <p class="modal-note">You'll be redirected to Coinbase Commerce's secure hosted checkout to choose a coin and pay.</p>
+      <p class="modal-note">You'll be redirected to NOWPayments' secure hosted checkout to choose a coin and pay.</p>
     `;
   }
 
@@ -529,12 +610,12 @@
         throw new Error(data.error || 'Could not start payment');
       }
 
-      // Send the customer to Coinbase's hosted checkout page.
+      // Send the customer to NOWPayments' hosted checkout page.
       window.location.href = data.hosted_url;
     } catch (err) {
       payBtn.disabled = false;
       payBtn.textContent = 'Continue to payment';
-      alert('Payment could not be started: ' + err.message + '\n\nMake sure COINBASE_COMMERCE_API_KEY is set in your Netlify site settings.');
+      alert('Payment could not be started: ' + err.message + '\n\nPlease try again. If the problem continues, contact support.');
     }
   }
 
