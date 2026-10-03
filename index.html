@@ -99,7 +99,7 @@ nav .wrap{
   display:flex;
   align-items:center;
   justify-content:space-between;
-  height:68px;
+  height:76px;
 }
 
 .logo{
@@ -112,7 +112,7 @@ nav .wrap{
 }
 
 .logo img{
-  height:30px;
+  height:42px;
   width:auto;
   display:block;
 }
@@ -343,6 +343,35 @@ nav .wrap{
 @media(prefers-reduced-motion:reduce){
   .pulse{
     animation:none;
+  }
+}
+
+
+/* ---------- 3D brand feature strip ---------- */
+
+.brand-features-strip{
+  width:100%;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  padding:18px 32px 42px;
+  border-bottom:1px solid var(--line);
+  background:
+    radial-gradient(ellipse at 50% 45%,rgba(116,232,198,.055),transparent 58%),
+    var(--bg);
+}
+
+.brand-features-strip img{
+  display:block;
+  width:min(940px,100%);
+  height:auto;
+  object-fit:contain;
+  filter:drop-shadow(0 24px 34px rgba(0,0,0,.36));
+}
+
+@media(max-width:640px){
+  .brand-features-strip{
+    padding:12px 18px 30px;
   }
 }
 
@@ -1751,6 +1780,17 @@ footer .fine{
   </div>
 
 </header>
+
+
+<div class="brand-features-strip" aria-label="BittPulse health and wellness features">
+
+  <img
+    src="images/bittpulse_bottom_features_3d.png"
+    alt="BittPulse Health & Wellness — Smarter Tools, Healthier You — AI Health Tools, Smart Gadgets, Personalized Wellness, Better Living"
+    onerror="this.style.display='none';"
+  >
+
+</div>
 
 
 <section class="section" id="air">
