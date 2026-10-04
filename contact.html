@@ -1,0 +1,877 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Contact BittPulse — Support & Delivery</title>
+
+<meta name="description" content="Contact BittPulse support, find our warehouse address, and learn about delivery times.">
+
+<!-- Favicon -->
+<link rel="icon" type="image/x-icon" href="images/favicon.ico">
+<link rel="icon" type="image/png" href="images/favicon.png">
+
+<!-- Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+
+    html {
+        scroll-behavior: smooth;
+    }
+
+    body {
+        font-family: "Inter", Arial, sans-serif;
+        background: #f7f7f5;
+        color: #111;
+        line-height: 1.6;
+        min-height: 100vh;
+    }
+
+    a {
+        color: inherit;
+        text-decoration: none;
+    }
+
+    /* =========================
+       ANNOUNCEMENT BAR
+    ========================= */
+
+    .announcement-bar {
+        width: 100%;
+        background: #111;
+        color: #fff;
+        text-align: center;
+        padding: 9px 16px;
+        font-size: 12px;
+        font-weight: 600;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+    }
+
+    /* =========================
+       HEADER
+    ========================= */
+
+    header {
+        width: 100%;
+        background: rgba(255, 255, 255, 0.94);
+        border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        backdrop-filter: blur(18px);
+        -webkit-backdrop-filter: blur(18px);
+    }
+
+    .header-inner {
+        max-width: 1400px;
+        margin: 0 auto;
+        min-height: 82px;
+        padding: 0 40px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 30px;
+    }
+
+    .logo {
+        display: inline-flex;
+        align-items: center;
+        flex-shrink: 0;
+    }
+
+    .logo img {
+        width: 155px;
+        height: auto;
+        display: block;
+    }
+
+    .nav-links {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        gap: 34px;
+    }
+
+    .nav-links a {
+        position: relative;
+        font-size: 13px;
+        font-weight: 600;
+        letter-spacing: 0.03em;
+        color: #222;
+        transition: opacity 0.25s ease;
+    }
+
+    .nav-links a:hover {
+        opacity: 0.55;
+    }
+
+    .nav-links a::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: -7px;
+        width: 0;
+        height: 1px;
+        background: #111;
+        transition: width 0.25s ease;
+    }
+
+    .nav-links a:hover::after {
+        width: 100%;
+    }
+
+    .nav-menu-toggle {
+        display: none;
+        border: 0;
+        background: transparent;
+        width: 42px;
+        height: 42px;
+        padding: 8px;
+        cursor: pointer;
+    }
+
+    .nav-menu-toggle span {
+        display: block;
+        width: 24px;
+        height: 2px;
+        background: #111;
+        margin: 5px auto;
+        transition: transform 0.25s ease, opacity 0.25s ease;
+    }
+
+    /* =========================
+       MAIN
+    ========================= */
+
+    main {
+        min-height: calc(100vh - 250px);
+    }
+
+    .contact-hero {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 105px 30px 55px;
+        text-align: center;
+    }
+
+    .eyebrow {
+        display: inline-block;
+        margin-bottom: 18px;
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: #777;
+    }
+
+    .contact-hero h1 {
+        font-size: clamp(42px, 6vw, 72px);
+        line-height: 1.03;
+        letter-spacing: -0.045em;
+        font-weight: 600;
+        margin-bottom: 24px;
+    }
+
+    .contact-hero p {
+        max-width: 650px;
+        margin: 0 auto;
+        color: #666;
+        font-size: 16px;
+        line-height: 1.8;
+    }
+
+    /* =========================
+       CONTACT CARDS
+    ========================= */
+
+    .contact-section {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px 30px 110px;
+    }
+
+    .contact-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 18px;
+    }
+
+    .contact-card {
+        background: #fff;
+        border: 1px solid rgba(0, 0, 0, 0.07);
+        border-radius: 22px;
+        padding: 38px 34px;
+        min-height: 245px;
+        box-shadow: 0 15px 45px rgba(0, 0, 0, 0.045);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .contact-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 22px 55px rgba(0, 0, 0, 0.08);
+    }
+
+    .card-label {
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        color: #888;
+        margin-bottom: 15px;
+    }
+
+    .contact-card h2 {
+        font-size: 22px;
+        font-weight: 600;
+        letter-spacing: -0.02em;
+        margin-bottom: 16px;
+    }
+
+    .contact-card p {
+        color: #666;
+        font-size: 14px;
+        line-height: 1.8;
+    }
+
+    .email-link {
+        display: inline-block;
+        color: #111;
+        font-size: 15px;
+        font-weight: 600;
+        border-bottom: 1px solid #111;
+        padding-bottom: 3px;
+        margin-top: 4px;
+        transition: opacity 0.25s ease;
+    }
+
+    .email-link:hover {
+        opacity: 0.55;
+    }
+
+    .address {
+        color: #555;
+        font-size: 14px;
+        line-height: 1.9;
+    }
+
+    .delivery-highlight {
+        margin-top: 8px;
+        color: #111;
+        font-size: 16px;
+        font-weight: 600;
+    }
+
+    /* =========================
+       SUPPORT SECTION
+    ========================= */
+
+    .support-section {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 30px 110px;
+    }
+
+    .support-box {
+        background: #111;
+        color: #fff;
+        border-radius: 28px;
+        padding: 60px 55px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 50px;
+    }
+
+    .support-content {
+        max-width: 680px;
+    }
+
+    .support-content .card-label {
+        color: #999;
+    }
+
+    .support-content h2 {
+        font-size: clamp(30px, 4vw, 48px);
+        line-height: 1.1;
+        letter-spacing: -0.035em;
+        font-weight: 600;
+        margin-bottom: 18px;
+    }
+
+    .support-content p {
+        color: #bdbdbd;
+        font-size: 14px;
+        line-height: 1.8;
+    }
+
+    .support-button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        white-space: nowrap;
+        background: #fff;
+        color: #111;
+        min-height: 52px;
+        padding: 0 28px;
+        border-radius: 999px;
+        font-size: 13px;
+        font-weight: 700;
+        transition: transform 0.25s ease, opacity 0.25s ease;
+    }
+
+    .support-button:hover {
+        transform: translateY(-2px);
+        opacity: 0.9;
+    }
+
+    /* =========================
+       FOOTER
+    ========================= */
+
+    footer {
+        background: #111;
+        color: #fff;
+        padding: 65px 30px 30px;
+    }
+
+    .footer-inner {
+        max-width: 1400px;
+        margin: 0 auto;
+    }
+
+    .footer-top {
+        display: grid;
+        grid-template-columns: 1.4fr 1fr 1fr;
+        gap: 60px;
+        padding-bottom: 55px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.13);
+    }
+
+    .footer-brand .logo {
+        margin-bottom: 20px;
+    }
+
+    .footer-brand .logo img {
+        width: 155px;
+        filter: brightness(0) invert(1);
+    }
+
+    .footer-brand p {
+        max-width: 360px;
+        color: #999;
+        font-size: 13px;
+        line-height: 1.8;
+    }
+
+    .footer-column h3 {
+        margin-bottom: 20px;
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        color: #888;
+    }
+
+    .footer-links {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .footer-links a {
+        color: #ddd;
+        font-size: 13px;
+        transition: color 0.25s ease;
+    }
+
+    .footer-links a:hover {
+        color: #fff;
+    }
+
+    .footer-contact {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .footer-contact a {
+        color: #ddd;
+        font-size: 13px;
+        transition: color 0.25s ease;
+    }
+
+    .footer-contact a:hover {
+        color: #fff;
+    }
+
+    .footer-address {
+        color: #999;
+        font-size: 12px;
+        line-height: 1.7;
+    }
+
+    .footer-bottom {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+        padding-top: 25px;
+    }
+
+    .footer-bottom p {
+        color: #777;
+        font-size: 11px;
+    }
+
+    /* =========================
+       MOBILE
+    ========================= */
+
+    @media (max-width: 900px) {
+        .header-inner {
+            min-height: 72px;
+            padding: 0 22px;
+        }
+
+        .nav-menu-toggle {
+            display: block;
+        }
+
+        .nav-links {
+            display: none;
+            position: absolute;
+            top: calc(100% + 1px);
+            left: 14px;
+            right: 14px;
+            padding: 12px;
+            flex-direction: column;
+            align-items: stretch;
+            gap: 0;
+            background: rgba(255, 255, 255, 0.98);
+            border: 1px solid rgba(0, 0, 0, 0.08);
+            border-radius: 16px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.12);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+
+        .nav-links.open {
+            display: flex;
+        }
+
+        .nav-links a {
+            padding: 14px 12px;
+            font-size: 13px;
+        }
+
+        .nav-links a::after {
+            display: none;
+        }
+
+        .contact-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .support-box {
+            flex-direction: column;
+            align-items: flex-start;
+            padding: 45px 32px;
+        }
+
+        .footer-top {
+            grid-template-columns: 1fr 1fr;
+            gap: 45px 30px;
+        }
+
+        .footer-brand {
+            grid-column: 1 / -1;
+        }
+    }
+
+    @media (max-width: 600px) {
+        .announcement-bar {
+            padding: 8px 12px;
+            font-size: 10px;
+            letter-spacing: 0.06em;
+        }
+
+        .header-inner {
+            padding: 0 18px;
+        }
+
+        .logo img {
+            width: 135px;
+        }
+
+        .contact-hero {
+            padding: 75px 22px 45px;
+        }
+
+        .contact-hero h1 {
+            font-size: 45px;
+        }
+
+        .contact-hero p {
+            font-size: 14px;
+        }
+
+        .contact-section,
+        .support-section {
+            padding-left: 18px;
+            padding-right: 18px;
+        }
+
+        .contact-section {
+            padding-bottom: 75px;
+        }
+
+        .contact-card {
+            padding: 30px 26px;
+            min-height: auto;
+        }
+
+        .support-section {
+            padding-bottom: 75px;
+        }
+
+        .support-box {
+            border-radius: 22px;
+            padding: 38px 26px;
+        }
+
+        .support-button {
+            width: 100%;
+        }
+
+        footer {
+            padding: 50px 22px 25px;
+        }
+
+        .footer-top {
+            grid-template-columns: 1fr;
+            gap: 35px;
+        }
+
+        .footer-brand {
+            grid-column: auto;
+        }
+
+        .footer-bottom {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+    }
+</style>
+</head>
+
+<body id="top">
+
+<!-- =========================
+     ANNOUNCEMENT BAR
+========================= -->
+<div class="announcement-bar" role="status">
+    Free delivery for all orders
+</div>
+
+<!-- =========================
+     HEADER
+========================= -->
+<header>
+    <div class="header-inner">
+
+        <a href="index.html" class="logo" aria-label="BittPulse home">
+            <img src="images/bittpulse_logo_no_bottom_row_centered.png" alt="BittPulse">
+        </a>
+
+        <button
+            class="nav-menu-toggle"
+            id="navMenuToggle"
+            type="button"
+            aria-label="Open navigation menu"
+            aria-expanded="false"
+            onclick="toggleNavMenu()"
+        >
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <nav class="nav-links" id="navLinks" aria-label="Main navigation">
+            <a href="index.html">Home</a>
+            <a href="index.html#products">Products</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+
+    </div>
+</header>
+
+<!-- =========================
+     MAIN CONTENT
+========================= -->
+<main>
+
+    <section class="contact-hero">
+        <span class="eyebrow">BittPulse Support</span>
+
+        <h1>We're here to help.</h1>
+
+        <p>
+            Have a question about your order, delivery, or a BittPulse product?
+            Get in touch with our support team and we'll be happy to assist.
+        </p>
+    </section>
+
+
+    <!-- CONTACT INFORMATION -->
+    <section class="contact-section">
+
+        <div class="contact-grid">
+
+            <!-- EMAIL -->
+            <article class="contact-card">
+                <div class="card-label">Support</div>
+
+                <h2>Email Us</h2>
+
+                <p>
+                    For questions about orders, products, payments, or general
+                    support, contact our team directly.
+                </p>
+
+                <a
+                    class="email-link"
+                    href="mailto:support@bittpulse.store"
+                    aria-label="Email BittPulse support"
+                >
+                    support@bittpulse.store
+                </a>
+            </article>
+
+
+            <!-- WAREHOUSE -->
+            <article class="contact-card">
+                <div class="card-label">Warehouse</div>
+
+                <h2>Our Location</h2>
+
+                <p class="address">
+                    BittPulse<br>
+                    2451 Enterprise Blvd<br>
+                    Plainfield, IN 46168<br>
+                    USA
+                </p>
+            </article>
+
+
+            <!-- DELIVERY -->
+            <article class="contact-card">
+                <div class="card-label">Delivery</div>
+
+                <h2>Shipping</h2>
+
+                <p>
+                    We provide free delivery on all orders.
+                </p>
+
+                <p class="delivery-highlight">
+                    2–4 business days
+                </p>
+
+                <p>
+                    Delivery typically takes 2 to 4 business days.
+                </p>
+            </article>
+
+        </div>
+
+    </section>
+
+
+    <!-- SUPPORT CTA -->
+    <section class="support-section">
+
+        <div class="support-box">
+
+            <div class="support-content">
+
+                <div class="card-label">Need assistance?</div>
+
+                <h2>Let’s get your question answered.</h2>
+
+                <p>
+                    Send our support team an email and include your order
+                    information when relevant. We'll get back to you as soon
+                    as possible.
+                </p>
+
+            </div>
+
+            <a
+                href="mailto:support@bittpulse.store"
+                class="support-button"
+            >
+                Contact Support
+            </a>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+<footer>
+
+    <div class="footer-inner">
+
+        <div class="footer-top">
+
+            <!-- BRAND -->
+            <div class="footer-brand">
+
+                <a href="index.html" class="logo" aria-label="BittPulse home">
+                    <img
+                        src="images/bittpulse_logo_no_bottom_row_centered.png"
+                        alt="BittPulse"
+                    >
+                </a>
+
+                <p>
+                    Adaptive air and sleep devices designed for a more
+                    comfortable everyday life.
+                </p>
+
+            </div>
+
+
+            <!-- NAVIGATION -->
+            <div class="footer-column">
+
+                <h3>Explore</h3>
+
+                <div class="footer-links">
+                    <a href="index.html">Home</a>
+                    <a href="index.html#products">Products</a>
+                    <a href="contact.html">Contact</a>
+                </div>
+
+            </div>
+
+
+            <!-- POLICIES -->
+            <div class="footer-column">
+
+                <h3>Information</h3>
+
+                <div class="footer-links">
+                    <a href="terms.html">Terms</a>
+                    <a href="privacy.html">Privacy Policy</a>
+                    <a href="shipping.html">Shipping &amp; Delivery</a>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- FOOTER CONTACT -->
+        <div
+            style="
+                display:flex;
+                justify-content:space-between;
+                align-items:flex-start;
+                gap:30px;
+                padding:28px 0;
+                border-bottom:1px solid rgba(255,255,255,0.13);
+                flex-wrap:wrap;
+            "
+        >
+
+            <div class="footer-contact">
+
+                <a href="mailto:support@bittpulse.store">
+                    support@bittpulse.store
+                </a>
+
+                <div class="footer-address">
+                    BittPulse<br>
+                    2451 Enterprise Blvd<br>
+                    Plainfield, IN 46168<br>
+                    USA
+                </div>
+
+            </div>
+
+            <div class="footer-address">
+                Free delivery for all orders<br>
+                Delivery in 2–4 business days
+            </div>
+
+        </div>
+
+
+        <!-- FOOTER BOTTOM -->
+        <div class="footer-bottom">
+
+            <p>
+                © 2026 BittPulse. All rights reserved.
+            </p>
+
+            <p>
+                Adaptive Air &amp; Sleep Devices
+            </p>
+
+        </div>
+
+    </div>
+
+</footer>
+
+
+<script>
+    function toggleNavMenu() {
+        const nav = document.getElementById("navLinks");
+        const button = document.getElementById("navMenuToggle");
+
+        if (!nav || !button) return;
+
+        const isOpen = nav.classList.toggle("open");
+
+        button.setAttribute("aria-expanded", isOpen ? "true" : "false");
+        button.setAttribute(
+            "aria-label",
+            isOpen ? "Close navigation menu" : "Open navigation menu"
+        );
+    }
+
+
+    // Close mobile navigation after selecting a link
+    document.querySelectorAll("#navLinks a").forEach(function(link) {
+        link.addEventListener("click", function() {
+            const nav = document.getElementById("navLinks");
+            const button = document.getElementById("navMenuToggle");
+
+            if (!nav || !button) return;
+
+            nav.classList.remove("open");
+            button.setAttribute("aria-expanded", "false");
+            button.setAttribute("aria-label", "Open navigation menu");
+        });
+    });
+</script>
+
+</body>
+</html>
