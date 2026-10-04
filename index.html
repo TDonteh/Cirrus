@@ -173,9 +173,59 @@ nav .wrap{
   padding:0 4px;
 }
 
+/* ---------- Mobile header menu ---------- */
+
+.nav-menu-toggle{
+  display:none;
+  width:44px;
+  height:44px;
+  border:1px solid var(--line);
+  border-radius:50%;
+  background:transparent;
+  color:var(--text);
+  align-items:center;
+  justify-content:center;
+  font-size:1.25rem;
+  line-height:1;
+}
+
+.nav-menu-toggle:hover{
+  border-color:var(--mint);
+  color:var(--mint);
+}
+
 @media(max-width:780px){
+
+  .nav-menu-toggle{
+    display:flex;
+  }
+
   .nav-links{
     display:none;
+    position:absolute;
+    top:76px;
+    left:0;
+    right:0;
+    flex-direction:column;
+    gap:0;
+    padding:10px 20px 18px;
+    background:rgba(13,19,16,0.97);
+    backdrop-filter:blur(14px);
+    border-bottom:1px solid var(--line);
+    box-shadow:0 18px 35px rgba(0,0,0,.24);
+  }
+
+  .nav-links.open{
+    display:flex;
+  }
+
+  .nav-links a{
+    padding:13px 0;
+    border-bottom:1px solid rgba(38,48,41,.72);
+  }
+
+  .nav-links a:last-child{
+    border-bottom:none;
   }
 }
 
@@ -632,6 +682,52 @@ nav .wrap{
   background:var(--mint-dim);
 }
 
+.contact-details{
+  display:grid;
+  gap:14px;
+  margin:26px auto 0;
+  max-width:520px;
+  padding-top:24px;
+  border-top:1px solid var(--line);
+  text-align:left;
+}
+
+.contact-detail{
+  display:grid;
+  gap:4px;
+}
+
+.contact-detail-label{
+  font-size:.72rem;
+  text-transform:uppercase;
+  letter-spacing:.1em;
+  color:var(--text-faint);
+}
+
+.contact-detail-value{
+  color:var(--text-muted);
+  font-size:.9rem;
+  line-height:1.6;
+}
+
+.contact-detail-value a{
+  color:var(--mint);
+}
+
+.contact-detail-value a:hover{
+  text-decoration:underline;
+}
+
+.contact-delivery{
+  margin-top:6px;
+  padding:14px 16px;
+  border:1px solid var(--line);
+  border-radius:12px;
+  background:rgba(13,19,16,.28);
+  color:var(--text-muted);
+  font-size:.86rem;
+}
+
 
 /* ---------- Footer ---------- */
 
@@ -676,25 +772,7 @@ footer .fine{
 }
 
 
-/* ---------- Footer mobile hamburger ---------- */
-
-.footer-menu-toggle{
-  display:none;
-  width:44px;
-  height:44px;
-  border:1px solid var(--line);
-  border-radius:50%;
-  background:transparent;
-  color:var(--text);
-  align-items:center;
-  justify-content:center;
-  font-size:1.25rem;
-}
-
-.footer-menu-toggle:hover{
-  border-color:var(--mint);
-  color:var(--mint);
-}
+/* ---------- Footer mobile layout ---------- */
 
 @media(max-width:780px){
 
@@ -710,26 +788,15 @@ footer .fine{
   }
 
   footer .fine{
-    order:2;
-  }
-
-  .footer-menu-toggle{
-    display:flex;
-    order:1;
-  }
-
-  .foot-links{
-    display:none;
-    width:100%;
-    flex-direction:column;
-    gap:16px;
-    padding:20px 0 4px;
-    border-top:1px solid var(--line);
     order:3;
   }
 
-  .foot-links.open{
-    display:flex;
+  .foot-links{
+    width:100%;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:14px 22px;
+    order:2;
   }
 }
 
@@ -1630,16 +1697,42 @@ footer .fine{
   }
 }
 
+
+/* Announcement Bar */
+.announcement-bar {
+    width: 100%;
+    background: #111;
+    color: #fff;
+    text-align: center;
+    padding: 9px 16px;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    position: relative;
+    z-index: 1000;
+}
+
+@media (max-width: 768px) {
+    .announcement-bar {
+        padding: 8px 12px;
+        font-size: 11px;
+        letter-spacing: 0.06em;
+    }
+}
+
 </style>
 </head>
 
-<body>
+<body id="top">
+    <div class="announcement-bar" role="status">Free delivery for all orders</div>
+
 
 <nav>
 
   <div class="wrap">
 
-    <div class="logo">
+    <a href="#top" class="logo" aria-label="BittPulse home">
 
       <!-- Add your logo as images/logo.svg -->
       <img
@@ -1650,9 +1743,9 @@ footer .fine{
 
       <span class="dot"></span>BittPulse
 
-    </div>
+    </a>
 
-    <div class="nav-links">
+    <div class="nav-links" id="navLinks">
 
       <a href="#air">Air</a>
       <a href="#sleep">Sleep</a>
@@ -1662,6 +1755,18 @@ footer .fine{
     </div>
 
     <div class="nav-right">
+
+      <button
+        class="nav-menu-toggle"
+        id="navMenuToggle"
+        onclick="toggleNavMenu()"
+        aria-label="Open navigation menu"
+        aria-expanded="false"
+        aria-controls="navLinks">
+
+        ☰
+
+      </button>
 
       <button
         class="cart-btn"
@@ -1943,11 +2048,46 @@ footer .fine{
 
       <a
         class="contact-email"
-        href="mailto:support@bittpulse.store">
+        href="mailto:support@bittpulse.store"
+        aria-label="Email BittPulse support">
 
         support@bittpulse.store
 
       </a>
+
+      <div class="contact-details">
+
+        <div class="contact-detail">
+
+          <div class="contact-detail-label">
+            Store
+          </div>
+
+          <div class="contact-detail-value">
+            BittPulse
+          </div>
+
+        </div>
+
+        <div class="contact-detail">
+
+          <div class="contact-detail-label">
+            Warehouse address
+          </div>
+
+          <div class="contact-detail-value">
+            2451 Enterprise Blvd<br>
+            Plainfield, IN 46168<br>
+            USA
+          </div>
+
+        </div>
+
+        <div class="contact-delivery">
+          Delivery takes 2 to 4 business days.
+        </div>
+
+      </div>
 
     </div>
 
@@ -1966,7 +2106,7 @@ footer .fine{
 
     <div class="footer-brand">
 
-      <div class="logo">
+      <a href="#top" class="logo" aria-label="BittPulse home">
 
         <!-- Add your logo later as images/logo.svg -->
         <img
@@ -1977,7 +2117,7 @@ footer .fine{
 
         <span class="dot"></span>BittPulse
 
-      </div>
+      </a>
 
     </div>
 
@@ -1987,18 +2127,6 @@ footer .fine{
       © 2026 BittPulse. All rights reserved.
 
     </p>
-
-
-    <button
-      class="footer-menu-toggle"
-      id="footerMenuToggle"
-      onclick="toggleFooterMenu()"
-      aria-label="Open footer menu"
-      aria-expanded="false">
-
-      ☰
-
-    </button>
 
 
     <div
@@ -2019,6 +2147,18 @@ footer .fine{
 
       <a href="#contact">
         Contact
+      </a>
+
+      <a href="terms.html">
+        Terms
+      </a>
+
+      <a href="privacy.html">
+        Privacy Policy
+      </a>
+
+      <a href="shipping.html">
+        Shipping &amp; Delivery
       </a>
 
     </div>
@@ -3378,17 +3518,17 @@ async function startCryptoPayment(){
 
 
 /* =========================================================
-   FOOTER MOBILE MENU
+   MOBILE HEADER MENU
    ========================================================= */
 
-function toggleFooterMenu(){
+function toggleNavMenu(){
 
   const menu =
-    document.getElementById('footerLinks');
+    document.getElementById('navLinks');
 
 
   const button =
-    document.getElementById('footerMenuToggle');
+    document.getElementById('navMenuToggle');
 
 
   const isOpen =
@@ -3401,26 +3541,32 @@ function toggleFooterMenu(){
   );
 
 
+  button.setAttribute(
+    'aria-label',
+    isOpen ? 'Close navigation menu' : 'Open navigation menu'
+  );
+
+
   button.textContent =
     isOpen ? '×' : '☰';
 
 }
 
 
-/* Close footer menu after selecting an item */
+/* Close mobile header menu after selecting a link */
 
 document
-  .querySelectorAll('.foot-links a')
+  .querySelectorAll('.nav-links a')
   .forEach(link => {
 
     link.addEventListener('click',() => {
 
       const menu =
-        document.getElementById('footerLinks');
+        document.getElementById('navLinks');
 
 
       const button =
-        document.getElementById('footerMenuToggle');
+        document.getElementById('navMenuToggle');
 
 
       menu.classList.remove('open');
@@ -3429,6 +3575,12 @@ document
       button.setAttribute(
         'aria-expanded',
         'false'
+      );
+
+
+      button.setAttribute(
+        'aria-label',
+        'Open navigation menu'
       );
 
 
