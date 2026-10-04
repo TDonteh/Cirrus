@@ -1,0 +1,1099 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Privacy Policy — BittPulse</title>
+
+<meta name="description" content="How BittPulse collects, uses, shares and protects your personal information, and the choices and rights you have.">
+
+<!-- Favicon -->
+<link rel="icon" type="image/x-icon" href="images/bittpulse_logo_no_bottom_row_centered.png">
+<link rel="icon" type="image/png" href="images/bittpulse_logo_no_bottom_row_centered.png">
+
+<!-- Google Fonts (same as index.html) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+    :root {
+        --bg: #0D1310;
+        --bg-raised: #141B18;
+        --bg-card: #171F1B;
+        --line: #263029;
+        --text: #E9EDE9;
+        --text-muted: #8FA098;
+        --text-faint: #5B685F;
+        --mint: #74E8C6;
+        --amber: #E8A868;
+        --mint-dim: rgba(116, 232, 198, 0.14);
+        --nav-h: 92px;
+    }
+
+    @media (max-width: 780px) {
+        :root {
+            --nav-h: 80px;
+        }
+    }
+
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+
+    html {
+        scroll-behavior: smooth;
+    }
+
+    body {
+        font-family: "Inter", Arial, sans-serif;
+        background: var(--bg);
+        color: var(--text);
+        line-height: 1.6;
+        min-height: 100vh;
+        -webkit-font-smoothing: antialiased;
+    }
+
+    h1, h2, h3 {
+        font-family: 'Fraunces', serif;
+        font-weight: 500;
+        letter-spacing: -0.01em;
+    }
+
+    a {
+        color: inherit;
+        text-decoration: none;
+    }
+
+    button {
+        font-family: inherit;
+        cursor: pointer;
+    }
+
+    .wrap {
+        max-width: 1180px;
+        margin: 0 auto;
+        padding: 0 32px;
+    }
+
+    @media (max-width: 640px) {
+        .wrap {
+            padding: 0 20px;
+        }
+    }
+
+    /* =========================
+       ANNOUNCEMENT BAR
+    ========================= */
+
+    .announcement-bar {
+        width: 100%;
+        background: #111;
+        color: #fff;
+        text-align: center;
+        padding: 9px 16px;
+        font-size: 12px;
+        font-weight: 600;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        position: relative;
+        z-index: 1000;
+    }
+
+    @media (max-width: 768px) {
+        .announcement-bar {
+            padding: 8px 12px;
+            font-size: 11px;
+            letter-spacing: 0.06em;
+        }
+    }
+
+    /* =========================
+       HEADER (matches index.html)
+    ========================= */
+
+    nav {
+        position: sticky;
+        top: 0;
+        z-index: 50;
+        background: rgba(13, 19, 16, 0.86);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border-bottom: 1px solid var(--line);
+    }
+
+    nav .wrap {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: var(--nav-h);
+    }
+
+    .logo {
+        font-family: 'Fraunces', serif;
+        font-size: 1.25rem;
+        font-weight: 600;
+        color: var(--text);
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .logo img {
+        height: 62px;
+        width: auto;
+        max-width: 100%;
+        display: block;
+        mix-blend-mode: screen;
+        -webkit-mask-image:
+            linear-gradient(to right, transparent 0, #000 5%, #000 95%, transparent 100%),
+            linear-gradient(to bottom, transparent 0, #000 8%, #000 92%, transparent 100%);
+        -webkit-mask-composite: source-in;
+        mask-image:
+            linear-gradient(to right, transparent 0, #000 5%, #000 95%, transparent 100%),
+            linear-gradient(to bottom, transparent 0, #000 8%, #000 92%, transparent 100%);
+        mask-composite: intersect;
+    }
+
+    .logo img[data-bg="clear"] {
+        mix-blend-mode: normal;
+        -webkit-mask-image: none;
+        mask-image: none;
+    }
+
+    .logo img[data-bg="light"] {
+        filter: invert(1) hue-rotate(180deg);
+    }
+
+    .logo .dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: var(--mint);
+        box-shadow: 0 0 10px 2px var(--mint-dim);
+    }
+
+    .logo.has-img .dot,
+    .logo.has-img .logo-text {
+        display: none;
+    }
+
+    @media (max-width: 780px) {
+        .logo img {
+            height: 50px;
+        }
+    }
+
+    .nav-links {
+        display: flex;
+        gap: 36px;
+        font-size: .92rem;
+        color: var(--text-muted);
+    }
+
+    .nav-links a:hover {
+        color: var(--text);
+    }
+
+    .nav-right {
+        display: flex;
+        align-items: center;
+        gap: 18px;
+    }
+
+    .nav-menu-toggle {
+        display: none;
+        width: 44px;
+        height: 44px;
+        border: 1px solid var(--line);
+        border-radius: 50%;
+        background: transparent;
+        color: var(--text);
+        align-items: center;
+        justify-content: center;
+        font-size: 1.25rem;
+        line-height: 1;
+    }
+
+    .nav-menu-toggle:hover {
+        border-color: var(--mint);
+        color: var(--mint);
+    }
+
+    @media (max-width: 780px) {
+
+        .nav-menu-toggle {
+            display: flex;
+        }
+
+        .nav-links {
+            display: none;
+            position: absolute;
+            top: var(--nav-h);
+            left: 0;
+            right: 0;
+            flex-direction: column;
+            gap: 0;
+            padding: 10px 20px 18px;
+            background: rgba(13, 19, 16, 0.97);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border-bottom: 1px solid var(--line);
+            box-shadow: 0 18px 35px rgba(0, 0, 0, .24);
+        }
+
+        .nav-links.open {
+            display: flex;
+        }
+
+        .nav-links a {
+            padding: 13px 0;
+            border-bottom: 1px solid rgba(38, 48, 41, .72);
+        }
+
+        .nav-links a:last-child {
+            border-bottom: none;
+        }
+    }
+
+    /* =========================
+       LEGAL PAGE
+    ========================= */
+
+    .legal-hero {
+        position: relative;
+        overflow: hidden;
+        padding: 96px 0 64px;
+        border-bottom: 1px solid var(--line);
+    }
+
+    .legal-hero::before {
+        content: "";
+        position: absolute;
+        inset: -30% -10% auto -10%;
+        height: 420px;
+        background:
+            radial-gradient(ellipse at 30% 20%, rgba(116, 232, 198, .10), transparent 60%),
+            radial-gradient(ellipse at 75% 40%, rgba(232, 168, 104, .08), transparent 55%);
+        pointer-events: none;
+    }
+
+    .legal-hero .wrap {
+        position: relative;
+    }
+
+    .eyebrow-line {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-size: .85rem;
+        color: var(--text-muted);
+        margin-bottom: 22px;
+    }
+
+    .eyebrow-line .rule {
+        width: 28px;
+        height: 1px;
+        background: var(--line);
+        display: inline-block;
+    }
+
+    .legal-hero h1 {
+        font-size: clamp(2.4rem, 5vw, 3.8rem);
+        line-height: 1.06;
+        margin-bottom: 20px;
+    }
+
+    .legal-hero p {
+        max-width: 620px;
+        color: var(--text-muted);
+        font-size: 1.02rem;
+        line-height: 1.8;
+    }
+
+    .legal-meta {
+        margin-top: 26px;
+        display: inline-flex;
+        padding: 8px 16px;
+        border: 1px solid var(--line);
+        border-radius: 100px;
+        font-size: .78rem;
+        color: var(--text-muted);
+        background: var(--bg-raised);
+    }
+
+    .legal-body {
+        padding: 72px 0 110px;
+    }
+
+    .legal-layout {
+        display: grid;
+        grid-template-columns: 250px minmax(0, 1fr);
+        gap: 72px;
+        align-items: start;
+    }
+
+    /* Table of contents */
+
+    .legal-toc {
+        position: sticky;
+        top: calc(var(--nav-h) + 28px);
+        padding: 26px 24px;
+        background: var(--bg-card);
+        border: 1px solid var(--line);
+        border-radius: 18px;
+    }
+
+    .legal-toc h2 {
+        font-family: 'Inter', sans-serif;
+        font-size: .72rem;
+        font-weight: 600;
+        letter-spacing: .14em;
+        text-transform: uppercase;
+        color: var(--text-faint);
+        margin-bottom: 18px;
+    }
+
+    .legal-toc ol {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 11px;
+    }
+
+    .legal-toc a {
+        font-size: .86rem;
+        color: var(--text-muted);
+        transition: color .2s ease;
+    }
+
+    .legal-toc a:hover {
+        color: var(--mint);
+    }
+
+    /* Content */
+
+    .legal-content section {
+        padding: 0 0 44px;
+        margin-bottom: 44px;
+        border-bottom: 1px solid var(--line);
+        scroll-margin-top: calc(var(--nav-h) + 28px);
+    }
+
+    .legal-content section:last-child {
+        border-bottom: none;
+        margin-bottom: 0;
+        padding-bottom: 0;
+    }
+
+    .legal-content h2 {
+        font-size: 1.6rem;
+        margin-bottom: 18px;
+    }
+
+    .legal-content h2 span {
+        color: var(--text-faint);
+        font-size: 1rem;
+        margin-right: 10px;
+    }
+
+    .legal-content p {
+        color: var(--text-muted);
+        font-size: .96rem;
+        line-height: 1.85;
+        margin-bottom: 16px;
+    }
+
+    .legal-content p:last-child {
+        margin-bottom: 0;
+    }
+
+    .legal-content ul {
+        list-style: none;
+        display: grid;
+        gap: 12px;
+        margin: 0 0 16px;
+    }
+
+    .legal-content ul:last-child {
+        margin-bottom: 0;
+    }
+
+    .legal-content li {
+        position: relative;
+        padding-left: 22px;
+        color: var(--text-muted);
+        font-size: .96rem;
+        line-height: 1.8;
+    }
+
+    .legal-content li::before {
+        content: "";
+        position: absolute;
+        left: 2px;
+        top: .72em;
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: var(--mint);
+    }
+
+    .legal-content strong {
+        color: var(--text);
+        font-weight: 600;
+    }
+
+    .legal-content a {
+        color: var(--mint);
+    }
+
+    .legal-content a:hover {
+        text-decoration: underline;
+    }
+
+    .legal-note {
+        margin-top: 18px;
+        padding: 18px 20px;
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        background: var(--bg-raised);
+        color: var(--text-muted);
+        font-size: .9rem;
+        line-height: 1.75;
+    }
+
+    @media (max-width: 900px) {
+
+        .legal-hero {
+            padding: 72px 0 48px;
+        }
+
+        .legal-body {
+            padding: 48px 0 80px;
+        }
+
+        .legal-layout {
+            grid-template-columns: 1fr;
+            gap: 40px;
+        }
+
+        .legal-toc {
+            position: static;
+        }
+    }
+
+    /* =========================
+       FOOTER (matches index.html)
+    ========================= */
+
+    footer {
+        position: relative;
+        isolation: isolate;
+        background: var(--bg);
+        color: var(--text);
+        padding: 84px 0 36px;
+        border-top: 1px solid var(--line);
+    }
+
+    .footer-top {
+        display: grid;
+        grid-template-columns: 1.5fr 1fr 1fr;
+        gap: 72px;
+        padding-bottom: 60px;
+        border-bottom: 1px solid var(--line);
+    }
+
+    .footer-brand .logo {
+        display: inline-flex;
+        margin-bottom: 22px;
+    }
+
+    .footer-brand .logo img {
+        height: 68px;
+    }
+
+    .footer-brand p {
+        max-width: 340px;
+        color: var(--text-muted);
+        font-size: .92rem;
+        line-height: 1.8;
+    }
+
+    .footer-col h4 {
+        font-family: 'Inter', sans-serif;
+        font-size: .72rem;
+        font-weight: 600;
+        letter-spacing: .14em;
+        text-transform: uppercase;
+        color: var(--text-faint);
+        margin-bottom: 26px;
+    }
+
+    .footer-links {
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+    }
+
+    .footer-links a {
+        width: fit-content;
+        font-size: .94rem;
+        color: var(--text-muted);
+        transition: color .2s ease;
+    }
+
+    .footer-links a:hover {
+        color: var(--mint);
+    }
+
+    .footer-bottom {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+        padding-top: 30px;
+    }
+
+    footer .fine {
+        color: var(--text-faint);
+        font-size: .82rem;
+    }
+
+    @media (max-width: 900px) {
+
+        .footer-top {
+            grid-template-columns: 1fr 1fr;
+            gap: 48px 40px;
+        }
+
+        .footer-brand {
+            grid-column: 1 / -1;
+        }
+    }
+
+    @media (max-width: 780px) {
+
+        footer {
+            padding: 64px 0 32px;
+        }
+
+        .footer-brand .logo img {
+            height: 58px;
+        }
+    }
+
+    @media (max-width: 480px) {
+
+        .footer-top {
+            gap: 44px 28px;
+            padding-bottom: 48px;
+        }
+
+        .footer-bottom {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 10px;
+        }
+    }
+</style>
+</head>
+
+<body id="top">
+
+<!-- =========================
+     ANNOUNCEMENT BAR
+========================= -->
+<div class="announcement-bar" role="status">
+    Free delivery for all orders
+</div>
+
+<!-- =========================
+     HEADER
+========================= -->
+<nav aria-label="Main navigation">
+
+    <div class="wrap">
+
+        <a href="index.html" class="logo" aria-label="BittPulse home">
+
+            <img
+                src="images/bittpulse_logo_no_bottom_row_centered.png"
+                alt="BittPulse"
+                onload="this.parentElement.classList.add('has-img')"
+                onerror="this.style.display='none';"
+            >
+
+            <span class="dot"></span><span class="logo-text">BittPulse</span>
+
+        </a>
+
+        <div class="nav-links" id="navLinks">
+
+            <a href="index.html#air">Air</a>
+            <a href="index.html#sleep">Sleep</a>
+            <a href="index.html#how">How it works</a>
+            <a href="contact.html">Contact</a>
+
+        </div>
+
+        <div class="nav-right">
+
+            <button
+                class="nav-menu-toggle"
+                id="navMenuToggle"
+                type="button"
+                onclick="toggleNavMenu()"
+                aria-label="Open navigation menu"
+                aria-expanded="false"
+                aria-controls="navLinks">
+
+                ☰
+
+            </button>
+
+        </div>
+
+    </div>
+
+</nav>
+
+<!-- =========================
+     MAIN CONTENT
+========================= -->
+<main>
+
+    <header class="legal-hero">
+
+        <div class="wrap">
+
+            <div class="eyebrow-line">
+                <span class="rule"></span>
+                Legal
+            </div>
+
+            <h1>Privacy Policy</h1>
+
+            <p>
+                Your privacy matters to us. This policy explains what personal
+                information BittPulse collects when you browse or order, how we use
+                it, who we share it with, and the choices you have.
+            </p>
+
+            <span class="legal-meta">Last updated: October 4, 2026</span>
+
+        </div>
+
+    </header>
+
+
+    <div class="legal-body">
+
+        <div class="wrap legal-layout">
+
+            <!-- TABLE OF CONTENTS -->
+            <aside class="legal-toc" aria-label="Privacy Policy contents">
+
+                <h2>Contents</h2>
+
+                <ol>
+                    <li><a href="#intro">Introduction</a></li>
+                    <li><a href="#collect">Information we collect</a></li>
+                    <li><a href="#use">How we use information</a></li>
+                    <li><a href="#share">How we share information</a></li>
+                    <li><a href="#crypto">Crypto payments &amp; blockchains</a></li>
+                    <li><a href="#cookies">Cookies &amp; similar tech</a></li>
+                    <li><a href="#retention">Data retention</a></li>
+                    <li><a href="#security">Security</a></li>
+                    <li><a href="#rights">Your rights &amp; choices</a></li>
+                    <li><a href="#children">Children’s privacy</a></li>
+                    <li><a href="#transfers">International transfers</a></li>
+                    <li><a href="#links">Third-party links</a></li>
+                    <li><a href="#changes">Changes to this policy</a></li>
+                    <li><a href="#contact">Contact us</a></li>
+                </ol>
+
+            </aside>
+
+
+            <!-- TERMS -->
+            <article class="legal-content">
+
+                <section id="intro">
+                    <h2><span>01</span>Introduction</h2>
+                    <p>
+                        BittPulse (“BittPulse”, “we”, “us”, “our”) operates this website
+                        (the “Site”) and is responsible for the personal information
+                        described in this policy. By using the Site or placing an order,
+                        you acknowledge that you have read this policy. It should be read
+                        together with our <a href="terms.html">Terms of Service</a>.
+                    </p>
+                    <p>
+                        <strong>BittPulse</strong><br>
+                        2451 Enterprise Blvd<br>
+                        Plainfield, IN 46168<br>
+                        USA<br>
+                        <a href="mailto:support@bittpulse.store">support@bittpulse.store</a>
+                    </p>
+                </section>
+
+
+                <section id="collect">
+                    <h2><span>02</span>Information we collect</h2>
+                    <p><strong>Information you give us.</strong> When you check out or contact us, we collect:</p>
+                    <ul>
+                        <li>Your <strong>full name</strong> and <strong>email address</strong> (used for your receipt and order updates).</li>
+                        <li>Your <strong>delivery address</strong>: address lines, city, state, ZIP or postal code and country.</li>
+                        <li>Your <strong>order details</strong>, such as the products, quantities and total.</li>
+                        <li>Anything you include when you email our support team, such as order questions and attachments.</li>
+                    </ul>
+                    <p><strong>Payment information.</strong> Payments are made in cryptocurrency through our payment processor, NOWPayments, on its own hosted checkout page. We receive confirmation of your payment status and a transaction reference so we can match it to your order. We do not receive or store your wallet’s private keys, seed phrases or exchange login details.</p>
+                    <p><strong>Information collected automatically.</strong> Like most websites, our servers and hosting providers may log technical data such as your IP address, browser and device type, operating system, referring page, pages viewed and the date and time of your visit. We use this to keep the Site working, secure and reliable.</p>
+                </section>
+
+
+                <section id="use">
+                    <h2><span>03</span>How we use information</h2>
+                    <ul>
+                        <li><strong>Fulfil your order:</strong> process payment confirmation, prepare and ship products, and send receipts and delivery updates.</li>
+                        <li><strong>Provide support:</strong> answer questions, resolve delivery problems and handle returns or refunds.</li>
+                        <li><strong>Protect the Site and our customers:</strong> detect and prevent fraud, abuse and security incidents.</li>
+                        <li><strong>Improve the Site:</strong> understand how it is used so we can fix problems and improve the shopping experience.</li>
+                        <li><strong>Meet legal obligations:</strong> keep records, respond to lawful requests and enforce our Terms.</li>
+                    </ul>
+                    <p>
+                        We use your information where it is needed to carry out your order,
+                        where we have a legitimate interest in running and securing our store,
+                        where the law requires it, or where you have given consent.
+                    </p>
+                </section>
+
+
+                <section id="share">
+                    <h2><span>04</span>How we share information</h2>
+                    <p>We share personal information only as needed to run the store:</p>
+                    <ul>
+                        <li><strong>Payment processor:</strong> NOWPayments receives the order amount and the details needed to complete your crypto payment. Its handling of your data is governed by its own privacy policy.</li>
+                        <li><strong>Delivery and fulfilment partners:</strong> carriers and logistics providers receive your name, delivery address and, where needed, contact details so your order can be delivered.</li>
+                        <li><strong>Service providers:</strong> hosting, email, security and technical providers that process data on our behalf under appropriate confidentiality obligations. This includes Google Fonts, which loads the fonts used on the Site and may receive your IP address when your browser requests them.</li>
+                        <li><strong>Legal and safety:</strong> authorities or other parties where we are legally required to, or where needed to protect rights, property or safety.</li>
+                        <li><strong>Business changes:</strong> a successor, if BittPulse is involved in a merger, acquisition or sale of assets, subject to this policy.</li>
+                    </ul>
+                    <div class="legal-note">
+                        We do not sell your personal information, and we do not share it with third parties for their own advertising.
+                    </div>
+                </section>
+
+
+                <section id="crypto">
+                    <h2><span>05</span>Crypto payments &amp; blockchains</h2>
+                    <p>
+                        Cryptocurrency transactions are recorded on public blockchains, which
+                        are permanent and visible to anyone. A wallet address and transaction
+                        can be seen on the network, and BittPulse cannot edit or delete
+                        information recorded there. Please keep this in mind when choosing
+                        which wallet to pay from.
+                    </p>
+                </section>
+
+
+                <section id="cookies">
+                    <h2><span>06</span>Cookies &amp; similar technologies</h2>
+                    <p>
+                        The Site uses only the browser technologies needed to function, such as
+                        keeping your cart and checkout details during your visit. Your browser
+                        settings let you block or delete cookies and site data, although parts of the Site, such as the cart,
+                        may not work properly if you do.
+                    </p>
+                    <p>
+                        If we add analytics or advertising tools in the future, we will update
+                        this policy and, where the law requires, ask for your consent first.
+                    </p>
+                </section>
+
+
+                <section id="retention">
+                    <h2><span>07</span>Data retention</h2>
+                    <p>
+                        We keep personal information only for as long as we need it for the
+                        purposes in this policy, including completing orders, handling returns
+                        and support, meeting tax, accounting and legal requirements, and
+                        resolving disputes. When information is no longer needed, we delete
+                        it or anonymize it.
+                    </p>
+                </section>
+
+
+                <section id="security">
+                    <h2><span>08</span>Security</h2>
+                    <p>
+                        We use reasonable technical and organizational measures to protect
+                        personal information, including encrypted connections and limited
+                        access to order data. No online service can be guaranteed completely
+                        secure, so we cannot promise absolute security, and we encourage you
+                        to protect your own devices, email account and wallet.
+                    </p>
+                </section>
+
+
+                <section id="rights">
+                    <h2><span>09</span>Your rights &amp; choices</h2>
+                    <p>
+                        Depending on where you live (for example, in certain US states, the
+                        European Economic Area or the United Kingdom), you may have the right to:
+                    </p>
+                    <ul>
+                        <li><strong>Access</strong> the personal information we hold about you and receive a copy.</li>
+                        <li><strong>Correct</strong> information that is inaccurate or incomplete.</li>
+                        <li><strong>Delete</strong> your information, subject to records we must legally keep.</li>
+                        <li><strong>Object to or restrict</strong> certain processing, and withdraw consent where we rely on it.</li>
+                        <li><strong>Portability:</strong> receive your information in a commonly used format.</li>
+                        <li><strong>Non-discrimination</strong> for exercising any of these rights.</li>
+                    </ul>
+                    <p>
+                        To make a request, email
+                        <a href="mailto:support@bittpulse.store">support@bittpulse.store</a>
+                        from the address you used to order. We may need to verify your
+                        identity before acting on a request, and we will respond within the
+                        time required by applicable law. If you are unhappy with our
+                        response, you may also contact your local data protection authority.
+                    </p>
+                </section>
+
+
+                <section id="children">
+                    <h2><span>10</span>Children’s privacy</h2>
+                    <p>
+                        The Site is intended for adults and is not directed to children under
+                        18. We do not knowingly collect personal information from children.
+                        If you believe a child has given us personal information, contact
+                        us and we will delete it.
+                    </p>
+                </section>
+
+
+                <section id="transfers">
+                    <h2><span>11</span>International transfers</h2>
+                    <p>
+                        BittPulse is based in the United States, and your information may be
+                        processed in the US or in other countries where our service providers
+                        operate. Those countries may have different data protection laws from
+                        your own. Where required, we use appropriate safeguards for such transfers.
+                    </p>
+                </section>
+
+
+                <section id="links">
+                    <h2><span>12</span>Third-party links</h2>
+                    <p>
+                        The Site may link to other websites, including manufacturers’ sites
+                        and our payment processor’s checkout page. We do not control those
+                        sites and are not responsible for their privacy practices. We
+                        recommend reading their policies before sharing personal information.
+                    </p>
+                </section>
+
+
+                <section id="changes">
+                    <h2><span>13</span>Changes to this policy</h2>
+                    <p>
+                        We may update this policy from time to time. The “Last updated” date at
+                        the top shows when it was last revised. If we make material changes,
+                        we will post the updated policy on this page, and by continuing to use the Site after that, you
+                        accept the changes.
+                    </p>
+                </section>
+
+
+                <section id="contact">
+                    <h2><span>14</span>Contact us</h2>
+                    <p>
+                        Questions or requests about your privacy? We’re happy to help:
+                    </p>
+                    <p>
+                        <strong>BittPulse</strong><br>
+                        2451 Enterprise Blvd<br>
+                        Plainfield, IN 46168<br>
+                        USA<br>
+                        <a href="mailto:support@bittpulse.store">support@bittpulse.store</a>
+                    </p>
+                </section>
+
+            </article>
+
+        </div>
+
+    </div>
+
+</main>
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+<footer>
+
+    <div class="wrap">
+
+        <div class="footer-top">
+
+            <div class="footer-brand">
+
+                <a href="index.html" class="logo" aria-label="BittPulse home">
+
+                    <img
+                        src="images/bittpulse_logo_no_bottom_row_centered.png"
+                        alt="BittPulse"
+                        onload="this.parentElement.classList.add('has-img')"
+                        onerror="this.style.display='none';"
+                    >
+
+                    <span class="dot"></span><span class="logo-text">BittPulse</span>
+
+                </a>
+
+                <p>
+                    Adaptive air and sleep devices designed for a more comfortable everyday life.
+                </p>
+
+            </div>
+
+
+            <div class="footer-col">
+
+                <h4>Explore</h4>
+
+                <div class="footer-links">
+                    <a href="index.html#air">Air</a>
+                    <a href="index.html#sleep">Sleep</a>
+                    <a href="index.html#how">How it works</a>
+                    <a href="contact.html">Contact</a>
+                </div>
+
+            </div>
+
+
+            <div class="footer-col">
+
+                <h4>Information</h4>
+
+                <div class="footer-links">
+                    <a href="terms.html">Terms</a>
+                    <a href="privacy.html">Privacy Policy</a>
+                    <a href="shipping.html">Shipping &amp; Delivery</a>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="footer-bottom">
+
+            <p class="fine">
+                © 2026 BittPulse. All rights reserved.
+            </p>
+
+        </div>
+
+    </div>
+
+</footer>
+
+
+<script>
+    function toggleNavMenu() {
+        const menu = document.getElementById("navLinks");
+        const button = document.getElementById("navMenuToggle");
+
+        if (!menu || !button) return;
+
+        const isOpen = menu.classList.toggle("open");
+
+        button.setAttribute("aria-expanded", isOpen ? "true" : "false");
+        button.setAttribute(
+            "aria-label",
+            isOpen ? "Close navigation menu" : "Open navigation menu"
+        );
+        button.textContent = isOpen ? "×" : "☰";
+    }
+
+
+    // Close mobile navigation after selecting a link
+    document.querySelectorAll("#navLinks a").forEach(function(link) {
+        link.addEventListener("click", function() {
+            const menu = document.getElementById("navLinks");
+            const button = document.getElementById("navMenuToggle");
+
+            if (!menu || !button) return;
+
+            menu.classList.remove("open");
+            button.setAttribute("aria-expanded", "false");
+            button.setAttribute("aria-label", "Open navigation menu");
+            button.textContent = "☰";
+        });
+    });
+</script>
+
+<script>
+/* Adaptive logo: checks the logo image's own backdrop and picks the blend that
+   makes it melt into the page (dark backdrop -> screen, light backdrop -> invert + screen,
+   transparent -> untouched). Falls back silently if the browser blocks pixel access. */
+(function(){
+
+  function adapt(img){
+
+    try{
+
+      var size = 32;
+      var c = document.createElement('canvas');
+      c.width = size;
+      c.height = size;
+
+      var ctx = c.getContext('2d', { willReadFrequently:true });
+      ctx.drawImage(img, 0, 0, size, size);
+
+      var pts = [[1,1],[size-2,1],[1,size-2],[size-2,size-2]];
+      var a = 0, l = 0;
+
+      pts.forEach(function(p){
+        var d = ctx.getImageData(p[0], p[1], 1, 1).data;
+        a += d[3];
+        l += (0.2126*d[0] + 0.7152*d[1] + 0.0722*d[2]);
+      });
+
+      a /= pts.length;
+      l /= pts.length;
+
+      if(a < 40){
+        img.setAttribute('data-bg','clear');
+      }else if(l > 150){
+        img.setAttribute('data-bg','light');
+      }else{
+        img.setAttribute('data-bg','dark');
+      }
+
+    }catch(e){
+      /* canvas blocked (e.g. opened as a local file) - keep the default dark blend */
+    }
+
+  }
+
+  document.querySelectorAll('.logo img').forEach(function(img){
+
+    if(img.complete && img.naturalWidth){
+      adapt(img);
+    }else{
+      img.addEventListener('load', function(){ adapt(img); });
+    }
+
+  });
+
+})();
+</script>
+
+</body>
+</html>
