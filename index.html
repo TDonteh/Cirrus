@@ -2779,7 +2779,11 @@ function updateCartUI(){
    FULL SCREEN PRODUCT PAGE
    ========================================================= */
 
-function openProduct(id){
+/* Tracks whether the product page currently has its own browser-history entry */
+let productHistoryActive = false;
+
+
+function openProduct(id, fromHistory){
 
   const p =
     products.find(x => x.id === id);
@@ -3039,10 +3043,26 @@ function openProduct(id){
 
   }
 
+
+  /* Give the product page its own history entry, so the device's
+     back swipe / back button closes it instead of leaving the site */
+
+  if(!fromHistory && !productHistoryActive){
+
+    history.pushState(
+      { bpProduct:id },
+      '',
+      location.href
+    );
+
+    productHistoryActive = true;
+
+  }
+
 }
 
 
-function closeProduct(){
+function hideProduct(){
 
   document
     .getElementById('productModal')
@@ -3054,6 +3074,49 @@ function closeProduct(){
     .classList.remove('modal-open');
 
 }
+
+
+function closeProduct(){
+
+  hideProduct();
+
+
+  /* Closed with the X, "Back to products", Esc or by adding to cart:
+     remove the extra history entry so Back still behaves normally */
+
+  if(productHistoryActive){
+
+    productHistoryActive = false;
+
+    history.back();
+
+  }
+
+}
+
+
+/* Back / forward (including the mobile swipe gesture) */
+
+window.addEventListener('popstate',function(event){
+
+  const state = event.state;
+
+
+  if(state && state.bpProduct){
+
+    productHistoryActive = true;
+
+    openProduct(state.bpProduct, true);
+
+  }else{
+
+    productHistoryActive = false;
+
+    hideProduct();
+
+  }
+
+});
 
 
 /* =========================================================
