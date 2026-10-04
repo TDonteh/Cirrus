@@ -1,0 +1,1111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Shipping &amp; Delivery — BittPulse</title>
+
+<meta name="description" content="Free delivery on all BittPulse orders, typically in 2 to 4 business days. Learn how order processing, tracking and delivery work.">
+
+<!-- Favicon -->
+<link rel="icon" type="image/x-icon" href="images/bittpulse_logo_no_bottom_row_centered.png">
+<link rel="icon" type="image/png" href="images/bittpulse_logo_no_bottom_row_centered.png">
+
+<!-- Google Fonts (same as index.html) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+    :root {
+        --bg: #0D1310;
+        --bg-raised: #141B18;
+        --bg-card: #171F1B;
+        --line: #263029;
+        --text: #E9EDE9;
+        --text-muted: #8FA098;
+        --text-faint: #5B685F;
+        --mint: #74E8C6;
+        --amber: #E8A868;
+        --mint-dim: rgba(116, 232, 198, 0.14);
+        --nav-h: 92px;
+    }
+
+    @media (max-width: 780px) {
+        :root {
+            --nav-h: 80px;
+        }
+    }
+
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+
+    html {
+        scroll-behavior: smooth;
+    }
+
+    body {
+        font-family: "Inter", Arial, sans-serif;
+        background: var(--bg);
+        color: var(--text);
+        line-height: 1.6;
+        min-height: 100vh;
+        -webkit-font-smoothing: antialiased;
+    }
+
+    h1, h2, h3 {
+        font-family: 'Fraunces', serif;
+        font-weight: 500;
+        letter-spacing: -0.01em;
+    }
+
+    a {
+        color: inherit;
+        text-decoration: none;
+    }
+
+    button {
+        font-family: inherit;
+        cursor: pointer;
+    }
+
+    .wrap {
+        max-width: 1180px;
+        margin: 0 auto;
+        padding: 0 32px;
+    }
+
+    @media (max-width: 640px) {
+        .wrap {
+            padding: 0 20px;
+        }
+    }
+
+    /* =========================
+       ANNOUNCEMENT BAR
+    ========================= */
+
+    .announcement-bar {
+        width: 100%;
+        background: #111;
+        color: #fff;
+        text-align: center;
+        padding: 9px 16px;
+        font-size: 12px;
+        font-weight: 600;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        position: relative;
+        z-index: 1000;
+    }
+
+    @media (max-width: 768px) {
+        .announcement-bar {
+            padding: 8px 12px;
+            font-size: 11px;
+            letter-spacing: 0.06em;
+        }
+    }
+
+    /* =========================
+       HEADER (matches index.html)
+    ========================= */
+
+    nav {
+        position: sticky;
+        top: 0;
+        z-index: 50;
+        background: rgba(13, 19, 16, 0.86);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border-bottom: 1px solid var(--line);
+    }
+
+    nav .wrap {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: var(--nav-h);
+    }
+
+    .logo {
+        font-family: 'Fraunces', serif;
+        font-size: 1.25rem;
+        font-weight: 600;
+        color: var(--text);
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .logo img {
+        height: 62px;
+        width: auto;
+        max-width: 100%;
+        display: block;
+        mix-blend-mode: screen;
+        -webkit-mask-image:
+            linear-gradient(to right, transparent 0, #000 5%, #000 95%, transparent 100%),
+            linear-gradient(to bottom, transparent 0, #000 8%, #000 92%, transparent 100%);
+        -webkit-mask-composite: source-in;
+        mask-image:
+            linear-gradient(to right, transparent 0, #000 5%, #000 95%, transparent 100%),
+            linear-gradient(to bottom, transparent 0, #000 8%, #000 92%, transparent 100%);
+        mask-composite: intersect;
+    }
+
+    .logo img[data-bg="clear"] {
+        mix-blend-mode: normal;
+        -webkit-mask-image: none;
+        mask-image: none;
+    }
+
+    .logo img[data-bg="light"] {
+        filter: invert(1) hue-rotate(180deg);
+    }
+
+    .logo .dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: var(--mint);
+        box-shadow: 0 0 10px 2px var(--mint-dim);
+    }
+
+    .logo.has-img .dot,
+    .logo.has-img .logo-text {
+        display: none;
+    }
+
+    @media (max-width: 780px) {
+        .logo img {
+            height: 50px;
+        }
+    }
+
+    .nav-links {
+        display: flex;
+        gap: 36px;
+        font-size: .92rem;
+        color: var(--text-muted);
+    }
+
+    .nav-links a:hover {
+        color: var(--text);
+    }
+
+    .nav-right {
+        display: flex;
+        align-items: center;
+        gap: 18px;
+    }
+
+    .nav-menu-toggle {
+        display: none;
+        width: 44px;
+        height: 44px;
+        border: 1px solid var(--line);
+        border-radius: 50%;
+        background: transparent;
+        color: var(--text);
+        align-items: center;
+        justify-content: center;
+        font-size: 1.25rem;
+        line-height: 1;
+    }
+
+    .nav-menu-toggle:hover {
+        border-color: var(--mint);
+        color: var(--mint);
+    }
+
+    @media (max-width: 780px) {
+
+        .nav-menu-toggle {
+            display: flex;
+        }
+
+        .nav-links {
+            display: none;
+            position: absolute;
+            top: var(--nav-h);
+            left: 0;
+            right: 0;
+            flex-direction: column;
+            gap: 0;
+            padding: 10px 20px 18px;
+            background: rgba(13, 19, 16, 0.97);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border-bottom: 1px solid var(--line);
+            box-shadow: 0 18px 35px rgba(0, 0, 0, .24);
+        }
+
+        .nav-links.open {
+            display: flex;
+        }
+
+        .nav-links a {
+            padding: 13px 0;
+            border-bottom: 1px solid rgba(38, 48, 41, .72);
+        }
+
+        .nav-links a:last-child {
+            border-bottom: none;
+        }
+    }
+
+    /* =========================
+       LEGAL PAGE
+    ========================= */
+
+    .legal-hero {
+        position: relative;
+        overflow: hidden;
+        padding: 96px 0 64px;
+        border-bottom: 1px solid var(--line);
+    }
+
+    .legal-hero::before {
+        content: "";
+        position: absolute;
+        inset: -30% -10% auto -10%;
+        height: 420px;
+        background:
+            radial-gradient(ellipse at 30% 20%, rgba(116, 232, 198, .10), transparent 60%),
+            radial-gradient(ellipse at 75% 40%, rgba(232, 168, 104, .08), transparent 55%);
+        pointer-events: none;
+    }
+
+    .legal-hero .wrap {
+        position: relative;
+    }
+
+    .eyebrow-line {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-size: .85rem;
+        color: var(--text-muted);
+        margin-bottom: 22px;
+    }
+
+    .eyebrow-line .rule {
+        width: 28px;
+        height: 1px;
+        background: var(--line);
+        display: inline-block;
+    }
+
+    .legal-hero h1 {
+        font-size: clamp(2.4rem, 5vw, 3.8rem);
+        line-height: 1.06;
+        margin-bottom: 20px;
+    }
+
+    .legal-hero p {
+        max-width: 620px;
+        color: var(--text-muted);
+        font-size: 1.02rem;
+        line-height: 1.8;
+    }
+
+    .legal-meta {
+        margin-top: 26px;
+        display: inline-flex;
+        padding: 8px 16px;
+        border: 1px solid var(--line);
+        border-radius: 100px;
+        font-size: .78rem;
+        color: var(--text-muted);
+        background: var(--bg-raised);
+    }
+
+    .legal-body {
+        padding: 72px 0 110px;
+    }
+
+    .legal-layout {
+        display: grid;
+        grid-template-columns: 250px minmax(0, 1fr);
+        gap: 72px;
+        align-items: start;
+    }
+
+    /* Table of contents */
+
+    .legal-toc {
+        position: sticky;
+        top: calc(var(--nav-h) + 28px);
+        padding: 26px 24px;
+        background: var(--bg-card);
+        border: 1px solid var(--line);
+        border-radius: 18px;
+    }
+
+    .legal-toc h2 {
+        font-family: 'Inter', sans-serif;
+        font-size: .72rem;
+        font-weight: 600;
+        letter-spacing: .14em;
+        text-transform: uppercase;
+        color: var(--text-faint);
+        margin-bottom: 18px;
+    }
+
+    .legal-toc ol {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 11px;
+    }
+
+    .legal-toc a {
+        font-size: .86rem;
+        color: var(--text-muted);
+        transition: color .2s ease;
+    }
+
+    .legal-toc a:hover {
+        color: var(--mint);
+    }
+
+    /* Shipping highlights */
+
+    .ship-highlights {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 16px;
+        margin-bottom: 52px;
+    }
+
+    .ship-card {
+        padding: 26px 24px;
+        background: var(--bg-card);
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        transition: border-color .2s ease, transform .2s ease;
+    }
+
+    .ship-card:hover {
+        border-color: var(--mint);
+        transform: translateY(-3px);
+    }
+
+    .ship-card .label {
+        font-size: .7rem;
+        font-weight: 600;
+        letter-spacing: .14em;
+        text-transform: uppercase;
+        color: var(--text-faint);
+        margin-bottom: 12px;
+    }
+
+    .ship-card .value {
+        font-family: 'Fraunces', serif;
+        font-size: 1.55rem;
+        line-height: 1.15;
+        color: var(--mint);
+        margin-bottom: 8px;
+    }
+
+    .ship-card p {
+        font-size: .86rem;
+        line-height: 1.6;
+        margin: 0;
+    }
+
+    @media (max-width: 1080px) {
+        .ship-highlights {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    /* Content */
+
+    .legal-content section {
+        padding: 0 0 44px;
+        margin-bottom: 44px;
+        border-bottom: 1px solid var(--line);
+        scroll-margin-top: calc(var(--nav-h) + 28px);
+    }
+
+    .legal-content section:last-child {
+        border-bottom: none;
+        margin-bottom: 0;
+        padding-bottom: 0;
+    }
+
+    .legal-content h2 {
+        font-size: 1.6rem;
+        margin-bottom: 18px;
+    }
+
+    .legal-content h2 span {
+        color: var(--text-faint);
+        font-size: 1rem;
+        margin-right: 10px;
+    }
+
+    .legal-content p {
+        color: var(--text-muted);
+        font-size: .96rem;
+        line-height: 1.85;
+        margin-bottom: 16px;
+    }
+
+    .legal-content p:last-child {
+        margin-bottom: 0;
+    }
+
+    .legal-content ul {
+        list-style: none;
+        display: grid;
+        gap: 12px;
+        margin: 0 0 16px;
+    }
+
+    .legal-content ul:last-child {
+        margin-bottom: 0;
+    }
+
+    .legal-content li {
+        position: relative;
+        padding-left: 22px;
+        color: var(--text-muted);
+        font-size: .96rem;
+        line-height: 1.8;
+    }
+
+    .legal-content li::before {
+        content: "";
+        position: absolute;
+        left: 2px;
+        top: .72em;
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: var(--mint);
+    }
+
+    .legal-content strong {
+        color: var(--text);
+        font-weight: 600;
+    }
+
+    .legal-content a {
+        color: var(--mint);
+    }
+
+    .legal-content a:hover {
+        text-decoration: underline;
+    }
+
+    .legal-note {
+        margin-top: 18px;
+        padding: 18px 20px;
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        background: var(--bg-raised);
+        color: var(--text-muted);
+        font-size: .9rem;
+        line-height: 1.75;
+    }
+
+    @media (max-width: 900px) {
+
+        .legal-hero {
+            padding: 72px 0 48px;
+        }
+
+        .legal-body {
+            padding: 48px 0 80px;
+        }
+
+        .legal-layout {
+            grid-template-columns: 1fr;
+            gap: 40px;
+        }
+
+        .legal-toc {
+            position: static;
+        }
+    }
+
+    /* =========================
+       FOOTER (matches index.html)
+    ========================= */
+
+    footer {
+        position: relative;
+        isolation: isolate;
+        background: var(--bg);
+        color: var(--text);
+        padding: 84px 0 36px;
+        border-top: 1px solid var(--line);
+    }
+
+    .footer-top {
+        display: grid;
+        grid-template-columns: 1.5fr 1fr 1fr;
+        gap: 72px;
+        padding-bottom: 60px;
+        border-bottom: 1px solid var(--line);
+    }
+
+    .footer-brand .logo {
+        display: inline-flex;
+        margin-bottom: 22px;
+    }
+
+    .footer-brand .logo img {
+        height: 68px;
+    }
+
+    .footer-brand p {
+        max-width: 340px;
+        color: var(--text-muted);
+        font-size: .92rem;
+        line-height: 1.8;
+    }
+
+    .footer-col h4 {
+        font-family: 'Inter', sans-serif;
+        font-size: .72rem;
+        font-weight: 600;
+        letter-spacing: .14em;
+        text-transform: uppercase;
+        color: var(--text-faint);
+        margin-bottom: 26px;
+    }
+
+    .footer-links {
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+    }
+
+    .footer-links a {
+        width: fit-content;
+        font-size: .94rem;
+        color: var(--text-muted);
+        transition: color .2s ease;
+    }
+
+    .footer-links a:hover {
+        color: var(--mint);
+    }
+
+    .footer-bottom {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+        padding-top: 30px;
+    }
+
+    footer .fine {
+        color: var(--text-faint);
+        font-size: .82rem;
+    }
+
+    @media (max-width: 900px) {
+
+        .footer-top {
+            grid-template-columns: 1fr 1fr;
+            gap: 48px 40px;
+        }
+
+        .footer-brand {
+            grid-column: 1 / -1;
+        }
+    }
+
+    @media (max-width: 780px) {
+
+        footer {
+            padding: 64px 0 32px;
+        }
+
+        .footer-brand .logo img {
+            height: 58px;
+        }
+    }
+
+    @media (max-width: 480px) {
+
+        .footer-top {
+            gap: 44px 28px;
+            padding-bottom: 48px;
+        }
+
+        .footer-bottom {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 10px;
+        }
+    }
+</style>
+</head>
+
+<body id="top">
+
+<!-- =========================
+     ANNOUNCEMENT BAR
+========================= -->
+<div class="announcement-bar" role="status">
+    Free delivery for all orders
+</div>
+
+<!-- =========================
+     HEADER
+========================= -->
+<nav aria-label="Main navigation">
+
+    <div class="wrap">
+
+        <a href="index.html" class="logo" aria-label="BittPulse home">
+
+            <img
+                src="images/bittpulse_logo_no_bottom_row_centered.png"
+                alt="BittPulse"
+                onload="this.parentElement.classList.add('has-img')"
+                onerror="this.style.display='none';"
+            >
+
+            <span class="dot"></span><span class="logo-text">BittPulse</span>
+
+        </a>
+
+        <div class="nav-links" id="navLinks">
+
+            <a href="index.html#air">Air</a>
+            <a href="index.html#sleep">Sleep</a>
+            <a href="index.html#how">How it works</a>
+            <a href="contact.html">Contact</a>
+
+        </div>
+
+        <div class="nav-right">
+
+            <button
+                class="nav-menu-toggle"
+                id="navMenuToggle"
+                type="button"
+                onclick="toggleNavMenu()"
+                aria-label="Open navigation menu"
+                aria-expanded="false"
+                aria-controls="navLinks">
+
+                ☰
+
+            </button>
+
+        </div>
+
+    </div>
+
+</nav>
+
+<!-- =========================
+     MAIN CONTENT
+========================= -->
+<main>
+
+    <header class="legal-hero">
+
+        <div class="wrap">
+
+            <div class="eyebrow-line">
+                <span class="rule"></span>
+                Legal
+            </div>
+
+            <h1>Shipping &amp; Delivery</h1>
+
+            <p>
+                Free delivery on every order, shipped from our warehouse in Indiana.
+                Here is how ordering, processing and delivery work, so you know
+                exactly what to expect.
+            </p>
+
+            <span class="legal-meta">Last updated: October 4, 2026</span>
+
+        </div>
+
+    </header>
+
+
+    <div class="legal-body">
+
+        <div class="wrap legal-layout">
+
+            <!-- TABLE OF CONTENTS -->
+            <aside class="legal-toc" aria-label="Shipping and delivery contents">
+
+                <h2>Contents</h2>
+
+                <ol>
+                    <li><a href="#overview">Overview</a></li>
+                    <li><a href="#cost">Delivery cost</a></li>
+                    <li><a href="#processing">Order processing</a></li>
+                    <li><a href="#times">Delivery times</a></li>
+                    <li><a href="#address">Delivery address</a></li>
+                    <li><a href="#updates">Order updates</a></li>
+                    <li><a href="#delays">Delays</a></li>
+                    <li><a href="#receiving">Receiving your order</a></li>
+                    <li><a href="#missing">Lost or missing orders</a></li>
+                    <li><a href="#contact">Contact us</a></li>
+                </ol>
+
+            </aside>
+
+
+            <!-- TERMS -->
+            <article class="legal-content">
+
+                <div class="ship-highlights">
+
+                    <div class="ship-card">
+                        <div class="label">Delivery cost</div>
+                        <div class="value">Free</div>
+                        <p>On every order, with no minimum spend.</p>
+                    </div>
+
+                    <div class="ship-card">
+                        <div class="label">Delivery time</div>
+                        <div class="value">2–4 business days</div>
+                        <p>Typical delivery after your order is confirmed.</p>
+                    </div>
+
+                    <div class="ship-card">
+                        <div class="label">Ships from</div>
+                        <div class="value">Plainfield, IN</div>
+                        <p>Our warehouse in the United States.</p>
+                    </div>
+
+                </div>
+
+
+                <section id="overview">
+                    <h2><span>01</span>Overview</h2>
+                    <p>
+                        BittPulse ships orders from its warehouse at 2451 Enterprise Blvd,
+                        Plainfield, IN 46168, USA. We offer free delivery on all orders, and
+                        delivery typically takes 2 to 4 business days. This page is part of
+                        our <a href="terms.html">Terms of Service</a>.
+                    </p>
+                </section>
+
+
+                <section id="cost">
+                    <h2><span>02</span>Delivery cost</h2>
+                    <p>
+                        Delivery is free on all orders. The total you see at checkout is the
+                        total you pay for the products, and we add no separate shipping charge.
+                    </p>
+                    <p>
+                        If delivery to your location involves customs duties, import taxes
+                        or similar charges set by local authorities, those are separate from
+                        BittPulse’s delivery and are the responsibility of the recipient.
+                    </p>
+                </section>
+
+
+                <section id="processing">
+                    <h2><span>03</span>Order processing</h2>
+                    <p>
+                        Orders are paid in cryptocurrency through NOWPayments. We begin
+                        preparing your order once your payment has been confirmed. Confirmation
+                        time depends on the coin and network you pay with, and it can take
+                        longer when networks are busy.
+                    </p>
+                    <ul>
+                        <li>Your delivery time starts from the moment your payment is confirmed, not from the moment you start checkout.</li>
+                        <li>Payments that are underpaid, late or sent to the wrong address or network may delay or stop processing until they are resolved with our support team.</li>
+                        <li>We may contact you if we need to verify details before shipping your order.</li>
+                    </ul>
+                </section>
+
+
+                <section id="times">
+                    <h2><span>04</span>Delivery times</h2>
+                    <p>
+                        Once your order is confirmed, delivery typically takes
+                        <strong>2 to 4 business days</strong>. Business days are Monday to
+                        Friday and exclude weekends and public holidays.
+                    </p>
+                    <div class="legal-note">
+                        Delivery times are estimates, not guaranteed delivery dates. Actual
+                        arrival can vary depending on your location, the carrier and
+                        circumstances outside our control.
+                    </div>
+                </section>
+
+
+                <section id="address">
+                    <h2><span>05</span>Delivery address</h2>
+                    <p>
+                        At checkout you provide your delivery address, including address
+                        lines, city, state, ZIP or postal code and country. Please check it
+                        carefully before you pay.
+                    </p>
+                    <ul>
+                        <li>Orders are sent to the address you provide at checkout.</li>
+                        <li>If you need to correct your address after ordering, email us as soon as possible. We can only change it if your order has not yet shipped.</li>
+                        <li>We are not responsible for delays or losses caused by an incorrect or incomplete address that was entered at checkout.</li>
+                        <li>If a package is returned to us because of an address problem, we will contact you to arrange re-delivery.</li>
+                    </ul>
+                </section>
+
+
+                <section id="updates">
+                    <h2><span>06</span>Order updates</h2>
+                    <p>
+                        We use the email address you provide at checkout to send your receipt
+                        and updates about your order. Please make sure it is correct and
+                        check your spam or junk folder if you don’t see our messages. If you
+                        have not heard from us and need an update, contact
+                        <a href="mailto:support@bittpulse.store">support@bittpulse.store</a>
+                        with your order details.
+                    </p>
+                </section>
+
+
+                <section id="delays">
+                    <h2><span>07</span>Delays</h2>
+                    <p>
+                        Sometimes deliveries take longer than expected. Common reasons include:
+                    </p>
+                    <ul>
+                        <li>Carrier delays or high shipping volumes, especially around holidays.</li>
+                        <li>Severe weather or other events outside our control.</li>
+                        <li>Customs or regulatory checks.</li>
+                        <li>Delays in payment confirmation on the blockchain network.</li>
+                        <li>Incomplete or incorrect delivery information.</li>
+                    </ul>
+                    <p>
+                        If your order is running late, we will do our best to keep you informed
+                        and help you where we can.
+                    </p>
+                </section>
+
+
+                <section id="receiving">
+                    <h2><span>08</span>Receiving your order</h2>
+                    <p>
+                        Please inspect your package when it arrives. If an item is damaged,
+                        defective or not what you ordered, contact us as soon as possible with
+                        your order details and photos of the product and packaging. We will
+                        explain the next steps, and our approach to returns and refunds is described in the
+                        <a href="terms.html#returns">Returns &amp; refunds</a> section of our Terms.
+                    </p>
+                </section>
+
+
+                <section id="missing">
+                    <h2><span>09</span>Lost or missing orders</h2>
+                    <p>
+                        If your order shows as delivered but you can’t find it, first check
+                        around your property and with neighbors or household members, as
+                        carriers sometimes leave packages in safe places. If it is still
+                        missing, or if your order has not arrived after the expected delivery
+                        window has passed, email us and we will look into it with the carrier.
+                    </p>
+                </section>
+
+
+                <section id="contact">
+                    <h2><span>10</span>Contact us</h2>
+                    <p>
+                        Questions about shipping or delivery? Our support team is here to help:
+                    </p>
+                    <p>
+                        <strong>BittPulse</strong><br>
+                        2451 Enterprise Blvd<br>
+                        Plainfield, IN 46168<br>
+                        USA<br>
+                        <a href="mailto:support@bittpulse.store">support@bittpulse.store</a>
+                    </p>
+                </section>
+
+            </article>
+
+        </div>
+
+    </div>
+
+</main>
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+<footer>
+
+    <div class="wrap">
+
+        <div class="footer-top">
+
+            <div class="footer-brand">
+
+                <a href="index.html" class="logo" aria-label="BittPulse home">
+
+                    <img
+                        src="images/bittpulse_logo_no_bottom_row_centered.png"
+                        alt="BittPulse"
+                        onload="this.parentElement.classList.add('has-img')"
+                        onerror="this.style.display='none';"
+                    >
+
+                    <span class="dot"></span><span class="logo-text">BittPulse</span>
+
+                </a>
+
+                <p>
+                    Adaptive air and sleep devices designed for a more comfortable everyday life.
+                </p>
+
+            </div>
+
+
+            <div class="footer-col">
+
+                <h4>Explore</h4>
+
+                <div class="footer-links">
+                    <a href="index.html#air">Air</a>
+                    <a href="index.html#sleep">Sleep</a>
+                    <a href="index.html#how">How it works</a>
+                    <a href="contact.html">Contact</a>
+                </div>
+
+            </div>
+
+
+            <div class="footer-col">
+
+                <h4>Information</h4>
+
+                <div class="footer-links">
+                    <a href="terms.html">Terms</a>
+                    <a href="privacy.html">Privacy Policy</a>
+                    <a href="shipping.html">Shipping &amp; Delivery</a>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="footer-bottom">
+
+            <p class="fine">
+                © 2026 BittPulse. All rights reserved.
+            </p>
+
+        </div>
+
+    </div>
+
+</footer>
+
+
+<script>
+    function toggleNavMenu() {
+        const menu = document.getElementById("navLinks");
+        const button = document.getElementById("navMenuToggle");
+
+        if (!menu || !button) return;
+
+        const isOpen = menu.classList.toggle("open");
+
+        button.setAttribute("aria-expanded", isOpen ? "true" : "false");
+        button.setAttribute(
+            "aria-label",
+            isOpen ? "Close navigation menu" : "Open navigation menu"
+        );
+        button.textContent = isOpen ? "×" : "☰";
+    }
+
+
+    // Close mobile navigation after selecting a link
+    document.querySelectorAll("#navLinks a").forEach(function(link) {
+        link.addEventListener("click", function() {
+            const menu = document.getElementById("navLinks");
+            const button = document.getElementById("navMenuToggle");
+
+            if (!menu || !button) return;
+
+            menu.classList.remove("open");
+            button.setAttribute("aria-expanded", "false");
+            button.setAttribute("aria-label", "Open navigation menu");
+            button.textContent = "☰";
+        });
+    });
+</script>
+
+<script>
+/* Adaptive logo: checks the logo image's own backdrop and picks the blend that
+   makes it melt into the page (dark backdrop -> screen, light backdrop -> invert + screen,
+   transparent -> untouched). Falls back silently if the browser blocks pixel access. */
+(function(){
+
+  function adapt(img){
+
+    try{
+
+      var size = 32;
+      var c = document.createElement('canvas');
+      c.width = size;
+      c.height = size;
+
+      var ctx = c.getContext('2d', { willReadFrequently:true });
+      ctx.drawImage(img, 0, 0, size, size);
+
+      var pts = [[1,1],[size-2,1],[1,size-2],[size-2,size-2]];
+      var a = 0, l = 0;
+
+      pts.forEach(function(p){
+        var d = ctx.getImageData(p[0], p[1], 1, 1).data;
+        a += d[3];
+        l += (0.2126*d[0] + 0.7152*d[1] + 0.0722*d[2]);
+      });
+
+      a /= pts.length;
+      l /= pts.length;
+
+      if(a < 40){
+        img.setAttribute('data-bg','clear');
+      }else if(l > 150){
+        img.setAttribute('data-bg','light');
+      }else{
+        img.setAttribute('data-bg','dark');
+      }
+
+    }catch(e){
+      /* canvas blocked (e.g. opened as a local file) - keep the default dark blend */
+    }
+
+  }
+
+  document.querySelectorAll('.logo img').forEach(function(img){
+
+    if(img.complete && img.naturalWidth){
+      adapt(img);
+    }else{
+      img.addEventListener('load', function(){ adapt(img); });
+    }
+
+  });
+
+})();
+</script>
+
+</body>
+</html>
