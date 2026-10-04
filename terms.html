@@ -1,0 +1,1203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Terms of Service — BittPulse</title>
+
+<meta name="description" content="The terms that apply when you browse and purchase from BittPulse, including orders, crypto payments, delivery and returns.">
+
+<!-- Favicon -->
+<link rel="icon" type="image/x-icon" href="images/bittpulse_logo_no_bottom_row_centered.png">
+<link rel="icon" type="image/png" href="images/bittpulse_logo_no_bottom_row_centered.png">
+
+<!-- Google Fonts (same as index.html) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+    :root {
+        --bg: #0D1310;
+        --bg-raised: #141B18;
+        --bg-card: #171F1B;
+        --line: #263029;
+        --text: #E9EDE9;
+        --text-muted: #8FA098;
+        --text-faint: #5B685F;
+        --mint: #74E8C6;
+        --amber: #E8A868;
+        --mint-dim: rgba(116, 232, 198, 0.14);
+        --nav-h: 92px;
+    }
+
+    @media (max-width: 780px) {
+        :root {
+            --nav-h: 80px;
+        }
+    }
+
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+
+    html {
+        scroll-behavior: smooth;
+    }
+
+    body {
+        font-family: "Inter", Arial, sans-serif;
+        background: var(--bg);
+        color: var(--text);
+        line-height: 1.6;
+        min-height: 100vh;
+        -webkit-font-smoothing: antialiased;
+    }
+
+    h1, h2, h3 {
+        font-family: 'Fraunces', serif;
+        font-weight: 500;
+        letter-spacing: -0.01em;
+    }
+
+    a {
+        color: inherit;
+        text-decoration: none;
+    }
+
+    button {
+        font-family: inherit;
+        cursor: pointer;
+    }
+
+    .wrap {
+        max-width: 1180px;
+        margin: 0 auto;
+        padding: 0 32px;
+    }
+
+    @media (max-width: 640px) {
+        .wrap {
+            padding: 0 20px;
+        }
+    }
+
+    /* =========================
+       ANNOUNCEMENT BAR
+    ========================= */
+
+    .announcement-bar {
+        width: 100%;
+        background: #111;
+        color: #fff;
+        text-align: center;
+        padding: 9px 16px;
+        font-size: 12px;
+        font-weight: 600;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        position: relative;
+        z-index: 1000;
+    }
+
+    @media (max-width: 768px) {
+        .announcement-bar {
+            padding: 8px 12px;
+            font-size: 11px;
+            letter-spacing: 0.06em;
+        }
+    }
+
+    /* =========================
+       HEADER (matches index.html)
+    ========================= */
+
+    nav {
+        position: sticky;
+        top: 0;
+        z-index: 50;
+        background: rgba(13, 19, 16, 0.86);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border-bottom: 1px solid var(--line);
+    }
+
+    nav .wrap {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: var(--nav-h);
+    }
+
+    .logo {
+        font-family: 'Fraunces', serif;
+        font-size: 1.25rem;
+        font-weight: 600;
+        color: var(--text);
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .logo img {
+        height: 62px;
+        width: auto;
+        max-width: 100%;
+        display: block;
+        mix-blend-mode: screen;
+        -webkit-mask-image:
+            linear-gradient(to right, transparent 0, #000 5%, #000 95%, transparent 100%),
+            linear-gradient(to bottom, transparent 0, #000 8%, #000 92%, transparent 100%);
+        -webkit-mask-composite: source-in;
+        mask-image:
+            linear-gradient(to right, transparent 0, #000 5%, #000 95%, transparent 100%),
+            linear-gradient(to bottom, transparent 0, #000 8%, #000 92%, transparent 100%);
+        mask-composite: intersect;
+    }
+
+    .logo img[data-bg="clear"] {
+        mix-blend-mode: normal;
+        -webkit-mask-image: none;
+        mask-image: none;
+    }
+
+    .logo img[data-bg="light"] {
+        filter: invert(1) hue-rotate(180deg);
+    }
+
+    .logo .dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: var(--mint);
+        box-shadow: 0 0 10px 2px var(--mint-dim);
+    }
+
+    .logo.has-img .dot,
+    .logo.has-img .logo-text {
+        display: none;
+    }
+
+    @media (max-width: 780px) {
+        .logo img {
+            height: 50px;
+        }
+    }
+
+    .nav-links {
+        display: flex;
+        gap: 36px;
+        font-size: .92rem;
+        color: var(--text-muted);
+    }
+
+    .nav-links a:hover {
+        color: var(--text);
+    }
+
+    .nav-right {
+        display: flex;
+        align-items: center;
+        gap: 18px;
+    }
+
+    .nav-menu-toggle {
+        display: none;
+        width: 44px;
+        height: 44px;
+        border: 1px solid var(--line);
+        border-radius: 50%;
+        background: transparent;
+        color: var(--text);
+        align-items: center;
+        justify-content: center;
+        font-size: 1.25rem;
+        line-height: 1;
+    }
+
+    .nav-menu-toggle:hover {
+        border-color: var(--mint);
+        color: var(--mint);
+    }
+
+    @media (max-width: 780px) {
+
+        .nav-menu-toggle {
+            display: flex;
+        }
+
+        .nav-links {
+            display: none;
+            position: absolute;
+            top: var(--nav-h);
+            left: 0;
+            right: 0;
+            flex-direction: column;
+            gap: 0;
+            padding: 10px 20px 18px;
+            background: rgba(13, 19, 16, 0.97);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border-bottom: 1px solid var(--line);
+            box-shadow: 0 18px 35px rgba(0, 0, 0, .24);
+        }
+
+        .nav-links.open {
+            display: flex;
+        }
+
+        .nav-links a {
+            padding: 13px 0;
+            border-bottom: 1px solid rgba(38, 48, 41, .72);
+        }
+
+        .nav-links a:last-child {
+            border-bottom: none;
+        }
+    }
+
+    /* =========================
+       LEGAL PAGE
+    ========================= */
+
+    .legal-hero {
+        position: relative;
+        overflow: hidden;
+        padding: 96px 0 64px;
+        border-bottom: 1px solid var(--line);
+    }
+
+    .legal-hero::before {
+        content: "";
+        position: absolute;
+        inset: -30% -10% auto -10%;
+        height: 420px;
+        background:
+            radial-gradient(ellipse at 30% 20%, rgba(116, 232, 198, .10), transparent 60%),
+            radial-gradient(ellipse at 75% 40%, rgba(232, 168, 104, .08), transparent 55%);
+        pointer-events: none;
+    }
+
+    .legal-hero .wrap {
+        position: relative;
+    }
+
+    .eyebrow-line {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-size: .85rem;
+        color: var(--text-muted);
+        margin-bottom: 22px;
+    }
+
+    .eyebrow-line .rule {
+        width: 28px;
+        height: 1px;
+        background: var(--line);
+        display: inline-block;
+    }
+
+    .legal-hero h1 {
+        font-size: clamp(2.4rem, 5vw, 3.8rem);
+        line-height: 1.06;
+        margin-bottom: 20px;
+    }
+
+    .legal-hero p {
+        max-width: 620px;
+        color: var(--text-muted);
+        font-size: 1.02rem;
+        line-height: 1.8;
+    }
+
+    .legal-meta {
+        margin-top: 26px;
+        display: inline-flex;
+        padding: 8px 16px;
+        border: 1px solid var(--line);
+        border-radius: 100px;
+        font-size: .78rem;
+        color: var(--text-muted);
+        background: var(--bg-raised);
+    }
+
+    .legal-body {
+        padding: 72px 0 110px;
+    }
+
+    .legal-layout {
+        display: grid;
+        grid-template-columns: 250px minmax(0, 1fr);
+        gap: 72px;
+        align-items: start;
+    }
+
+    /* Table of contents */
+
+    .legal-toc {
+        position: sticky;
+        top: calc(var(--nav-h) + 28px);
+        padding: 26px 24px;
+        background: var(--bg-card);
+        border: 1px solid var(--line);
+        border-radius: 18px;
+    }
+
+    .legal-toc h2 {
+        font-family: 'Inter', sans-serif;
+        font-size: .72rem;
+        font-weight: 600;
+        letter-spacing: .14em;
+        text-transform: uppercase;
+        color: var(--text-faint);
+        margin-bottom: 18px;
+    }
+
+    .legal-toc ol {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 11px;
+    }
+
+    .legal-toc a {
+        font-size: .86rem;
+        color: var(--text-muted);
+        transition: color .2s ease;
+    }
+
+    .legal-toc a:hover {
+        color: var(--mint);
+    }
+
+    /* Content */
+
+    .legal-content section {
+        padding: 0 0 44px;
+        margin-bottom: 44px;
+        border-bottom: 1px solid var(--line);
+        scroll-margin-top: calc(var(--nav-h) + 28px);
+    }
+
+    .legal-content section:last-child {
+        border-bottom: none;
+        margin-bottom: 0;
+        padding-bottom: 0;
+    }
+
+    .legal-content h2 {
+        font-size: 1.6rem;
+        margin-bottom: 18px;
+    }
+
+    .legal-content h2 span {
+        color: var(--text-faint);
+        font-size: 1rem;
+        margin-right: 10px;
+    }
+
+    .legal-content p {
+        color: var(--text-muted);
+        font-size: .96rem;
+        line-height: 1.85;
+        margin-bottom: 16px;
+    }
+
+    .legal-content p:last-child {
+        margin-bottom: 0;
+    }
+
+    .legal-content ul {
+        list-style: none;
+        display: grid;
+        gap: 12px;
+        margin: 0 0 16px;
+    }
+
+    .legal-content ul:last-child {
+        margin-bottom: 0;
+    }
+
+    .legal-content li {
+        position: relative;
+        padding-left: 22px;
+        color: var(--text-muted);
+        font-size: .96rem;
+        line-height: 1.8;
+    }
+
+    .legal-content li::before {
+        content: "";
+        position: absolute;
+        left: 2px;
+        top: .72em;
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: var(--mint);
+    }
+
+    .legal-content strong {
+        color: var(--text);
+        font-weight: 600;
+    }
+
+    .legal-content a {
+        color: var(--mint);
+    }
+
+    .legal-content a:hover {
+        text-decoration: underline;
+    }
+
+    .legal-note {
+        margin-top: 18px;
+        padding: 18px 20px;
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        background: var(--bg-raised);
+        color: var(--text-muted);
+        font-size: .9rem;
+        line-height: 1.75;
+    }
+
+    @media (max-width: 900px) {
+
+        .legal-hero {
+            padding: 72px 0 48px;
+        }
+
+        .legal-body {
+            padding: 48px 0 80px;
+        }
+
+        .legal-layout {
+            grid-template-columns: 1fr;
+            gap: 40px;
+        }
+
+        .legal-toc {
+            position: static;
+        }
+    }
+
+    /* =========================
+       FOOTER (matches index.html)
+    ========================= */
+
+    footer {
+        position: relative;
+        isolation: isolate;
+        background: var(--bg);
+        color: var(--text);
+        padding: 84px 0 36px;
+        border-top: 1px solid var(--line);
+    }
+
+    .footer-top {
+        display: grid;
+        grid-template-columns: 1.5fr 1fr 1fr;
+        gap: 72px;
+        padding-bottom: 60px;
+        border-bottom: 1px solid var(--line);
+    }
+
+    .footer-brand .logo {
+        display: inline-flex;
+        margin-bottom: 22px;
+    }
+
+    .footer-brand .logo img {
+        height: 68px;
+    }
+
+    .footer-brand p {
+        max-width: 340px;
+        color: var(--text-muted);
+        font-size: .92rem;
+        line-height: 1.8;
+    }
+
+    .footer-col h4 {
+        font-family: 'Inter', sans-serif;
+        font-size: .72rem;
+        font-weight: 600;
+        letter-spacing: .14em;
+        text-transform: uppercase;
+        color: var(--text-faint);
+        margin-bottom: 26px;
+    }
+
+    .footer-links {
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+    }
+
+    .footer-links a {
+        width: fit-content;
+        font-size: .94rem;
+        color: var(--text-muted);
+        transition: color .2s ease;
+    }
+
+    .footer-links a:hover {
+        color: var(--mint);
+    }
+
+    .footer-bottom {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+        padding-top: 30px;
+    }
+
+    footer .fine {
+        color: var(--text-faint);
+        font-size: .82rem;
+    }
+
+    @media (max-width: 900px) {
+
+        .footer-top {
+            grid-template-columns: 1fr 1fr;
+            gap: 48px 40px;
+        }
+
+        .footer-brand {
+            grid-column: 1 / -1;
+        }
+    }
+
+    @media (max-width: 780px) {
+
+        footer {
+            padding: 64px 0 32px;
+        }
+
+        .footer-brand .logo img {
+            height: 58px;
+        }
+    }
+
+    @media (max-width: 480px) {
+
+        .footer-top {
+            gap: 44px 28px;
+            padding-bottom: 48px;
+        }
+
+        .footer-bottom {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 10px;
+        }
+    }
+</style>
+</head>
+
+<body id="top">
+
+<!-- =========================
+     ANNOUNCEMENT BAR
+========================= -->
+<div class="announcement-bar" role="status">
+    Free delivery for all orders
+</div>
+
+<!-- =========================
+     HEADER
+========================= -->
+<nav aria-label="Main navigation">
+
+    <div class="wrap">
+
+        <a href="index.html" class="logo" aria-label="BittPulse home">
+
+            <img
+                src="images/bittpulse_logo_no_bottom_row_centered.png"
+                alt="BittPulse"
+                onload="this.parentElement.classList.add('has-img')"
+                onerror="this.style.display='none';"
+            >
+
+            <span class="dot"></span><span class="logo-text">BittPulse</span>
+
+        </a>
+
+        <div class="nav-links" id="navLinks">
+
+            <a href="index.html#air">Air</a>
+            <a href="index.html#sleep">Sleep</a>
+            <a href="index.html#how">How it works</a>
+            <a href="contact.html">Contact</a>
+
+        </div>
+
+        <div class="nav-right">
+
+            <button
+                class="nav-menu-toggle"
+                id="navMenuToggle"
+                type="button"
+                onclick="toggleNavMenu()"
+                aria-label="Open navigation menu"
+                aria-expanded="false"
+                aria-controls="navLinks">
+
+                ☰
+
+            </button>
+
+        </div>
+
+    </div>
+
+</nav>
+
+<!-- =========================
+     MAIN CONTENT
+========================= -->
+<main>
+
+    <header class="legal-hero">
+
+        <div class="wrap">
+
+            <div class="eyebrow-line">
+                <span class="rule"></span>
+                Legal
+            </div>
+
+            <h1>Terms of Service</h1>
+
+            <p>
+                These terms explain how BittPulse works, what you can expect when you
+                order from us, and what we ask of you in return. Please read them
+                before placing an order.
+            </p>
+
+            <span class="legal-meta">Last updated: October 4, 2026</span>
+
+        </div>
+
+    </header>
+
+
+    <div class="legal-body">
+
+        <div class="wrap legal-layout">
+
+            <!-- TABLE OF CONTENTS -->
+            <aside class="legal-toc" aria-label="Terms of Service contents">
+
+                <h2>Contents</h2>
+
+                <ol>
+                    <li><a href="#acceptance">Acceptance of terms</a></li>
+                    <li><a href="#about">About BittPulse</a></li>
+                    <li><a href="#products">Products &amp; information</a></li>
+                    <li><a href="#pricing">Pricing &amp; availability</a></li>
+                    <li><a href="#orders">Orders &amp; payment</a></li>
+                    <li><a href="#delivery">Shipping &amp; delivery</a></li>
+                    <li><a href="#returns">Returns &amp; refunds</a></li>
+                    <li><a href="#third-party">Subscriptions &amp; warranties</a></li>
+                    <li><a href="#health">Health disclaimer</a></li>
+                    <li><a href="#use">Using the website</a></li>
+                    <li><a href="#ip">Intellectual property</a></li>
+                    <li><a href="#liability">Disclaimers &amp; liability</a></li>
+                    <li><a href="#law">Governing law</a></li>
+                    <li><a href="#changes">Changes to these terms</a></li>
+                    <li><a href="#contact">Contact us</a></li>
+                </ol>
+
+            </aside>
+
+
+            <!-- TERMS -->
+            <article class="legal-content">
+
+                <section id="acceptance">
+                    <h2><span>01</span>Acceptance of terms</h2>
+                    <p>
+                        By visiting, browsing or placing an order on the BittPulse website
+                        (the “Site”), you agree to be bound by these Terms of Service
+                        (the “Terms”) and by our <a href="privacy.html">Privacy Policy</a>
+                        and <a href="shipping.html">Shipping &amp; Delivery</a> information,
+                        which form part of these Terms.
+                    </p>
+                    <p>
+                        If you do not agree with any part of these Terms, please do not use
+                        the Site or place an order. You must be at least 18 years old, or
+                        the age of majority where you live, to purchase from BittPulse.
+                    </p>
+                </section>
+
+
+                <section id="about">
+                    <h2><span>02</span>About BittPulse</h2>
+                    <p>
+                        BittPulse (“BittPulse”, “we”, “us”, “our”) is an online store that
+                        curates adaptive air purifiers and sleep-tracking devices. Our
+                        warehouse and mailing address is:
+                    </p>
+                    <p>
+                        <strong>BittPulse</strong><br>
+                        2451 Enterprise Blvd<br>
+                        Plainfield, IN 46168<br>
+                        USA
+                    </p>
+                    <p>
+                        You can reach our support team at
+                        <a href="mailto:support@bittpulse.store">support@bittpulse.store</a>.
+                    </p>
+                </section>
+
+
+                <section id="products">
+                    <h2><span>03</span>Products &amp; information</h2>
+                    <p>
+                        We take care to describe and display our products accurately,
+                        including specifications, features and images. However, product
+                        details are supplied by manufacturers and may change. Colors and
+                        packaging may differ slightly from what appears on the Site, and we
+                        do not guarantee that descriptions, specifications or other content
+                        are complete, current or error-free.
+                    </p>
+                    <p>
+                        Product names, logos and brands shown on the Site belong to their
+                        respective owners. Their appearance on the Site does not imply any
+                        endorsement of BittPulse by those owners.
+                    </p>
+                </section>
+
+
+                <section id="pricing">
+                    <h2><span>04</span>Pricing &amp; availability</h2>
+                    <ul>
+                        <li>All prices are shown in <strong>US dollars (USD)</strong>.</li>
+                        <li>
+                            Sale prices and reference prices are shown for comparison, and
+                            sale pricing may change or end at any time without notice.
+                        </li>
+                        <li>
+                            Some products require a separate subscription or membership
+                            charged by the manufacturer. Where this applies, it is shown
+                            next to the price, and it is not included in your BittPulse order total.
+                        </li>
+                        <li>
+                            Products are offered while stock lasts. We may limit quantities
+                            or discontinue a product at any time.
+                        </li>
+                        <li>
+                            If a price or description contains an obvious error, we may
+                            correct it and cancel or reconfirm any affected order.
+                        </li>
+                    </ul>
+                </section>
+
+
+                <section id="orders">
+                    <h2><span>05</span>Orders &amp; payment</h2>
+                    <p>
+                        Adding a product to your cart does not reserve it. Your order is
+                        placed when you complete checkout, and it is accepted when we confirm
+                        your payment. We may decline or cancel an order for reasons such as
+                        stock availability, pricing errors, incomplete delivery details or
+                        suspected fraud, and if we do, we will let you know by email.
+                    </p>
+                    <p>
+                        <strong>Cryptocurrency payments.</strong> Orders are paid in
+                        cryptocurrency through our payment processor, NOWPayments. When you
+                        continue to payment, you are redirected to NOWPayments’ hosted
+                        checkout, where you choose a supported coin and pay the amount shown.
+                    </p>
+                    <ul>
+                        <li>
+                            Cryptocurrency transactions are generally <strong>final and
+                            irreversible</strong> once confirmed on the network. Please check the
+                            amount, coin and network carefully before sending.
+                        </li>
+                        <li>
+                            You are responsible for any network or wallet fees charged by
+                            your wallet or exchange.
+                        </li>
+                        <li>
+                            Exchange rates are set by the payment processor at checkout and
+                            may expire. Payments that are underpaid, sent after the payment
+                            window closes, or sent to the wrong address or network may not be
+                            credited automatically. If this happens, contact support with your
+                            order details and transaction ID and we will do our best to help.
+                        </li>
+                        <li>
+                            Your payment is handled by NOWPayments under its own terms and
+                            privacy practices. BittPulse does not store your wallet details
+                            or private keys.
+                        </li>
+                    </ul>
+                    <p>
+                        You agree to provide accurate and complete contact and delivery
+                        information when ordering. We send order updates to the email address you provide.
+                    </p>
+                </section>
+
+
+                <section id="delivery">
+                    <h2><span>06</span>Shipping &amp; delivery</h2>
+                    <p>
+                        We provide <strong>free delivery on all orders</strong>. Delivery
+                        typically takes <strong>2 to 4 business days</strong> after your
+                        order is confirmed. Business days exclude weekends and public holidays.
+                    </p>
+                    <p>
+                        Delivery times are estimates, not guarantees. They can be affected by
+                        carrier delays, weather, incorrect or incomplete addresses, customs or
+                        other events outside our control. Please make sure your delivery
+                        address is correct, because we are not responsible for orders delivered
+                        to an incorrect address supplied by you. Further details are
+                        on our <a href="shipping.html">Shipping &amp; Delivery</a> page.
+                    </p>
+                </section>
+
+
+                <section id="returns">
+                    <h2><span>07</span>Returns &amp; refunds</h2>
+                    <p>
+                        If your order arrives damaged or defective, or is not what you
+                        ordered, please contact
+                        <a href="mailto:support@bittpulse.store">support@bittpulse.store</a>
+                        as soon as possible after delivery. Include your order details and,
+                        where relevant, photos of the product and packaging so we can resolve
+                        the issue quickly.
+                    </p>
+                    <p>
+                        Where a return, replacement or refund is approved, we will tell you
+                        how to proceed. Because payments are made in cryptocurrency, approved
+                        refunds are issued to a wallet address you provide, and the amount
+                        returned may be calculated in USD at the time of the refund, so the
+                        coin value you receive may differ from the coin amount you sent.
+                    </p>
+                    <p>
+                        Nothing in these Terms limits any rights you have under mandatory
+                        consumer protection laws that apply to you.
+                    </p>
+                </section>
+
+
+                <section id="third-party">
+                    <h2><span>08</span>Subscriptions &amp; manufacturer warranties</h2>
+                    <p>
+                        Many devices we sell are made by third-party manufacturers. Their
+                        apps, memberships and subscriptions (for example, a device that
+                        requires a monthly or yearly plan) are provided and billed by the
+                        manufacturer under the manufacturer’s own terms, not by BittPulse.
+                    </p>
+                    <p>
+                        Product warranties are provided by the manufacturer unless we
+                        state otherwise. Warranty coverage, duration and claim procedures
+                        are set by the manufacturer. Contact us if you need help
+                        finding the right way to make a warranty claim.
+                    </p>
+                </section>
+
+
+                <section id="health">
+                    <h2><span>09</span>Health &amp; wellness disclaimer</h2>
+                    <p>
+                        The products on this Site are consumer wellness and home-environment
+                        devices. Unless a product’s manufacturer states otherwise, they are
+                        not medical devices and are not intended to diagnose, treat, cure or
+                        prevent any condition. Information on the Site, including air-quality
+                        and sleep descriptions, is for general information only and is not
+                        medical advice.
+                    </p>
+                    <div class="legal-note">
+                        Always speak with a qualified healthcare professional about health
+                        concerns, sleep problems or breathing conditions. Never ignore
+                        professional advice because of something you saw on this Site or in
+                        a device’s app.
+                    </div>
+                </section>
+
+
+                <section id="use">
+                    <h2><span>10</span>Using the website</h2>
+                    <p>You agree to use the Site lawfully and not to:</p>
+                    <ul>
+                        <li>Provide false information or use another person’s payment or contact details without permission.</li>
+                        <li>Attempt to gain unauthorized access to the Site, our systems or other users’ data.</li>
+                        <li>Interfere with the Site’s operation, including by introducing malware, scraping at a disruptive rate or overloading our servers.</li>
+                        <li>Use the Site for fraud, money laundering or any activity that breaks applicable law.</li>
+                        <li>Resell products purchased from us in a way that misrepresents their source or breaches manufacturer terms.</li>
+                    </ul>
+                    <p>
+                        We may suspend or restrict access to the Site, or cancel orders, if we
+                        reasonably believe these Terms have been breached.
+                    </p>
+                </section>
+
+
+                <section id="ip">
+                    <h2><span>11</span>Intellectual property</h2>
+                    <p>
+                        The BittPulse name, logo, Site design, text, graphics and other
+                        original content are owned by or licensed to BittPulse and are
+                        protected by intellectual property laws. You may view and print
+                        content from the Site for your personal, non-commercial use, but you
+                        may not copy, reproduce, modify, distribute or create derivative
+                        works from it without our written permission.
+                    </p>
+                </section>
+
+
+                <section id="liability">
+                    <h2><span>12</span>Disclaimers &amp; limitation of liability</h2>
+                    <p>
+                        The Site and its content are provided “as is” and “as available”.
+                        To the fullest extent permitted by law, BittPulse disclaims all
+                        warranties, express or implied, including implied warranties of
+                        merchantability, fitness for a particular purpose and
+                        non-infringement, except for any warranty that cannot legally be excluded.
+                    </p>
+                    <p>
+                        To the fullest extent permitted by law, BittPulse will not be liable
+                        for any indirect, incidental, special, consequential or punitive
+                        damages, or for loss of profits, data or goodwill, arising from your
+                        use of the Site or products. This includes losses connected to
+                        cryptocurrency price movements, network delays or errors made when
+                        sending payments. Our total liability for any claim relating to an
+                        order is limited to the amount you paid for that order.
+                    </p>
+                    <p>
+                        Nothing in these Terms excludes or limits liability that cannot be
+                        excluded or limited by law, including liability for fraud or for
+                        death or personal injury caused by negligence.
+                    </p>
+                </section>
+
+
+                <section id="law">
+                    <h2><span>13</span>Governing law</h2>
+                    <p>
+                        These Terms are governed by the laws of the State of Indiana, USA,
+                        without regard to its conflict-of-law rules. Any dispute that cannot
+                        be resolved informally will be brought in the state or federal courts
+                        located in Indiana, and you consent to their jurisdiction, unless
+                        mandatory consumer laws where you live provide otherwise.
+                    </p>
+                    <p>
+                        We encourage you to contact us first at
+                        <a href="mailto:support@bittpulse.store">support@bittpulse.store</a>,
+                        as most issues can be settled quickly without formal proceedings.
+                    </p>
+                </section>
+
+
+                <section id="changes">
+                    <h2><span>14</span>Changes to these terms</h2>
+                    <p>
+                        We may update these Terms from time to time. The “Last updated” date
+                        at the top of this page shows when they were last revised. Changes
+                        apply from the date they are posted, and orders you have already
+                        placed remain governed by the Terms in effect when you placed
+                        them. By continuing to use the Site after changes are posted, you
+                        accept the updated Terms.
+                    </p>
+                </section>
+
+
+                <section id="contact">
+                    <h2><span>15</span>Contact us</h2>
+                    <p>
+                        Questions about these Terms? Get in touch:
+                    </p>
+                    <p>
+                        <strong>BittPulse</strong><br>
+                        2451 Enterprise Blvd<br>
+                        Plainfield, IN 46168<br>
+                        USA<br>
+                        <a href="mailto:support@bittpulse.store">support@bittpulse.store</a>
+                    </p>
+                </section>
+
+            </article>
+
+        </div>
+
+    </div>
+
+</main>
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+<footer>
+
+    <div class="wrap">
+
+        <div class="footer-top">
+
+            <div class="footer-brand">
+
+                <a href="index.html" class="logo" aria-label="BittPulse home">
+
+                    <img
+                        src="images/bittpulse_logo_no_bottom_row_centered.png"
+                        alt="BittPulse"
+                        onload="this.parentElement.classList.add('has-img')"
+                        onerror="this.style.display='none';"
+                    >
+
+                    <span class="dot"></span><span class="logo-text">BittPulse</span>
+
+                </a>
+
+                <p>
+                    Adaptive air and sleep devices designed for a more comfortable everyday life.
+                </p>
+
+            </div>
+
+
+            <div class="footer-col">
+
+                <h4>Explore</h4>
+
+                <div class="footer-links">
+                    <a href="index.html#air">Air</a>
+                    <a href="index.html#sleep">Sleep</a>
+                    <a href="index.html#how">How it works</a>
+                    <a href="contact.html">Contact</a>
+                </div>
+
+            </div>
+
+
+            <div class="footer-col">
+
+                <h4>Information</h4>
+
+                <div class="footer-links">
+                    <a href="terms.html">Terms</a>
+                    <a href="privacy.html">Privacy Policy</a>
+                    <a href="shipping.html">Shipping &amp; Delivery</a>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="footer-bottom">
+
+            <p class="fine">
+                © 2026 BittPulse. All rights reserved.
+            </p>
+
+        </div>
+
+    </div>
+
+</footer>
+
+
+<script>
+    function toggleNavMenu() {
+        const menu = document.getElementById("navLinks");
+        const button = document.getElementById("navMenuToggle");
+
+        if (!menu || !button) return;
+
+        const isOpen = menu.classList.toggle("open");
+
+        button.setAttribute("aria-expanded", isOpen ? "true" : "false");
+        button.setAttribute(
+            "aria-label",
+            isOpen ? "Close navigation menu" : "Open navigation menu"
+        );
+        button.textContent = isOpen ? "×" : "☰";
+    }
+
+
+    // Close mobile navigation after selecting a link
+    document.querySelectorAll("#navLinks a").forEach(function(link) {
+        link.addEventListener("click", function() {
+            const menu = document.getElementById("navLinks");
+            const button = document.getElementById("navMenuToggle");
+
+            if (!menu || !button) return;
+
+            menu.classList.remove("open");
+            button.setAttribute("aria-expanded", "false");
+            button.setAttribute("aria-label", "Open navigation menu");
+            button.textContent = "☰";
+        });
+    });
+</script>
+
+<script>
+/* Adaptive logo: checks the logo image's own backdrop and picks the blend that
+   makes it melt into the page (dark backdrop -> screen, light backdrop -> invert + screen,
+   transparent -> untouched). Falls back silently if the browser blocks pixel access. */
+(function(){
+
+  function adapt(img){
+
+    try{
+
+      var size = 32;
+      var c = document.createElement('canvas');
+      c.width = size;
+      c.height = size;
+
+      var ctx = c.getContext('2d', { willReadFrequently:true });
+      ctx.drawImage(img, 0, 0, size, size);
+
+      var pts = [[1,1],[size-2,1],[1,size-2],[size-2,size-2]];
+      var a = 0, l = 0;
+
+      pts.forEach(function(p){
+        var d = ctx.getImageData(p[0], p[1], 1, 1).data;
+        a += d[3];
+        l += (0.2126*d[0] + 0.7152*d[1] + 0.0722*d[2]);
+      });
+
+      a /= pts.length;
+      l /= pts.length;
+
+      if(a < 40){
+        img.setAttribute('data-bg','clear');
+      }else if(l > 150){
+        img.setAttribute('data-bg','light');
+      }else{
+        img.setAttribute('data-bg','dark');
+      }
+
+    }catch(e){
+      /* canvas blocked (e.g. opened as a local file) - keep the default dark blend */
+    }
+
+  }
+
+  document.querySelectorAll('.logo img').forEach(function(img){
+
+    if(img.complete && img.naturalWidth){
+      adapt(img);
+    }else{
+      img.addEventListener('load', function(){ adapt(img); });
+    }
+
+  });
+
+})();
+</script>
+
+</body>
+</html>
