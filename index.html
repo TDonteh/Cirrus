@@ -8,8 +8,8 @@
 <title>BittPulse — Adaptive Air & Sleep Devices</title>
 
 <!-- Favicon -->
-<link rel="icon" type="image/x-icon" href="images/bittpulse no bg.jpg">
-<link rel="icon" type="images/bittpulse no bg.jpg">
+<link rel="icon" type="image/x-icon" href="images/bittpulse_logo_no_bottom_row_centered.png">
+<link rel="icon" type="image/png" href="images/bittpulse_logo_no_bottom_row_centered.png">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -31,6 +31,13 @@
   --coral:#E88A74;
   --mint-dim:rgba(116,232,198,0.14);
   --amber-dim:rgba(232,168,104,0.14);
+  --nav-h:92px;
+}
+
+@media(max-width:780px){
+  :root{
+    --nav-h:80px;
+  }
 }
 
 *{
@@ -99,7 +106,7 @@ nav .wrap{
   display:flex;
   align-items:center;
   justify-content:space-between;
-  height:76px;
+  height:var(--nav-h);
 }
 
 .logo{
@@ -112,9 +119,43 @@ nav .wrap{
 }
 
 .logo img{
-  height:42px;
+  height:62px;
   width:auto;
+  max-width:100%;
   display:block;
+  /* Blend the logo's own backdrop into whatever sits behind it */
+  mix-blend-mode:screen;
+  -webkit-mask-image:
+    linear-gradient(to right,transparent 0,#000 5%,#000 95%,transparent 100%),
+    linear-gradient(to bottom,transparent 0,#000 8%,#000 92%,transparent 100%);
+  -webkit-mask-composite:source-in;
+  mask-image:
+    linear-gradient(to right,transparent 0,#000 5%,#000 95%,transparent 100%),
+    linear-gradient(to bottom,transparent 0,#000 8%,#000 92%,transparent 100%);
+  mask-composite:intersect;
+}
+
+/* Set automatically by the logo script below */
+.logo img[data-bg="clear"]{
+  mix-blend-mode:normal;
+  -webkit-mask-image:none;
+  mask-image:none;
+}
+
+.logo img[data-bg="light"]{
+  filter:invert(1) hue-rotate(180deg);
+}
+
+/* When the logo image loads, it replaces the text fallback */
+.logo.has-img .dot,
+.logo.has-img .logo-text{
+  display:none;
+}
+
+@media(max-width:780px){
+  .logo img{
+    height:50px;
+  }
 }
 
 .logo .dot{
@@ -203,7 +244,7 @@ nav .wrap{
   .nav-links{
     display:none;
     position:absolute;
-    top:76px;
+    top:var(--nav-h);
     left:0;
     right:0;
     flex-direction:column;
@@ -732,71 +773,113 @@ nav .wrap{
 /* ---------- Footer ---------- */
 
 footer{
-  padding:56px 0;
+  position:relative;
+  isolation:isolate;
+  background:var(--bg);
+  padding:84px 0 36px;
 }
 
-.footer-inner{
+.footer-top{
   display:grid;
-  grid-template-columns:1fr auto 1fr;
+  grid-template-columns:1.5fr 1fr 1fr;
+  gap:72px;
+  padding-bottom:60px;
+  border-bottom:1px solid var(--line);
+}
+
+.footer-brand .logo{
+  display:inline-flex;
+  margin-bottom:22px;
+}
+
+.footer-brand .logo img{
+  height:68px;
+}
+
+.footer-brand p{
+  max-width:340px;
+  color:var(--text-muted);
+  font-size:.92rem;
+  line-height:1.8;
+}
+
+.footer-col h4{
+  font-family:'Inter',sans-serif;
+  font-size:.72rem;
+  font-weight:600;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  color:var(--text-faint);
+  margin-bottom:26px;
+}
+
+.footer-links{
+  display:flex;
+  flex-direction:column;
+  gap:18px;
+}
+
+.footer-links a{
+  width:fit-content;
+  font-size:.94rem;
+  color:var(--text-muted);
+  transition:color .2s ease;
+}
+
+.footer-links a:hover{
+  color:var(--mint);
+}
+
+.footer-bottom{
+  display:flex;
   align-items:center;
-  gap:30px;
-}
-
-.footer-brand{
-  justify-self:start;
-}
-
-.footer-inner .logo{
-  font-size:1.05rem;
+  justify-content:space-between;
+  gap:20px;
+  padding-top:30px;
 }
 
 footer .fine{
   color:var(--text-faint);
   font-size:.82rem;
-  max-width:520px;
-  text-align:center;
-}
-
-.foot-links{
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  gap:26px;
-  font-size:.88rem;
-  color:var(--text-muted);
-  justify-self:end;
-}
-
-.foot-links a:hover{
-  color:var(--text);
 }
 
 
 /* ---------- Footer mobile layout ---------- */
 
-@media(max-width:780px){
+@media(max-width:900px){
 
-  .footer-inner{
-    display:flex;
-    flex-direction:column;
-    text-align:center;
-    gap:24px;
+  .footer-top{
+    grid-template-columns:1fr 1fr;
+    gap:48px 40px;
   }
 
   .footer-brand{
-    justify-self:auto;
+    grid-column:1 / -1;
+  }
+}
+
+@media(max-width:780px){
+
+  footer{
+    padding:64px 0 32px;
   }
 
-  footer .fine{
-    order:3;
+  .footer-brand .logo img{
+    height:58px;
+  }
+}
+
+@media(max-width:480px){
+
+  .footer-top{
+    gap:44px 28px;
+    padding-bottom:48px;
   }
 
-  .foot-links{
-    width:100%;
-    flex-wrap:wrap;
-    justify-content:center;
-    gap:14px 22px;
-    order:2;
+  .footer-bottom{
+    flex-direction:column;
+    align-items:flex-start;
+    gap:10px;
   }
 }
 
@@ -1736,12 +1819,13 @@ footer .fine{
 
       <!-- Add your logo as images/logo.svg -->
       <img
-        src="images/bittpulse no bg (2).jpg"
+        src="images/bittpulse_logo_no_bottom_row_centered.png"
         alt="BittPulse"
+        onload="this.parentElement.classList.add('has-img')"
         onerror="this.style.display='none';"
       >
 
-      <span class="dot"></span>BittPulse
+      <span class="dot"></span><span class="logo-text">BittPulse</span>
 
     </a>
 
@@ -2035,64 +2119,66 @@ footer .fine{
 
 <footer>
 
-  <div class="wrap footer-inner">
+  <div class="wrap">
 
-    <div class="footer-brand">
+    <div class="footer-top">
 
-      <a href="#top" class="logo" aria-label="BittPulse home">
+      <div class="footer-brand">
 
-        <!-- Add your logo later as images/logo.svg -->
-        <img
-          src="images/bittpulse no bg (2).jpg"
-          alt="BittPulse"
-          onerror="this.style.display='none';"
-        >
+        <a href="#top" class="logo" aria-label="BittPulse home">
 
-        <span class="dot"></span>BittPulse
+          <img
+            src="images/bittpulse_logo_no_bottom_row_centered.png"
+            alt="BittPulse"
+            onload="this.parentElement.classList.add('has-img')"
+            onerror="this.style.display='none';"
+          >
 
-      </a>
+          <span class="dot"></span><span class="logo-text">BittPulse</span>
+
+        </a>
+
+        <p>
+          Adaptive air and sleep devices designed for a more comfortable everyday life.
+        </p>
+
+      </div>
+
+
+      <div class="footer-col">
+
+        <h4>Explore</h4>
+
+        <div class="footer-links">
+          <a href="#air">Air</a>
+          <a href="#sleep">Sleep</a>
+          <a href="#how">How it works</a>
+          <a href="contact.html">Contact</a>
+        </div>
+
+      </div>
+
+
+      <div class="footer-col">
+
+        <h4>Information</h4>
+
+        <div class="footer-links">
+          <a href="terms.html">Terms</a>
+          <a href="privacy.html">Privacy Policy</a>
+          <a href="shipping.html">Shipping &amp; Delivery</a>
+        </div>
+
+      </div>
 
     </div>
 
 
-    <p class="fine">
+    <div class="footer-bottom">
 
-      © 2026 BittPulse. All rights reserved.
-
-    </p>
-
-
-    <div
-      class="foot-links"
-      id="footerLinks">
-
-      <a href="#air">
-        Air
-      </a>
-
-      <a href="#sleep">
-        Sleep
-      </a>
-
-      <a href="#how">
-        How it works
-      </a>
-
-      <a href="contact.html">
-        Contact
-      </a>
-
-      <a href="terms.html">
-        Terms
-      </a>
-
-      <a href="privacy.html">
-        Privacy Policy
-      </a>
-
-      <a href="shipping.html">
-        Shipping &amp; Delivery
-      </a>
+      <p class="fine">
+        © 2026 BittPulse. All rights reserved.
+      </p>
 
     </div>
 
@@ -3583,6 +3669,63 @@ renderProducts();
 
 updateCartUI();
 
+</script>
+
+<script>
+/* Adaptive logo: checks the logo image's own backdrop and picks the blend that
+   makes it melt into the page (dark backdrop -> screen, light backdrop -> invert + screen,
+   transparent -> untouched). Falls back silently if the browser blocks pixel access. */
+(function(){
+
+  function adapt(img){
+
+    try{
+
+      var size = 32;
+      var c = document.createElement('canvas');
+      c.width = size;
+      c.height = size;
+
+      var ctx = c.getContext('2d', { willReadFrequently:true });
+      ctx.drawImage(img, 0, 0, size, size);
+
+      var pts = [[1,1],[size-2,1],[1,size-2],[size-2,size-2]];
+      var a = 0, l = 0;
+
+      pts.forEach(function(p){
+        var d = ctx.getImageData(p[0], p[1], 1, 1).data;
+        a += d[3];
+        l += (0.2126*d[0] + 0.7152*d[1] + 0.0722*d[2]);
+      });
+
+      a /= pts.length;
+      l /= pts.length;
+
+      if(a < 40){
+        img.setAttribute('data-bg','clear');
+      }else if(l > 150){
+        img.setAttribute('data-bg','light');
+      }else{
+        img.setAttribute('data-bg','dark');
+      }
+
+    }catch(e){
+      /* canvas blocked (e.g. opened as a local file) - keep the default dark blend */
+    }
+
+  }
+
+  document.querySelectorAll('.logo img').forEach(function(img){
+
+    if(img.complete && img.naturalWidth){
+      adapt(img);
+    }else{
+      img.addEventListener('load', function(){ adapt(img); });
+    }
+
+  });
+
+})();
 </script>
 
 </body>
