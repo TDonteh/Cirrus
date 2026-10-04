@@ -9,15 +9,36 @@
 <meta name="description" content="Contact BittPulse support, find our warehouse address, and learn about delivery times.">
 
 <!-- Favicon -->
-<link rel="icon" type="image/x-icon" href="images/favicon.ico">
-<link rel="icon" type="image/png" href="images/favicon.png">
+<link rel="icon" type="image/x-icon" href="images/bittpulse_logo_no_bottom_row_centered.png">
+<link rel="icon" type="image/png" href="images/bittpulse_logo_no_bottom_row_centered.png">
 
-<!-- Google Fonts -->
+<!-- Google Fonts (same as index.html) -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
+
+    :root {
+        --bg: #0D1310;
+        --bg-raised: #141B18;
+        --bg-card: #171F1B;
+        --line: #263029;
+        --text: #E9EDE9;
+        --text-muted: #8FA098;
+        --text-faint: #5B685F;
+        --mint: #74E8C6;
+        --amber: #E8A868;
+        --mint-dim: rgba(116, 232, 198, 0.14);
+        --nav-h: 92px;
+    }
+
+    @media (max-width: 780px) {
+        :root {
+            --nav-h: 80px;
+        }
+    }
+
     * {
         box-sizing: border-box;
         margin: 0;
@@ -34,11 +55,29 @@
         color: #111;
         line-height: 1.6;
         min-height: 100vh;
+        -webkit-font-smoothing: antialiased;
     }
 
     a {
         color: inherit;
         text-decoration: none;
+    }
+
+    button {
+        font-family: inherit;
+        cursor: pointer;
+    }
+
+    .wrap {
+        max-width: 1180px;
+        margin: 0 auto;
+        padding: 0 32px;
+    }
+
+    @media (max-width: 640px) {
+        .wrap {
+            padding: 0 20px;
+        }
     }
 
     /* =========================
@@ -55,98 +94,171 @@
         font-weight: 600;
         letter-spacing: 0.08em;
         text-transform: uppercase;
+        position: relative;
+        z-index: 1000;
+    }
+
+    @media (max-width: 768px) {
+        .announcement-bar {
+            padding: 8px 12px;
+            font-size: 11px;
+            letter-spacing: 0.06em;
+        }
     }
 
     /* =========================
-       HEADER
+       HEADER (matches index.html)
     ========================= */
 
-    header {
-        width: 100%;
-        background: rgba(255, 255, 255, 0.94);
-        border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    nav {
         position: sticky;
         top: 0;
-        z-index: 1000;
-        backdrop-filter: blur(18px);
-        -webkit-backdrop-filter: blur(18px);
+        z-index: 50;
+        background: rgba(13, 19, 16, 0.86);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border-bottom: 1px solid var(--line);
     }
 
-    .header-inner {
-        max-width: 1400px;
-        margin: 0 auto;
-        min-height: 82px;
-        padding: 0 40px;
+    nav .wrap {
         display: flex;
         align-items: center;
         justify-content: space-between;
-        gap: 30px;
+        height: var(--nav-h);
     }
 
     .logo {
-        display: inline-flex;
+        font-family: 'Fraunces', serif;
+        font-size: 1.25rem;
+        font-weight: 600;
+        color: var(--text);
+        display: flex;
         align-items: center;
-        flex-shrink: 0;
+        gap: 10px;
     }
 
     .logo img {
-        width: 155px;
-        height: auto;
+        height: 62px;
+        width: auto;
+        max-width: 100%;
         display: block;
+        /* Blend the logo's own backdrop into whatever sits behind it */
+        mix-blend-mode: screen;
+        -webkit-mask-image:
+            linear-gradient(to right, transparent 0, #000 5%, #000 95%, transparent 100%),
+            linear-gradient(to bottom, transparent 0, #000 8%, #000 92%, transparent 100%);
+        -webkit-mask-composite: source-in;
+        mask-image:
+            linear-gradient(to right, transparent 0, #000 5%, #000 95%, transparent 100%),
+            linear-gradient(to bottom, transparent 0, #000 8%, #000 92%, transparent 100%);
+        mask-composite: intersect;
+    }
+
+    /* Set automatically by the logo script below */
+    .logo img[data-bg="clear"] {
+        mix-blend-mode: normal;
+        -webkit-mask-image: none;
+        mask-image: none;
+    }
+
+    .logo img[data-bg="light"] {
+        filter: invert(1) hue-rotate(180deg);
+    }
+
+    .logo .dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: var(--mint);
+        box-shadow: 0 0 10px 2px var(--mint-dim);
+    }
+
+    /* When the logo image loads, it replaces the text fallback */
+    .logo.has-img .dot,
+    .logo.has-img .logo-text {
+        display: none;
+    }
+
+    @media (max-width: 780px) {
+        .logo img {
+            height: 50px;
+        }
     }
 
     .nav-links {
         display: flex;
-        align-items: center;
-        justify-content: flex-end;
-        gap: 34px;
-    }
-
-    .nav-links a {
-        position: relative;
-        font-size: 13px;
-        font-weight: 600;
-        letter-spacing: 0.03em;
-        color: #222;
-        transition: opacity 0.25s ease;
+        gap: 36px;
+        font-size: .92rem;
+        color: var(--text-muted);
     }
 
     .nav-links a:hover {
-        opacity: 0.55;
+        color: var(--text);
     }
 
-    .nav-links a::after {
-        content: "";
-        position: absolute;
-        left: 0;
-        bottom: -7px;
-        width: 0;
-        height: 1px;
-        background: #111;
-        transition: width 0.25s ease;
+    .nav-links a[aria-current="page"] {
+        color: var(--text);
     }
 
-    .nav-links a:hover::after {
-        width: 100%;
+    .nav-right {
+        display: flex;
+        align-items: center;
+        gap: 18px;
     }
 
     .nav-menu-toggle {
         display: none;
-        border: 0;
+        width: 44px;
+        height: 44px;
+        border: 1px solid var(--line);
+        border-radius: 50%;
         background: transparent;
-        width: 42px;
-        height: 42px;
-        padding: 8px;
-        cursor: pointer;
+        color: var(--text);
+        align-items: center;
+        justify-content: center;
+        font-size: 1.25rem;
+        line-height: 1;
     }
 
-    .nav-menu-toggle span {
-        display: block;
-        width: 24px;
-        height: 2px;
-        background: #111;
-        margin: 5px auto;
-        transition: transform 0.25s ease, opacity 0.25s ease;
+    .nav-menu-toggle:hover {
+        border-color: var(--mint);
+        color: var(--mint);
+    }
+
+    @media (max-width: 780px) {
+
+        .nav-menu-toggle {
+            display: flex;
+        }
+
+        .nav-links {
+            display: none;
+            position: absolute;
+            top: var(--nav-h);
+            left: 0;
+            right: 0;
+            flex-direction: column;
+            gap: 0;
+            padding: 10px 20px 18px;
+            background: rgba(13, 19, 16, 0.97);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border-bottom: 1px solid var(--line);
+            box-shadow: 0 18px 35px rgba(0, 0, 0, .24);
+        }
+
+        .nav-links.open {
+            display: flex;
+        }
+
+        .nav-links a {
+            padding: 13px 0;
+            border-bottom: 1px solid rgba(38, 48, 41, .72);
+        }
+
+        .nav-links a:last-child {
+            border-bottom: none;
+        }
     }
 
     /* =========================
@@ -335,89 +447,66 @@
     }
 
     /* =========================
-       FOOTER
+       FOOTER (matches index.html)
     ========================= */
 
     footer {
-        background: #111;
-        color: #fff;
-        padding: 65px 30px 30px;
-    }
-
-    .footer-inner {
-        max-width: 1400px;
-        margin: 0 auto;
+        position: relative;
+        isolation: isolate;
+        background: var(--bg);
+        color: var(--text);
+        padding: 84px 0 36px;
     }
 
     .footer-top {
         display: grid;
-        grid-template-columns: 1.4fr 1fr 1fr;
-        gap: 60px;
-        padding-bottom: 55px;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.13);
+        grid-template-columns: 1.5fr 1fr 1fr;
+        gap: 72px;
+        padding-bottom: 60px;
+        border-bottom: 1px solid var(--line);
     }
 
     .footer-brand .logo {
-        margin-bottom: 20px;
+        display: inline-flex;
+        margin-bottom: 22px;
     }
 
     .footer-brand .logo img {
-        width: 155px;
-        filter: brightness(0) invert(1);
+        height: 68px;
     }
 
     .footer-brand p {
-        max-width: 360px;
-        color: #999;
-        font-size: 13px;
+        max-width: 340px;
+        color: var(--text-muted);
+        font-size: .92rem;
         line-height: 1.8;
     }
 
-    .footer-column h3 {
-        margin-bottom: 20px;
-        font-size: 10px;
-        font-weight: 700;
-        letter-spacing: 0.15em;
+    .footer-col h4 {
+        font-family: 'Inter', sans-serif;
+        font-size: .72rem;
+        font-weight: 600;
+        letter-spacing: .14em;
         text-transform: uppercase;
-        color: #888;
+        color: var(--text-faint);
+        margin-bottom: 26px;
     }
 
     .footer-links {
         display: flex;
         flex-direction: column;
-        gap: 12px;
+        gap: 18px;
     }
 
     .footer-links a {
-        color: #ddd;
-        font-size: 13px;
-        transition: color 0.25s ease;
+        width: fit-content;
+        font-size: .94rem;
+        color: var(--text-muted);
+        transition: color .2s ease;
     }
 
     .footer-links a:hover {
-        color: #fff;
-    }
-
-    .footer-contact {
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-    }
-
-    .footer-contact a {
-        color: #ddd;
-        font-size: 13px;
-        transition: color 0.25s ease;
-    }
-
-    .footer-contact a:hover {
-        color: #fff;
-    }
-
-    .footer-address {
-        color: #999;
-        font-size: 12px;
-        line-height: 1.7;
+        color: var(--mint);
     }
 
     .footer-bottom {
@@ -425,12 +514,12 @@
         align-items: center;
         justify-content: space-between;
         gap: 20px;
-        padding-top: 25px;
+        padding-top: 30px;
     }
 
-    .footer-bottom p {
-        color: #777;
-        font-size: 11px;
+    footer .fine {
+        color: var(--text-faint);
+        font-size: .82rem;
     }
 
     /* =========================
@@ -438,45 +527,6 @@
     ========================= */
 
     @media (max-width: 900px) {
-        .header-inner {
-            min-height: 72px;
-            padding: 0 22px;
-        }
-
-        .nav-menu-toggle {
-            display: block;
-        }
-
-        .nav-links {
-            display: none;
-            position: absolute;
-            top: calc(100% + 1px);
-            left: 14px;
-            right: 14px;
-            padding: 12px;
-            flex-direction: column;
-            align-items: stretch;
-            gap: 0;
-            background: rgba(255, 255, 255, 0.98);
-            border: 1px solid rgba(0, 0, 0, 0.08);
-            border-radius: 16px;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.12);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-        }
-
-        .nav-links.open {
-            display: flex;
-        }
-
-        .nav-links a {
-            padding: 14px 12px;
-            font-size: 13px;
-        }
-
-        .nav-links a::after {
-            display: none;
-        }
 
         .contact-grid {
             grid-template-columns: 1fr;
@@ -490,7 +540,7 @@
 
         .footer-top {
             grid-template-columns: 1fr 1fr;
-            gap: 45px 30px;
+            gap: 48px 40px;
         }
 
         .footer-brand {
@@ -498,20 +548,18 @@
         }
     }
 
+    @media (max-width: 780px) {
+
+        footer {
+            padding: 64px 0 32px;
+        }
+
+        .footer-brand .logo img {
+            height: 58px;
+        }
+    }
+
     @media (max-width: 600px) {
-        .announcement-bar {
-            padding: 8px 12px;
-            font-size: 10px;
-            letter-spacing: 0.06em;
-        }
-
-        .header-inner {
-            padding: 0 18px;
-        }
-
-        .logo img {
-            width: 135px;
-        }
 
         .contact-hero {
             padding: 75px 22px 45px;
@@ -552,23 +600,19 @@
         .support-button {
             width: 100%;
         }
+    }
 
-        footer {
-            padding: 50px 22px 25px;
-        }
+    @media (max-width: 480px) {
 
         .footer-top {
-            grid-template-columns: 1fr;
-            gap: 35px;
-        }
-
-        .footer-brand {
-            grid-column: auto;
+            gap: 44px 28px;
+            padding-bottom: 48px;
         }
 
         .footer-bottom {
             flex-direction: column;
             align-items: flex-start;
+            gap: 10px;
         }
     }
 </style>
@@ -586,34 +630,52 @@
 <!-- =========================
      HEADER
 ========================= -->
-<header>
-    <div class="header-inner">
+<nav aria-label="Main navigation">
+
+    <div class="wrap">
 
         <a href="index.html" class="logo" aria-label="BittPulse home">
-            <img src="images/bittpulse no bg.jpg" alt="BittPulse">
+
+            <img
+                src="images/bittpulse_logo_no_bottom_row_centered.png"
+                alt="BittPulse"
+                onload="this.parentElement.classList.add('has-img')"
+                onerror="this.style.display='none';"
+            >
+
+            <span class="dot"></span><span class="logo-text">BittPulse</span>
+
         </a>
 
-        <button
-            class="nav-menu-toggle"
-            id="navMenuToggle"
-            type="button"
-            aria-label="Open navigation menu"
-            aria-expanded="false"
-            onclick="toggleNavMenu()"
-        >
-            <span></span>
-            <span></span>
-            <span></span>
-        </button>
+        <div class="nav-links" id="navLinks">
 
-        <nav class="nav-links" id="navLinks" aria-label="Main navigation">
-            <a href="index.html">Home</a>
-            <a href="index.html#products">Products</a>
-            <a href="contact.html">Contact</a>
-        </nav>
+            <a href="index.html#air">Air</a>
+            <a href="index.html#sleep">Sleep</a>
+            <a href="index.html#how">How it works</a>
+            <a href="contact.html" aria-current="page">Contact</a>
+
+        </div>
+
+        <div class="nav-right">
+
+            <button
+                class="nav-menu-toggle"
+                id="navMenuToggle"
+                type="button"
+                onclick="toggleNavMenu()"
+                aria-label="Open navigation menu"
+                aria-expanded="false"
+                aria-controls="navLinks">
+
+                ☰
+
+            </button>
+
+        </div>
 
     </div>
-</header>
+
+</nav>
 
 <!-- =========================
      MAIN CONTENT
@@ -735,46 +797,49 @@
 ========================= -->
 <footer>
 
-    <div class="footer-inner">
+    <div class="wrap">
 
         <div class="footer-top">
 
-            <!-- BRAND -->
             <div class="footer-brand">
 
                 <a href="index.html" class="logo" aria-label="BittPulse home">
+
                     <img
-                        src="images/bittpulse no bg.jpg"
+                        src="images/bittpulse_logo_no_bottom_row_centered.png"
                         alt="BittPulse"
+                        onload="this.parentElement.classList.add('has-img')"
+                        onerror="this.style.display='none';"
                     >
+
+                    <span class="dot"></span><span class="logo-text">BittPulse</span>
+
                 </a>
 
                 <p>
-                    Adaptive air and sleep devices designed for a more
-                    comfortable everyday life.
+                    Adaptive air and sleep devices designed for a more comfortable everyday life.
                 </p>
 
             </div>
 
 
-            <!-- NAVIGATION -->
-            <div class="footer-column">
+            <div class="footer-col">
 
-                <h3>Explore</h3>
+                <h4>Explore</h4>
 
                 <div class="footer-links">
-                    <a href="index.html">Home</a>
-                    <a href="index.html#products">Products</a>
+                    <a href="index.html#air">Air</a>
+                    <a href="index.html#sleep">Sleep</a>
+                    <a href="index.html#how">How it works</a>
                     <a href="contact.html">Contact</a>
                 </div>
 
             </div>
 
 
-            <!-- POLICIES -->
-            <div class="footer-column">
+            <div class="footer-col">
 
-                <h3>Information</h3>
+                <h4>Information</h4>
 
                 <div class="footer-links">
                     <a href="terms.html">Terms</a>
@@ -787,51 +852,10 @@
         </div>
 
 
-        <!-- FOOTER CONTACT -->
-        <div
-            style="
-                display:flex;
-                justify-content:space-between;
-                align-items:flex-start;
-                gap:30px;
-                padding:28px 0;
-                border-bottom:1px solid rgba(255,255,255,0.13);
-                flex-wrap:wrap;
-            "
-        >
-
-            <div class="footer-contact">
-
-                <a href="mailto:support@bittpulse.store">
-                    support@bittpulse.store
-                </a>
-
-                <div class="footer-address">
-                    BittPulse<br>
-                    2451 Enterprise Blvd<br>
-                    Plainfield, IN 46168<br>
-                    USA
-                </div>
-
-            </div>
-
-            <div class="footer-address">
-                Free delivery for all orders<br>
-                Delivery in 2–4 business days
-            </div>
-
-        </div>
-
-
-        <!-- FOOTER BOTTOM -->
         <div class="footer-bottom">
 
-            <p>
+            <p class="fine">
                 © 2026 BittPulse. All rights reserved.
-            </p>
-
-            <p>
-                Adaptive Air &amp; Sleep Devices
             </p>
 
         </div>
@@ -843,34 +867,93 @@
 
 <script>
     function toggleNavMenu() {
-        const nav = document.getElementById("navLinks");
+        const menu = document.getElementById("navLinks");
         const button = document.getElementById("navMenuToggle");
 
-        if (!nav || !button) return;
+        if (!menu || !button) return;
 
-        const isOpen = nav.classList.toggle("open");
+        const isOpen = menu.classList.toggle("open");
 
         button.setAttribute("aria-expanded", isOpen ? "true" : "false");
         button.setAttribute(
             "aria-label",
             isOpen ? "Close navigation menu" : "Open navigation menu"
         );
+        button.textContent = isOpen ? "×" : "☰";
     }
 
 
     // Close mobile navigation after selecting a link
     document.querySelectorAll("#navLinks a").forEach(function(link) {
         link.addEventListener("click", function() {
-            const nav = document.getElementById("navLinks");
+            const menu = document.getElementById("navLinks");
             const button = document.getElementById("navMenuToggle");
 
-            if (!nav || !button) return;
+            if (!menu || !button) return;
 
-            nav.classList.remove("open");
+            menu.classList.remove("open");
             button.setAttribute("aria-expanded", "false");
             button.setAttribute("aria-label", "Open navigation menu");
+            button.textContent = "☰";
         });
     });
+</script>
+
+<script>
+/* Adaptive logo: checks the logo image's own backdrop and picks the blend that
+   makes it melt into the page (dark backdrop -> screen, light backdrop -> invert + screen,
+   transparent -> untouched). Falls back silently if the browser blocks pixel access. */
+(function(){
+
+  function adapt(img){
+
+    try{
+
+      var size = 32;
+      var c = document.createElement('canvas');
+      c.width = size;
+      c.height = size;
+
+      var ctx = c.getContext('2d', { willReadFrequently:true });
+      ctx.drawImage(img, 0, 0, size, size);
+
+      var pts = [[1,1],[size-2,1],[1,size-2],[size-2,size-2]];
+      var a = 0, l = 0;
+
+      pts.forEach(function(p){
+        var d = ctx.getImageData(p[0], p[1], 1, 1).data;
+        a += d[3];
+        l += (0.2126*d[0] + 0.7152*d[1] + 0.0722*d[2]);
+      });
+
+      a /= pts.length;
+      l /= pts.length;
+
+      if(a < 40){
+        img.setAttribute('data-bg','clear');
+      }else if(l > 150){
+        img.setAttribute('data-bg','light');
+      }else{
+        img.setAttribute('data-bg','dark');
+      }
+
+    }catch(e){
+      /* canvas blocked (e.g. opened as a local file) - keep the default dark blend */
+    }
+
+  }
+
+  document.querySelectorAll('.logo img').forEach(function(img){
+
+    if(img.complete && img.naturalWidth){
+      adapt(img);
+    }else{
+      img.addEventListener('load', function(){ adapt(img); });
+    }
+
+  });
+
+})();
 </script>
 
 </body>
